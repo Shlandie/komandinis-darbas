@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 import Ratas from "./components/Ratas";
+import PajamuSekc from './components/Pajamu-sekc/Pajamu-sekc';
 
 function App() {
   return (
@@ -20,8 +21,18 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
-
-      <Ratas></Ratas>
+      <div class="container App">
+        <div class="row">
+          <PajamuSekc/>
+          <div class="col-4">
+          <Ratas></Ratas>
+          </div>
+          <div class="col-4">
+      Column
+          </div>
+        </div>
+      </div>
+      
     </>
   );
 }
