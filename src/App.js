@@ -5,6 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
+import Ratas from "./components/Ratas";
+
 function App() {
   return (
     <>
@@ -12,12 +14,14 @@ function App() {
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">HomeEEEE</Nav.Link>
+            <Nav.Link href="#home">HomeEEEEgit breanc</Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
+
+      <Ratas></Ratas>
     </>
   );
 }
