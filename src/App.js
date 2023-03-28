@@ -22,15 +22,15 @@ function App() {
         </Container>
       </Navbar>
       <div class="container App">
-        <div class="row">
+        <div class="row grid gap-1">
           <PajamuSekc/>
-          <div class="col-4">
+          <div class="col">
           <Ratas></Ratas>
           </div>
-          <div class="col-4">
+          <div class="col">
       Column
           </div>
-        </div>
+          </div>
       </div>
       
     </>
