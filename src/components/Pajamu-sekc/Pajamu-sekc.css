@@ -3,5 +3,12 @@ Small{
     margin-top: -8px;
 }
 Button{
-    width: 100%;
+    width: 90%;
+    position: absolute;
+    bottom: 25px;
+}
+.Container{
+    height: 350px;
+    position: relative;
+    background-color: white;
 }
