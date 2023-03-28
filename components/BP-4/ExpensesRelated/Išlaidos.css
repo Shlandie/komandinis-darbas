@@ -1,0 +1,88 @@
+/* Global changes */
+:root {
+    /* Čia tiek daug spalvų, dėl to kad vartotojas galėtu
+    jas pasirinkt, naudot kai kuria ... arba tai automatiškai 
+    pasidarytu, random spalva pasirinktu */
+        /* Colors for expense bars */
+        --grayBar: #E9E9E9;
+        --sharpPink: #ef7cf1;
+        --bubblegumPink: #f17cc0;
+        --purple: #a57cf1;
+        --blue: #867cf1;
+        --lightBlue: #7cd4f1;
+        --green: #93F17C;
+        --yellow: #eff17c;
+        --orange: #f1a37c;
+        --red: #f17c7c;
+        --: ;
+}
+
+
+/* Container and its children */
+.expenses-container {
+    position: relative;
+    height: 230px;
+    width: 490px;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.expenses-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.expenses-container::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #D0E5F4;
+}
+
+  
+.expense-box {
+    margin-bottom: 28px;
+}
+
+.barFontSize{
+    font-size: 1.5em;
+    color: /* insert(theBackgroundColor of the bar,
+            and then a function will brigthen the color) */ 
+            unset;
+}
+
+.bar {
+    background-color: var(--grayBar);
+    width: 474px;
+    height: 40px;
+    border-radius: 40px;
+
+    position: relative;
+}
+
+
+/* Bar colors, maybe there should be a separate css folder
+    for them */
+.blueBar {
+    background-color: var(--blue);
+    position: absolute;
+    height: 40px;
+    border-radius: 40px;
+
+    width: 85%;
+}
+.greenBar {
+    background-color: var(--green);
+    position: absolute;
+    height: 40px;
+    border-radius: 40px;
+    
+    width: 50%;
+}
+
+.redBar {
+    background-color: var(--red);
+    position: absolute;
+    height: 40px;
+    border-radius: 40px;
+    
+    width: 20%;
+}
