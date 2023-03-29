@@ -32,6 +32,11 @@ function App() {
           </div>
           </div>
       </div>
+
+      {/* Karolio Darbas */}
+      <div>
+        <Biudžetas />
+      </div>
       
     </>
   );
