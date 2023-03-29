@@ -1,0 +1,47 @@
+/* Global changes */
+:root {
+    /* Global colors */
+    --mainBlue: #D0E5F4;
+    --fontColor: #303030;
+}
+
+.heading, .button-text, h3 {
+    color: #303030;
+}
+
+.button-fs {
+    font-size: 32px;
+}
+
+
+/* Container and its children */
+.budget-container {
+    width: 620px;
+    height: 480px;
+    border: 1px solid black;
+    
+    border-radius: 30px;
+    padding: 0 71px 99px;
+    margin: 15px;
+    
+    position: relative;
+    background-color: white;
+}
+
+.heading {
+    font-size: 35px;
+    margin: 46px 0 21px;
+}
+
+.button {
+    width: 474px;
+    height: 56px;
+    background: var(--mainBlue);
+    
+    border-radius: 40px;
+    /* margin: 43px 71px; */
+    
+    position: absolute;
+    bottom: 43px;
+    border: none;
+}
