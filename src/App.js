@@ -7,6 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import Ratas from "./components/Ratas";
 import PajamuSekc from './components/Pajamu-sekc/Pajamu-sekc';
+import Budget from './components/BP-4/Budget/Budget';
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
 
       {/* Karolio Darbas */}
       <div>
-        <Biudžetas />
+        <Budget />
       </div>
       
     </>

@@ -1,6 +1,6 @@
 import React from 'react';
-import './Išlaidos.css';
-import '../Budget/Biudžetas.css';
+import './Expenses.css';
+import '../Budget/Budget.css';
 
 export default function Išlaidos() {
   return (
