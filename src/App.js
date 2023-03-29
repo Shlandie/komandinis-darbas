@@ -1,12 +1,14 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
 
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 import Ratas from "./components/Ratas";
 import PajamuSekc from './components/Pajamu-sekc/Pajamu-sekc';
+import PajamuIspl from "./components/Pajamu-ispl/Pajamu-ispl/Pajamu-ispl";
 import Budget from './components/BP-4/Budget/Budget';
 
 function App() {
@@ -38,6 +40,10 @@ function App() {
       <div>
         <Budget />
       </div>
+      
+      <Routes>
+        <Route path="/pajamu-isplestine" element={<PajamuIspl />} />
+      </Routes>
       
     </>
   );
