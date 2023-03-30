@@ -54,8 +54,6 @@
     width: 474px;
     height: 40px;
     border-radius: 40px;
-
-    position: relative;
 }
 
 
@@ -63,26 +61,23 @@
     for them */
 .blueBar {
     background-color: var(--blue);
-    position: absolute;
+    width: 85%;
     height: 40px;
     border-radius: 40px;
 
-    width: 85%;
 }
 .greenBar {
     background-color: var(--green);
-    position: absolute;
     height: 40px;
+    width: 50%;
     border-radius: 40px;
     
-    width: 50%;
 }
 
 .redBar {
     background-color: var(--red);
-    position: absolute;
     height: 40px;
+    width: 20%;
     border-radius: 40px;
     
-    width: 20%;
 }
