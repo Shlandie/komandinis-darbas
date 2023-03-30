@@ -2,7 +2,7 @@ import React from "react";
 
 function PajamuIsplIrasas(props) {
     let { id, title, date, amount } = props;
-
+    
     return (
         <>
             <div className="d-flex justify-content-between">

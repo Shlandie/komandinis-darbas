@@ -24,8 +24,8 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
-      <div class="container App">
-        <div class="row grid gap-1">
+      <div>
+        <div class="row grid gap-1 App">
           <PajamuSekc/>
           <div class="col">
           <Ratas></Ratas>
