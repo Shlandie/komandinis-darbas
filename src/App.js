@@ -10,6 +10,8 @@ import Ratas from "./components/Ratas";
 import PajamuSekc from './components/Pajamu-sekc/Pajamu-sekc';
 import PajamuIspl from "./components/Pajamu-ispl/Pajamu-ispl/Pajamu-ispl";
 import Budget from './components/BP-4/Budget/Budget';
+import IslaiduSekc from './components/Islaidu-sekc/Islaidu-sekc';
+
 
 function App() {
   return (
@@ -30,9 +32,7 @@ function App() {
           <div class="col">
           <Ratas></Ratas>
           </div>
-          <div class="col">
-      Column
-          </div>
+          <IslaiduSekc/>
           </div>
       </div>
 
