@@ -11,27 +11,17 @@ fonts
 .Roboto-condensed {
     font-family: 'Roboto Condensed', sans-serif;
 }
-.F-size-35 {
-    font-size: 35px;
+.F-size-25 {
+    font-size: 25px;
 }
-.F-size-32 {
-    font-size: 32px;
+.F-size-22 {
+    font-size: 22px;
 }
-.F-size-30 {
-    font-size: 30px;
+.F-size-20 {
+    font-size: 20px;
 }
-.F-size-28 {
-    font-size: 28px;
-    line-height: 33px;
-}
-.F-size-23 {
-    font-size: 23px;
-}
-.Line-height-33 {
-    line-height: 33px;
-}
-.Line-height-27 {
-    line-height: 27px;
+.Line-height-23 {
+    line-height: 23px;
 }
 
 /* ----------------------- 
@@ -47,36 +37,16 @@ colors
     background-color:  #303030;
 }
 
-
-
-.Income-wrapper {
-    color: #303030;
-}
-
-.IncomeNav {
-    height: 90px;
-    background: white;
-}
-.IncomeSearch {
-    height: 41vh;
-    background: white;
-}
-.IncomeNewEntry {
-    height: 41vh;
-    background: white;
-    position: relative;
-
-}
-.IncomeEntries {
-    height: 98vh;
-    background: white;
-}
+/* -----------------------
+buttons
+------------------------ */
 .Crud-btn {
     width: 185px;
-    height: 56px;
+    height: 41px;
     position: static;
     border-radius: 40px;
     margin-bottom: 50px;
+    margin-top: 5px;
 }
 .Del-btn {
     margin-left: 33px;
@@ -85,10 +55,79 @@ colors
     margin-left: 85px;
 }
 .Main-btn {
+    position: static;
     width: 100%;
-    height: 56px;
-    position: absolute;
-    border-radius: 40px;
-    margin-bottom: 45px;
+    height: 41px;
+    border-radius: 40px;   
     border:  none;
 }
+.Edit-btn:hover, .Main-btn:hover, .Close-btn:hover {
+    background-color: #87AFCC;
+}
+.Del-btn:hover {
+    background-color: #f26969;
+}
+.Close-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 41px;
+    height: 41px;
+    border-radius: 40px; 
+}
+
+
+
+
+.Income-wrapper {
+    color: #303030;
+    height: 98vh;
+    min-height: 650px;
+    margin: 7px;
+}
+
+
+.IncomeNav {
+    height: 90px;
+    background: white;
+    flex-wrap: nowrap;
+    border-radius: 10px;
+    padding: 25px 17px;
+    border-radius: 30px;
+}
+
+
+.IncomeSearch {
+    background: white;
+    border-radius: 30px;
+}
+.IncomeSearch-title {
+    margin-bottom: 44px;
+}
+
+
+.IncomeNewEntry {
+    background: white;
+    position: relative;
+    border-radius: 30px;
+}
+.IncomeNewEntry-title {
+    margin-bottom: 44px;
+}
+.IncomeNewEntry-input {
+    border-radius: 40px;
+    height: 41px;
+    border: 3px solid #E9E9E9;
+    color: #868686;
+    padding-left: 30px;
+}
+
+
+.IncomeEntries {
+    height: 100%;    
+    background: white;
+    border-radius: 30px;
+    position: relative;
+}
+
+
