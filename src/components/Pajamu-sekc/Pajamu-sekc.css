@@ -39,14 +39,21 @@
     font-size: 40px;
     line-height: 46.8px;
 }
-Button{
+.Button{
     width: 67%;
-    height: 56px;
+    height: 41px;
+    padding-top: 5px;
     position: absolute;
     bottom: 50px;
     border-radius: 40px;
     background-color: #D0E5F4;
     border: none;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+}
+.Button:hover{
+    color: inherit;
 }
 .Container{
     height: 456px;
