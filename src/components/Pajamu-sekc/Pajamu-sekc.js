@@ -2,7 +2,8 @@ import React from "react";
 import "./Pajamu-sekc.css";
 import PajamuSekcIrasas from "./Pajamu-sekc-irasas";
 import { v4 as uuidv4 } from 'uuid';
-import { Link } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
+import PajamuIspl from "../Pajamu-ispl/Pajamu-ispl/Pajamu-ispl";
 
 function PajamuSekc() {
     let irasai = [
@@ -45,9 +46,13 @@ function PajamuSekc() {
             <div className="Scroll">
             {visiIrasai}
             </div>
-            <button type="button" class="Roboto-condensed Font-25">Išskleisti</button>
+            <Link to='/Pajamu-ispl/Pajamu-ispl' class="Button Roboto-condensed Font-25">Išskleisti</Link>
         </div>
+        <Routes>
+            <Route path="/Pajamu-ispl/Pajamu-ispl" element={<PajamuIspl />} />
+        </Routes>
         </>
+        
     );
 }
 

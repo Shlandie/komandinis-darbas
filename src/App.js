@@ -41,9 +41,7 @@ function App() {
         <Budget />
       </div>
       
-      <Routes>
-        <Route path="/pajamu-isplestine" element={<PajamuIspl />} />
-      </Routes>
+      
       
     </>
   );
