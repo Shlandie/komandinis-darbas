@@ -1,8 +1,8 @@
 import React from 'react';
-import './Budget.css';
+import './BudgetBP4.css';
 import Expenses from '../ExpensesRelated/Expenses';
 
-export default function Budget() {
+export default function BudgetBP4() {
   return (
     <div className='budget-container'>
       <div className='heading'>Biudžetas</div>

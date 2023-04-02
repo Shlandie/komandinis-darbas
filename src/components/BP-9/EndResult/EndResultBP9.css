@@ -1,0 +1,8 @@
+.EndResultBP9-container {
+    display: flex;
+}
+
+.EndResultBP9-flex {
+    display: flex;
+    flex-direction: column;
+}

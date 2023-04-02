@@ -64,14 +64,13 @@
     width: 85%;
     height: 40px;
     border-radius: 40px;
-
 }
+
 .greenBar {
     background-color: var(--green);
     height: 40px;
     width: 50%;
     border-radius: 40px;
-    
 }
 
 .redBar {
@@ -79,5 +78,4 @@
     height: 40px;
     width: 20%;
     border-radius: 40px;
-    
 }
