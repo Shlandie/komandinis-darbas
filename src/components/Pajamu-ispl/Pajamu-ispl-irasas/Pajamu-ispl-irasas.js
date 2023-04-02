@@ -7,15 +7,15 @@ function PajamuIsplIrasas(props) {
         <>
             <div className="d-flex justify-content-between">
                 <div>
-                    <div className="Roboto-condensed F-size-28 Line-height-33">
+                    <div className="Roboto-condensed F-size-20 Line-height-23">
                         {title}
                     </div>
-                    <div className="Roboto F-size-23 Line-height-27">
+                    <div className="Roboto F-size-20 Line-height-23">
                         {date}
                     </div>
                 </div>
                 <div className="d-flex">
-                    <div className="Roboto-condensed F-size-30 text-success pt-2">
+                    <div className="Roboto-condensed F-size-22 text-success pt-2">
                         {amount} eur
                     </div>
                     <button className="btn Crud-btn Edit-btn Bg-light-blue">Edit</button>
