@@ -1,5 +1,5 @@
 import React from 'react';
-import PajamuSekc from './Pajamu-sekc';
+
 
 function PajamuSekcIrasas(props) {
     let {id, pavadinimas, data, suma} = props;
