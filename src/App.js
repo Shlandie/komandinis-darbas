@@ -38,12 +38,9 @@ function App() {
       </div>
 
       {/* Karolio Darbai */}
-      <div>
+      <div class="row grid gap-1 App">
         <BudgetBP4 />
-      </div>
-      
-      <div>
-        <EndResultBP9 />
+        <div><EndResultBP9 /></div>
       </div>
       
       

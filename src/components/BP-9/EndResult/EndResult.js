@@ -8,7 +8,7 @@ import './EndResultBP9.css';
 
 export default function EndResultBP9() {
   return (
-    <div className='EndResultBP9Container fontBP9' /* ref={EndResultBP9Container} */>
+    <div className='EndResultBP9Container fontBP9'>
       <div className='EndResultBP9-flex'>
         <div><BP9buttons /></div>
         <div><SearchBP9 /></div>
