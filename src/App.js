@@ -8,8 +8,9 @@ import Navbar from "react-bootstrap/Navbar";
 
 import Ratas from "./components/Ratas";
 import PajamuSekc from './components/Pajamu-sekc/Pajamu-sekc';
+import BudgetBP4 from './components/BP-4/Budget/BudgetBP4';
+import EndResultBP9 from './components/BP-9/EndResult/EndResult';
 import PajamuIspl from "./components/Pajamu-ispl/Pajamu-ispl/Pajamu-ispl";
-import Budget from './components/BP-4/Budget/Budget';
 import IslaiduSekc from './components/Islaidu-sekc/Islaidu-sekc';
 
 
@@ -36,9 +37,13 @@ function App() {
           </div>
       </div>
 
-      {/* Karolio Darbas */}
+      {/* Karolio Darbai */}
       <div>
-        <Budget />
+        <EndResultBP9 />
+      </div>
+      
+      <div>
+        <BudgetBP4 />
       </div>
       
       

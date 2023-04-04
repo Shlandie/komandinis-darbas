@@ -1,6 +1,6 @@
 import React from 'react';
 import './Expenses.css';
-import '../Budget/Budget.css';
+import '../Budget/BudgetBP4.css';
 
 export default function Išlaidos() {
   return (
