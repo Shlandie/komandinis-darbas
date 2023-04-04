@@ -12,6 +12,7 @@
     margin: 0 15px;
 }
 
+/* btn */
 .BP9-btn {
     background-color: #D0E5F4;
     width: 185px;
@@ -22,13 +23,9 @@
     justify-content: center;
     align-items: center;
 }
-
 .BP9-btn:hover{
     cursor: pointer;
 }
-
 .BP9-selectedbtn{
     background-color: #87AFCC;
 }
-
-/* Container 2 */
