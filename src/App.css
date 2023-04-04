@@ -1,5 +1,12 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
-  margin: 5px;
+  margin: 7px;
 
 }
 

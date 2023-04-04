@@ -1,14 +1,83 @@
-Small{
-    display: block;
-    margin-top: -8px;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.Roboto {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 23px;
 }
-Button{
-    width: 90%;
+.Roboto-condensed {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+}
+.Font-20{
+    font-size: 20px;
+    line-height: 23px;
+}
+.Font-22{
+    font-size: 22px;
+    line-height: 26px;
+}
+.Font-25{
+    font-size: 25px;
+    line-height: 30px;
+}
+.Font-28{
+    font-size: 28px;
+    line-height: 32.8px;
+}
+.Font-30{
+    font-size: 30px;
+    line-height: 35px;
+}
+.Font-35{
+    font-size: 35px;
+    line-height: 41px;
+}
+.Font-40{
+    font-size: 40px;
+    line-height: 46.8px;
+}
+.Button{
+    width: 67%;
+    height: 41px;
+    padding-top: 5px;
     position: absolute;
-    bottom: 25px;
+    bottom: 50px;
+    border-radius: 40px;
+    background-color: #D0E5F4;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+}
+.Button:hover{
+    color: inherit;
 }
 .Container{
-    height: 350px;
+    height: 456px;
     position: relative;
     background-color: white;
+    padding: 50px 74px 50px 72px;
+    border-radius: 30px;
+}
+.P-48{
+    padding-bottom: 48px;
+}
+.P-40{
+    padding-bottom: 40px;
+}
+.Scroll{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 150px;
+}
+.Scroll::-webkit-scrollbar{
+    width: 10px;
+    
+}
+.Scroll::-webkit-scrollbar-thumb{
+    border-radius: 20px;
+    background-color: #D0E5F4;
 }
