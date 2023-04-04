@@ -5,9 +5,24 @@
     border-radius: 30px;
 
     padding: 0 135px;
+    position: relative;
+    margin-bottom: 15px;
 }
 
 /* x button */
+.BP9-btnX {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 41px;
+    height: 41px;
+    border-radius: 40px;
+    background-color: #D0E5F4;
+}
+
+.BP9-btnX:hover{
+    background-color: rgb(135, 175, 204);
+}
 
 /* heading */
 .BP9heading{

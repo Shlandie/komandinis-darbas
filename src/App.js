@@ -39,12 +39,13 @@ function App() {
 
       {/* Karolio Darbai */}
       <div>
-        <EndResultBP9 />
+        <BudgetBP4 />
       </div>
       
       <div>
-        <BudgetBP4 />
+        <EndResultBP9 />
       </div>
+      
       
       
       

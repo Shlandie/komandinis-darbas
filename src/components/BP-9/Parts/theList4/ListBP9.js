@@ -29,8 +29,8 @@ export default function ListBP9() {
                 </div>
               </div>
           </div>
-
       </div>
+      <button className="btn F-size-20 BP9-btnX">X</button>
     </div>
   )
 }
