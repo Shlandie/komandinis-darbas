@@ -1,48 +1,50 @@
-/* Global changes */
+/* Colors */
 :root {
-    /* Global colors */
+    /* main colors */
     --mainBlue: #D0E5F4;
     --fontColor: #303030;
 }
 
-.heading, .button-text, h3 {
-    color: #303030;
-}
-
-.button-fs {
-    font-size: 32px;
-}
-
-
-/* Container and its children */
+/* BudgetBP4 Container */
 .budget-container {
+    font-family: Roboto Condensed;
+    background-color: white;
+    color: #303030;
+    position: relative;
+
     width: 620px;
     height: 480px;
-    
     border-radius: 30px;
     padding: 0 71px 99px;
     margin: 15px;
-    
-    position: relative;
-    background-color: white;
 }
 
-.fs-28px{
-    font-size: 28px;
+h3 {
+    margin-bottom: 0px;
+}
+.fs-25 {
+    font-size: 25px;
+    line-height: 29.3px;
+}
+.fs-22 {
+    font-size: 22px;
+    line-height: 25.78px;
+}
+.fs-20 {
+    font-size: 20px;
+    line-height: 23.44px;
 }
 
 .heading {
     font-size: 35px;
     padding: 46px 0px 21px;
 }
-
 .button {
     width: 474px;
     height: 56px;
     background: var(--mainBlue);
     
     border-radius: 40px;
-    /* margin: 43px 71px; */
     
     position: absolute;
     bottom: 43px;

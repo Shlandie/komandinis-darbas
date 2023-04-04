@@ -21,29 +21,26 @@
     --placeholder: #868686;
 }
 
-.fontClr {
+.fontBP9 {
+    font-family: Roboto Condensed;
     color: #303030;
 }
 
 
 /* Font sizes */
-.fs-35px {
-    font-size: 35px;
+.fs-25 {
+    font-size: 25px;
+    line-height: 30px;
+}
+.fs-22 {
+    font-size: 22px;
+    line-height: 26px;
+}
+.fs-20 {
+    font-size: 20px;
+    line-height: 23px;
 }
 
-.fs-32px {
-    font-size: 32px;
-}
-
-.fs-30px {
-    font-size: 30px;
-}
-
-.fs-28px{
-    font-size: 28px;
-}
-
-/* Valuable copy paste(s) */
 /* Containers */
 .BP9selectContainer {
     background-color: #fff;
