@@ -1,10 +1,8 @@
-/* BP4 Container(Small) */
-/* .budget-container{} */
 /* BP9 Container(Giant) */
 .basic-gridBP9 {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    margin: 0.25rem 1rem;
+    margin: 1rem;
     gap: 0.5rem;
 }
 .basic-gridBP9-child1 {
@@ -23,16 +21,10 @@
 }
 
 /* Computer */
-@media (min-width:1286px) and (max-width:1920px) {
-    body {
-        background-color: rgb(51, 0, 103);
-    }
-}
+/* @media (min-width:1286px) and (max-width:1920px) {
+} */
 /* Tablet */
 @media (min-width:654px) and (max-width:1285px) {
-    body {
-        background-color: rgb(125, 52, 193);
-    }
     .basic-gridBP9-child1 {
         grid-row: span 1 / 1;
         grid-column: span 6 / 7;
@@ -55,9 +47,6 @@
 }
 /* Phone */
 @media (min-width:0px) and (max-width:653px) {
-    body {
-        background-color: var(--blue);
-    }
     .basic-gridBP9 {
         gap: 0.25rem;
     }
