@@ -2,7 +2,7 @@ import React from "react";
 import "./Pajamu-sekc.css";
 import PajamuSekcIrasas from "./Pajamu-sekc-irasas";
 import { v4 as uuidv4 } from "uuid";
-import { Route, Routes, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PajamuIspl from "../Pajamu-ispl/Pajamu-ispl/Pajamu-ispl";
 
 function PajamuSekc() {
@@ -48,19 +48,16 @@ function PajamuSekc() {
         <>
             <div class="col-4 Container">
                 <div class="d-flex justify-content-between P-48">
-                    <div className="Font-25 mt-1">Pajamos</div>
-                    <div className="Font-30">{bendraSuma}eur</div>
+                    <div className="Roboto-condensed Font-25 mt-1">Pajamos</div>
+                    <div className="Roboto-condensed Font-30">{bendraSuma}eur</div>
                 </div>
                 <div className="Scroll">{visiIrasai}</div>
-                <button type="button" class="Button Roboto-condensed Font-25">
+                <button type="button" class="Button Roboto-condensed Font-20">
                     <Link class="nav-link" to="/pajamu-isplestine">
                         Išskleisti
                     </Link>
                 </button>
             </div>
-            <Routes>
-                <Route path="/pajamu-isplestine" element={<PajamuIspl />} />
-            </Routes>
         </>
     );
 }
