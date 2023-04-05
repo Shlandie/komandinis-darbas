@@ -13,37 +13,30 @@
 }
 .Font-20{
     font-size: 20px;
-    line-height: 23px;
 }
 .Font-22{
     font-size: 22px;
-    line-height: 26px;
 }
 .Font-25{
     font-size: 25px;
-    line-height: 30px;
 }
 .Font-28{
     font-size: 28px;
-    line-height: 32.8px;
 }
 .Font-30{
     font-size: 30px;
-    line-height: 35px;
 }
 .Font-35{
     font-size: 35px;
-    line-height: 41px;
 }
 .Font-40{
     font-size: 40px;
-    line-height: 46.8px;
 }
 .Button{
-    width: 67%;
+    width: 100%;
     height: 41px;
+    margin-top: 47px;
     padding-top: 5px;
-    position: absolute;
     bottom: 50px;
     border-radius: 40px;
     background-color: #D0E5F4;
@@ -57,7 +50,6 @@
 }
 .Container{
     height: 456px;
-    position: relative;
     background-color: white;
     padding: 50px 74px 50px 72px;
     border-radius: 30px;
@@ -71,7 +63,7 @@
 .Scroll{
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 150px;
+    height: 175px;
 }
 .Scroll::-webkit-scrollbar{
     width: 10px;

@@ -52,7 +52,7 @@ function PajamuSekc() {
                     <div className="Font-30">{bendraSuma}eur</div>
                 </div>
                 <div className="Scroll">{visiIrasai}</div>
-                <button type="button" class="Button Roboto-condensed Font-25">
+                <button type="button" class="Button Roboto-condensed Font-20">
                     <Link class="nav-link" to="/pajamu-isplestine">
                         Išskleisti
                     </Link>
