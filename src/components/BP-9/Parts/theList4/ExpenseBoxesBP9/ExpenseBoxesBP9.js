@@ -1,5 +1,6 @@
 import React from 'react';
-
+import {BsTrash} from 'react-icons/bs';
+import {BiEdit} from 'react-icons/bi';
 
 export default function ExpenseBoxesBP9() {
   return (
@@ -15,10 +16,10 @@ export default function ExpenseBoxesBP9() {
               {/* Buttons */}
               <div className='BP9List-btnContainer'>
                   <div className='BP9list-btn BP9list-btnBlue'>
-                      <div className='BP9selectBtn'></div>
+                      <div className='icon-size'> <BiEdit /></div>
                   </div>
                   <div className='BP9list-btn BP9list-btnRed'>
-                      <div className='BP9selectBtn'></div>
+                      <div className='icon-size'> <BsTrash /></div>
                 </div>
               </div>
           </div>
