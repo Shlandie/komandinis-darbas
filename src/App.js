@@ -30,7 +30,7 @@ function App() {
       <div>
         <div class="row grid gap-1 App">
           <PajamuSekc/>
-          <div class="col">
+          <div class="col-4">
           <Ratas></Ratas>
           </div>
           <IslaiduSekc/>

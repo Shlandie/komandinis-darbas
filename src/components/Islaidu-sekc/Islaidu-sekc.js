@@ -3,7 +3,7 @@ import './Islaidu-sekc.css';
 
 function IslaiduSekc() { 
  return(
-    <div className="col   Expenses-section" >
+    <div className="col-4   Expenses-section" >
       <div className="main-expenses">
         <h5 className="d-flex justify-content-between">
             <div className="main-expence-header">Išlaidos</div>
@@ -11,16 +11,25 @@ function IslaiduSekc() {
         </h5>
        <div className="main-expence-box">
         <div className="d-flex justify-content-between mt-1 mb-1 Islaida1">
-            <div className="main-expence-name">MAXIMA<small className="fw-light main-expence-category">kategorija</small></div>
-            <div><span className="text-danger main-expence-amount">suma</span><small className="fw-light main-expence-date">data</small></div>
+            <div className="main-expence-name">MAXIMA<small className="fw-light main-expence-category">Maistas</small></div>
+            <div>
+              <span className="d-flex  justify-content-end  main-expence-amount">- 30 eur</span>
+              <small className="fw-light main-expence-date">2023-03-10</small>
+            </div>
         </div> 
         <div className="d-flex justify-content-between mt-1 mb-1 Islaida2">
-            <div className="main-expence-name">Pavadinimas<small className="fw-light main-expence-category">kategorija</small></div>
-            <div><span className="text-danger main-expence-amount">suma</span><small className="fw-light main-expence-date">data</small></div>
+            <div className="main-expence-name">MAXIMA<small className="fw-light main-expence-category">Maistas</small></div>
+            <div>
+              <span className="d-flex  justify-content-end  main-expence-amount">- 30 eur</span>
+              <small className="fw-light main-expence-date">2023-03-10</small>
+            </div>
         </div> 
         <div className="d-flex justify-content-between mt-1 mb-1 Islaida3">
-            <div className="main-expence-name">Pavadinimas<small className="fw-light main-expence-category">kategorija</small></div>
-            <div><span className="text-danger main-expence-amount">suma</span><small className="fw-light main-expence-date">data</small></div>
+            <div className="main-expence-name">MAXIMA<small className="fw-light main-expence-category">Maistas</small></div>
+            <div>
+              <span className="d-flex  justify-content-end  main-expence-amount ">- 30 eur</span>
+              <small className="fw-light main-expence-date">2023-03-10</small>
+            </div>
         </div> 
        </div>  
         <button type="button" className="btn btn-outline-primary rounded-pill expenses-extend-button">Išskleisti</button>
@@ -28,29 +37,26 @@ function IslaiduSekc() {
 
       
          <form className="expences-addition">
-
            <div className="form-group main-form-name ">
-            <label htmlFor="expence-name"></label>
             <input type="text" class="form-control" id="expence-name" placeholder="Pavadinimas"/>
            </div>
 
            <div className="form-group">
-            <label htmlFor="expence-category"></label>
+            
               <select className="form-control" id="expence-category" >
-                <option>Category 1</option>
-                <option>Category 2</option>
-                <option>Category 3</option>
+                <option disabled selected>Kategorija</option>
+                <option>Kategorija 1</option>
+                <option>Kategorija 2</option>
+                <option>Kategorija 3</option>
               </select>
            </div>
            
            <div className="row">
             <div class="form-group col">
-              <label htmlFor="expence-sum"></label>
               <input type="number" className="form-control" id="expence-sum" placeholder="Suma"/>
             </div>
 
             <div className="form-group col">
-              <label htmlFor="expence-date"></label>
               <input type="date" className="form-control" id="expence-date"  placeholder="Enter date"/>
             </div>
            </div>
