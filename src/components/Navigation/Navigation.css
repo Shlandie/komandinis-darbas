@@ -1,0 +1,34 @@
+/* ----------------------- 
+fonts
+------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.Roboto-condensed {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.F-size-25 {
+    font-size: 25px;
+}
+
+
+
+.Nav-container {
+    height: 60px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    margin: 15px;
+    padding: 0 71px;
+    color: #303030;
+}
+
+.Nav-logout {
+    font-size: 25px;
+    padding-bottom: 14px;
+    padding-left: 105px;
+}
+
+.Nav-greeting {
+    padding-top: 11px
+}
