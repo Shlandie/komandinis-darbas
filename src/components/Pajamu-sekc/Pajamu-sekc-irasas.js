@@ -10,7 +10,7 @@ function PajamuSekcIrasas(props) {
             <div className="Roboto">{data}</div>
         </div>
         <div className="d-flex">
-            <div className="Roboto-condensed Font-22 text-success pt-2">{suma}eur</div>
+            <div className="Roboto-condensed Font-22 text-success pt-2 pe-2">{suma}eur</div>
         </div>
     </div>
   )

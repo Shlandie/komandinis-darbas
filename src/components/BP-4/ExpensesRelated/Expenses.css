@@ -1,4 +1,4 @@
-/* Global changes */
+/* Colors */
 :root {
     /* Čia tiek daug spalvų, dėl to kad vartotojas galėtu
     jas pasirinkt, naudot kai kuria ... arba tai automatiškai 
@@ -18,66 +18,51 @@
 }
 
 
-/* Container and its children */
+/* Container */
 .expenses-container {
     position: relative;
     height: 230px;
-    width: 490px;
+    width: 484px;
 
     overflow-y: scroll;
     overflow-x: hidden;
 }
+.expense-box {
+    margin-bottom: 28px;
+}
 
+/* Scrollbar */
 .expenses-container::-webkit-scrollbar {
     width: 10px;
 }
-
 .expenses-container::-webkit-scrollbar-thumb {
   border-radius: 20px;
   background-color: #D0E5F4;
 }
 
-  
-.expense-box {
-    margin-bottom: 28px;
-}
-
-.barFontSize{
-    font-size: 1.5em;
-    color: /* insert(theBackgroundColor of the bar,
-            and then a function will brigthen the color) */ 
-            unset;
-}
-
+/* Default bar */
 .bar {
     background-color: var(--grayBar);
     width: 474px;
     height: 40px;
     border-radius: 40px;
 }
-
-
-/* Bar colors, maybe there should be a separate css folder
-    for them */
+/* unique bars */
 .blueBar {
     background-color: var(--blue);
     width: 85%;
     height: 40px;
     border-radius: 40px;
-
 }
 .greenBar {
     background-color: var(--green);
     height: 40px;
     width: 50%;
     border-radius: 40px;
-    
 }
-
 .redBar {
     background-color: var(--red);
     height: 40px;
     width: 20%;
     border-radius: 40px;
-    
 }

@@ -1,8 +1,10 @@
 import React from "react";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { FiEdit } from "react-icons/fi";
+
 
 function PajamuIsplIrasas(props) {
     let { id, title, date, amount, deleteIncome, editIncome } = props;
-    
     return (
         <>
             <div className="d-flex justify-content-between">

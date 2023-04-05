@@ -1,0 +1,19 @@
+import React from 'react';
+import '../../BP9global.css';
+import './NewPostBP3.css';
+
+
+export default function NewPostBP3() {
+  return (
+    <div className='BP9container3 fontClr fs-20'>
+        <h3 className='BP9-3-heading fs-25'>Naujas įrašas</h3>
+            <div className='BP9clrGray'>
+                <div className='BP9selectContainer'><span className=''>Kategorija</span><div className='BP9selectBtn'></div></div>
+                <div className='BP9selectContainer my-33px'><span className=''>Spalva</span><div className='BP9selectBtn'></div></div>
+                <span className='BP9selectContainer'>Suma</span>
+            </div>
+
+        <div className='fs-32px fontClr BP9button'>Pridėti įrašą</div>
+    </div>
+  )
+}

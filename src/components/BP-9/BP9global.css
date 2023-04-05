@@ -1,0 +1,92 @@
+:root {
+    /* Global colors */
+    /* Main colors */
+    --mainBlue: #D0E5F4;
+    --fontColor: #303030;
+
+    /* more colors */
+    --grayBar: #E9E9E9;
+    --sharpPink: #ef7cf1;
+    --bubblegumPink: #f17cc0;
+    --purple: #a57cf1;
+    --blue: #867cf1;
+    --lightBlue: #7cd4f1;
+    --green: #93F17C;
+    --yellow: #eff17c;
+    --orange: #f1a37c;
+    --red: #f17c7c;
+    --: ;
+
+    /* HTML Placeholder color */
+    --placeholder: #868686;
+}
+
+.fontBP9 {
+    font-family: Roboto Condensed;
+    color: #303030;
+}
+
+
+/* Font sizes */
+.fs-25 {
+    font-size: 25px;
+    line-height: 30px;
+}
+.fs-22 {
+    font-size: 22px;
+    line-height: 26px;
+}
+.fs-20 {
+    font-size: 20px;
+    line-height: 23px;
+}
+
+/* Containers */
+.BP9selectContainer {
+    background-color: #fff;
+    border: 3px solid #E9E9E9;
+    width: 475px;
+    height: 56px;
+
+    border-radius: 40px;
+    padding: 0 33px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+/* customButton(!!likely will be replaced with an icon!!) */
+.BP9selectBtn {
+    /* Will be replaced with a React Icon(likely) */
+    border-radius: 35%;
+    border: 2.5px solid #464076;
+    width: 18.5px;
+    height: 18.5px;
+    background-color: #867cf1;
+}
+
+.BP9selectBtn:hover {
+    cursor: pointer;
+    background-color: #978fee;
+}
+
+.BP9button {
+    width: 474px;
+    height: 56px;
+    background: var(--mainBlue);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+    border-radius: 40px;
+    margin: 45px 0 50px;
+}
+
+.BP9button:hover {
+    cursor: pointer;
+}
