@@ -2,7 +2,7 @@ import React from "react";
 import "./Pajamu-sekc.css";
 import PajamuSekcIrasas from "./Pajamu-sekc-irasas";
 import { v4 as uuidv4 } from "uuid";
-import { Route, Routes, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PajamuIspl from "../Pajamu-ispl/Pajamu-ispl/Pajamu-ispl";
 
 function PajamuSekc() {
@@ -58,9 +58,6 @@ function PajamuSekc() {
                     </Link>
                 </button>
             </div>
-            <Routes>
-                <Route path="/pajamu-isplestine" element={<PajamuIspl />} />
-            </Routes>
         </>
     );
 }
