@@ -12,21 +12,13 @@ import BudgetBP4 from './components/BP-4/Budget/BudgetBP4';
 import EndResultBP9 from './components/BP-9/EndResult/EndResult';
 import PajamuIspl from "./components/Pajamu-ispl/Pajamu-ispl/Pajamu-ispl";
 import IslaiduSekc from './components/Islaidu-sekc/Islaidu-sekc';
+import Navigation from "./components/Navigation/Navigation";
 
 
 function App() {
   return (
     <>
-      <Navbar bg="primary" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">HomeEEEEgit breanc</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+      <Navigation />
       <div>
         <div class="row grid gap-1 App">
           <PajamuSekc/>
