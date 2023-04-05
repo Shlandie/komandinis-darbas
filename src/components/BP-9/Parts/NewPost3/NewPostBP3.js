@@ -9,7 +9,7 @@ export default function NewPostBP3() {
         <h3 className='BP9-3-heading fs-25'>Naujas įrašas</h3>
             <div className='BP9clrGray'>
                 <div className='BP9selectContainer'><span className=''>Kategorija</span><div className='BP9selectBtn'></div></div>
-                <div className='BP9selectContainer my-33px'><span className=''>Spalva</span><div className='BP9selectBtn'></div></div>
+                <div className='BP9selectContainer my-20'><span className=''>Spalva</span><div className='BP9selectBtn'></div></div>
                 <span className='BP9selectContainer'>Suma</span>
             </div>
 

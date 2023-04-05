@@ -22,7 +22,7 @@
 .expenses-container {
     position: relative;
     height: 230px;
-    width: 484px;
+    width: 100%;
 
     overflow-y: scroll;
     overflow-x: hidden;
@@ -43,7 +43,7 @@
 /* Default bar */
 .bar {
     background-color: var(--grayBar);
-    width: 474px;
+    width: 100%;
     height: 40px;
     border-radius: 40px;
 }

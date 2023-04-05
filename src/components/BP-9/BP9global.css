@@ -21,6 +21,8 @@
     --placeholder: #868686;
 }
 
+
+
 .fontBP9 {
     font-family: Roboto Condensed;
     color: #303030;
@@ -45,7 +47,6 @@
 .BP9selectContainer {
     background-color: #fff;
     border: 3px solid #E9E9E9;
-    width: 475px;
     height: 56px;
 
     border-radius: 40px;
@@ -74,8 +75,7 @@
 }
 
 .BP9button {
-    width: 474px;
-    height: 56px;
+    height: 41px;
     background: var(--mainBlue);
 
     display: flex;
@@ -84,7 +84,7 @@
     
     
     border-radius: 40px;
-    margin: 45px 0 50px;
+    margin: 50px 0;
 }
 
 .BP9button:hover {

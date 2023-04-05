@@ -1,17 +1,15 @@
 .BP9container3 {
     background-color: #fff;
-    width: 620px;
-    height: 503px;
+    height: 445px;
     border-radius: 30px;
 
-    padding: 0 71px;
-    margin: 7px;
+    padding: 0 10%;
 }
 
 .BP9-3-heading{
     padding: 42px 0 36px;
 }
 
-.my-33px {
-    margin: 33px 0;
+.my-20 {
+    margin: 20px 0;
 }
