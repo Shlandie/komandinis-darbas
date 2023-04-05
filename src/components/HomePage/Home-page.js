@@ -19,7 +19,7 @@ function HomePage() {
             </div>
 
             {/* Karolio Darbai */}
-            <div>
+            <div class="col-4">
                 <BudgetBP4 />
             </div>
         </>

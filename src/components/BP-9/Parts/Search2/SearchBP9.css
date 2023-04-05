@@ -1,21 +1,14 @@
-/* Container(1(Eldest) */
 .BP9container2 {
     background-color: #fff;
-    width: 620px;
-    height: 332px;
+    height: 292px;
     border-radius: 30px;
 
-    padding: 0 71px;
-    margin: 15px;
+    padding: 0 10%;
 }
 
 .BP9-2-heading {
     padding: 41px 0 32px;
 }
-
-/* Container(2(selectForm) */
-
-
 
 .BP9clrGray {
    color: #868686;

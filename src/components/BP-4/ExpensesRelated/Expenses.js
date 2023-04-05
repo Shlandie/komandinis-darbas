@@ -2,7 +2,7 @@ import React from 'react';
 import './Expenses.css';
 import '../Budget/BudgetBP4.css';
 
-export default function Išlaidos() {
+export default function ExpensesBP4() {
   return (
     <div className='expenses-container'>
         <div className='scrollbar-trackDot'></div>

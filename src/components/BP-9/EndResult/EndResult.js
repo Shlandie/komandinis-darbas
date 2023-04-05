@@ -8,13 +8,11 @@ import './EndResultBP9.css';
 
 export default function EndResultBP9() {
   return (
-    <div className='EndResultBP9Container fontBP9' /* ref={EndResultBP9Container} */>
-      <div className='EndResultBP9-flex'>
-        <div><BP9buttons /></div>
-        <div><SearchBP9 /></div>
-        <div><NewPostBP3 /></div>
-      </div>
-      <div className=''><ListBP9 /> </div>
-    </div>
+    <div className='basic-gridBP9 fontBP9'>
+                <div className='basic-gridBP9-child1'><BP9buttons /></div>
+                <div className='basic-gridBP9-child2'><SearchBP9 /></div>
+                <div className='basic-gridBP9-child3'><NewPostBP3 /></div>
+                <div className='basic-gridBP9-child4'><ListBP9 /></div>
+        </div>
   )
 }
