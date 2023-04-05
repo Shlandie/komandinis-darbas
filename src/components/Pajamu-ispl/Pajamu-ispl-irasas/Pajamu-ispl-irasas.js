@@ -4,8 +4,7 @@ import { FiEdit } from "react-icons/fi";
 
 
 function PajamuIsplIrasas(props) {
-    let { id, title, date, amount } = props;
-
+    let { id, title, date, amount, deleteIncome, editIncome } = props;
     return (
         <>
             <div className="d-flex justify-content-between">
@@ -21,8 +20,8 @@ function PajamuIsplIrasas(props) {
                     <div className="Roboto-condensed F-size-22 text-success pt-2">
                         {amount} eur
                     </div>
-                    <button className="btn Crud-btn Edit-btn Bg-light-blue">< FiEdit /></button>
-                    <button className="btn Crud-btn Del-btn Bg-light-red">< RiDeleteBinLine /></button>
+                    <button onClick={() => editIncome(id)} className="btn Crud-btn Edit-btn Bg-light-blue">Edit</button>
+                    <button onClick={() => deleteIncome(id)} className="btn Crud-btn Del-btn Bg-light-red">Delete</button>
                 </div>
             </div>
         </>

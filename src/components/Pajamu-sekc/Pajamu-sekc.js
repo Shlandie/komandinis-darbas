@@ -48,8 +48,8 @@ function PajamuSekc() {
         <>
             <div class="col-4 Container">
                 <div class="d-flex justify-content-between P-48">
-                    <div className="Font-25 mt-1">Pajamos</div>
-                    <div className="Font-30">{bendraSuma}eur</div>
+                    <div className="Roboto-condensed Font-25 mt-1">Pajamos</div>
+                    <div className="Roboto-condensed Font-30">{bendraSuma}eur</div>
                 </div>
                 <div className="Scroll">{visiIrasai}</div>
                 <button type="button" class="Button Roboto-condensed Font-20">
