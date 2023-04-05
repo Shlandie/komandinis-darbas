@@ -1,38 +1,105 @@
-.App {
+/* Ratas styling */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+
+
+
+* {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 41px
+}
+
+body {
+  background: rgba(208, 229, 244, 1);
+}
+
+
+
+.ratas1 {
+  width: 620px;
+  margin-bottom: 16px;
+  padding: 20px 0;
+  background-color: white;
+  border-radius: 30px;
+
+}
+
+.ratas1__select {
+  font-family: 'Roboto Condensed';
   text-align: center;
+
+  display: block;
+  margin: 0 auto;
+
+  border: none;
+  background-color: white;
+
+  overflow-y: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+option {
+  font-family: 'Roboto Condensed';
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ratas2 {
+  width: 620px;
+  height: 856px;
+  padding-top: 90px;
+
+  background-color: white;
+  border-radius: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.ratas2__main {
+  width: 431px;
+  height: 435px;
+  margin: 0 auto;
+
+  /* border: 30px solid rgba(129, 165, 255, 1); */
+  /* border-radius: 100%; */
+
+  /* box-shadow: 10px 10px 20px 0px rgba(166, 180, 200, 0.7); */
+
+
+
 }
 
-.App-link {
-  color: #61dafb;
+.ratas2__data {
+
+  margin: 0 auto;
+  margin-top: 93px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.ratas2__data td:nth-of-type(1) {
+  /* display: list-item; */
+  list-style: disc;
+  padding-right: 96px;
+}
+
+.ratas2__data tr:nth-of-type(2) td {
+  padding-top: 50px;
+}
+
+.ratas2__data span {
+  font-size: 62px;
+  vertical-align: middle;
+
+  margin-right: 30px;
+}
+
+.pie {
+  width: 431px;
+  display: block;
+  margin: 0 auto;
+
+}
+
+.pie circle {
+  fill: none;
+  stroke-width: 5;
+  stroke-dasharray: 55 110;
+
 }
