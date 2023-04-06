@@ -32,7 +32,7 @@ function IslaiduSekc() {
             </div>
         </div> 
        </div>  
-        <button type="button" className="btn btn-outline-primary rounded-pill expenses-extend-button">Išskleisti</button>
+        <button type="button" className="btn btn-outline-primary  expenses-extend-button">Išskleisti</button>
       </div>
 
       
@@ -52,7 +52,7 @@ function IslaiduSekc() {
            </div>
            
            <div className="row">
-            <div class="form-group col">
+            <div className="form-group col">
               <input type="number" className="form-control" id="expence-sum" placeholder="Suma"/>
             </div>
 
@@ -61,7 +61,7 @@ function IslaiduSekc() {
             </div>
            </div>
 
-           <button type="submit" className="btn btn-outline-primary rounded-pill expense-submit-button">Pridėti irašą</button>
+           <button type="submit" className="btn btn-outline-primary  expense-submit-button">Pridėti irašą</button>
 
          </form>
       
