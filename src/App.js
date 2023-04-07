@@ -7,14 +7,15 @@ import PajamuIspl from "./components/Pajamu-ispl/Pajamu-ispl/Pajamu-ispl";
 import Navigation from "./components/Navigation/Navigation";
 import HomePage from "./components/HomePage/Home-page";
 
+import Ratas from "./components/Ratas/Ratas";
 
 function App() {
-  return (
-    <>
+    return (
+        <>
             <Navigation />
-           
+
             <Routes>
-                <Route path="/" element={ <HomePage />} />
+                <Route path="/" element={<HomePage />} />
             </Routes>
             <Routes>
                 <Route path="/biudzeto-isplestine" element={<EndResultBP9 />} />
