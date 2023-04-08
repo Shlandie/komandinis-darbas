@@ -18,12 +18,14 @@ Body {
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-  /* Ratas styling */
-  @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+}
+
+/* Ratas styling */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
 
 
 
-  /* * {
+/* * {
   font-family: 'Roboto Condensed';
   font-style: normal;
   font-weight: 400;
@@ -37,89 +39,102 @@ body {
 
 
 
-  .ratas1 {
-    width: 620px;
-    margin-bottom: 16px;
-    padding: 20px 0;
-    background-color: white;
-    border-radius: 30px;
+.ratas1 {
+  width: 620px;
+  margin-bottom: 16px;
+  padding: 20px 0;
+  background-color: white;
+  border-radius: 30px;
 
-  }
+}
 
-  .ratas1__select {
-    font-family: 'Roboto Condensed';
-    text-align: center;
+.ratas1__select {
+  font-family: 'Roboto Condensed';
+  text-align: center;
 
-    display: block;
-    margin: 0 auto;
+  display: block;
+  margin: 0 auto;
 
-    border: none;
-    background-color: white;
+  border: none;
+  background-color: white;
 
-    overflow-y: auto;
-  }
+  overflow-y: auto;
+}
 
-  option {
-    font-family: 'Roboto Condensed';
-  }
+option {
+  font-family: 'Roboto Condensed';
+}
 
-  .ratas2 {
-    width: 620px;
-    height: 856px;
-    padding-top: 90px;
+.ratas2 {
+  width: 620px;
+  height: 856px;
+  padding-top: 90px;
 
-    background-color: white;
-    border-radius: 30px;
-  }
+  background-color: white;
+  border-radius: 30px;
+}
 
-  .ratas2__main {
-    width: 431px;
-    height: 435px;
-    margin: 0 auto;
+.ratas2__main {
+  width: 431px;
+  height: 435px;
+  margin: 0 auto;
 
-    /* border: 30px solid rgba(129, 165, 255, 1); */
-    /* border-radius: 100%; */
+  /* border: 30px solid rgba(129, 165, 255, 1); */
+  /* border-radius: 100%; */
 
-    /* box-shadow: 10px 10px 20px 0px rgba(166, 180, 200, 0.7); */
-
-
-
-  }
-
-  .ratas2__data {
-
-    margin: 0 auto;
-    margin-top: 93px;
-  }
+  /* box-shadow: 10px 10px 20px 0px rgba(166, 180, 200, 0.7); */
 
 
-  .ratas2__data td:nth-of-type(1) {
-    /* display: list-item; */
-    list-style: disc;
-    padding-right: 96px;
-  }
 
-  .ratas2__data tr:nth-of-type(2) td {
-    padding-top: 50px;
-  }
+}
 
-  .ratas2__data span {
-    font-size: 62px;
-    vertical-align: middle;
+.ratas2__data {
 
-    margin-right: 30px;
-  }
+  font-weight: bold;
 
-  .pie {
-    width: 431px;
-    display: block;
-    margin: 0 auto;
+  margin: 0 auto;
+  margin-top: 93px;
+}
 
-  }
+/* .ratas2_data> {
+  vertical-align: middle;
 
-  .pie circle {
-    fill: none;
-    stroke-width: 5;
-    stroke-dasharray: 55 110;
+} */
 
-  }
+.ratas2__data td:nth-of-type(2) {
+  padding-right: 96px;
+
+}
+
+.ratas2__data td:nth-of-type(1) {
+  padding-bottom: 10px;
+
+}
+
+.ratas2__data td {
+  line-height: 62px;
+
+  vertical-align: middle;
+}
+
+.ratas2__data span {
+  font-size: 62px;
+  vertical-align: middle;
+
+  margin-right: 30px;
+  padding-bottom: 20px;
+}
+
+.pie {
+  width: 431px;
+  display: block;
+  margin: 0 auto;
+
+}
+
+.pie circle {
+  fill: none;
+  stroke-width: 5;
+  stroke-dasharray: 55 110;
+
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// import { Line } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import { DoughnutController } from "chart.js";
 import ArcElement from "chart.js";
@@ -97,12 +98,14 @@ const Ratas = () => {
 
                     <table className="ratas2__data">
                         <tr >
-                            <td><span style={{ color: "red" }}>{String.fromCharCode(8226)}</span>Išlaidos</td>
+                            <td><span style={{ color: "red" }}>{String.fromCharCode(8226)}</span></td>
+                            <td>Išlaidos</td>
                             <td>500€</td>
                         </tr>
                         <tr>
-                            <td><span style={{ color: "rgba(129, 165, 255, 1)" }}>{String.fromCharCode(8226)}</span>Likutis</td>
-                            <td>1000€</td>
+                            <td><span style={{ color: "rgba(129, 165, 255, 1)" }}>{String.fromCharCode(8226)}</span></td>
+                            <td>Likutis</td>
+                            <td>1500€</td>
                         </tr>
                     </table>
                 </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-import Ratas from "../Ratas";
+import Ratas from "../Ratas/Ratas";
 import PajamuSekc from "../Pajamu-sekc/Pajamu-sekc";
 import BudgetBP4 from "../BP-4/Budget/BudgetBP4";
 import IslaiduSekc from "../Islaidu-sekc/Islaidu-sekc";
