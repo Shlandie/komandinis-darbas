@@ -41,7 +41,6 @@ colors
 buttons
 ------------------------ */
 .Crud-btn {
-    width: 185px;
     height: 41px;
     position: static;
     border-radius: 40px;
@@ -51,12 +50,12 @@ buttons
     padding: 0 0 5px 0;
 }
 .Del-btn {
-    margin-left: 33px;
     font-size: 22px;
+    width: 45%;
 }
 .Edit-btn {
-    margin-left: 85px;
     font-size: 20px;
+    width: 45%;
 }
 .Main-btn {
     position: static;
@@ -138,6 +137,15 @@ buttons
     background: white;
     border-radius: 30px;
     position: relative;
+}
+
+.IncomeEntries-fields {
+    width: 65%;
+    margin-right: 85px;
+}
+
+.IncomeEntries-buttons {
+    width: 35%;
 }
 
 
