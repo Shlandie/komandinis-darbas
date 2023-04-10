@@ -1,7 +1,6 @@
 import React from "react";
 import PajamuIsplIrasas from "../Pajamu-ispl-irasas/Pajamu-ispl-irasas";
 import "../Pajamu-ispl/Pajamu-ispl.css";
-import PajamuSekc from "../../Pajamu-sekc/Pajamu-sekc";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 

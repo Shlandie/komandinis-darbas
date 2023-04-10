@@ -1,5 +1,6 @@
 import React from "react";
 import './Islaidu-sekc.css';
+import { Link } from "react-router-dom";
 
 function IslaiduSekc() { 
  return(
@@ -32,7 +33,10 @@ function IslaiduSekc() {
             </div>
         </div> 
        </div>  
-        <button type="button" className="btn btn-outline-primary  expenses-extend-button">Išskleisti</button>
+        <button type="button" className="btn btn-outline-primary  expenses-extend-button">
+            <Link class="nav-link" to="/islaidu-isplestine">
+              Išskleisti
+            </Link></button>
       </div>
 
       

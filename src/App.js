@@ -4,10 +4,10 @@ import { Route, Routes } from "react-router-dom";
 
 import EndResultBP9 from "./components/BP-9/EndResult/EndResult";
 import PajamuIspl from "./components/Pajamu-ispl/Pajamu-ispl/Pajamu-ispl";
+import IslaiduIspl from "./components/Islaidu-ispl/Islaidu-ispl/Islaidu-ispl";
 import Navigation from "./components/Navigation/Navigation";
 import HomePage from "./components/HomePage/Home-page";
 
-import Ratas from "./components/Ratas/Ratas";
 
 function App() {
     return (
@@ -22,6 +22,9 @@ function App() {
             </Routes>
             <Routes>
                 <Route path="/pajamu-isplestine" element={<PajamuIspl />} />
+            </Routes>
+            <Routes>
+                <Route path="/islaidu-isplestine" element={<IslaiduIspl />} />
             </Routes>
         </>
     );

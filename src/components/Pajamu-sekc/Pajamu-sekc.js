@@ -3,7 +3,6 @@ import "./Pajamu-sekc.css";
 import PajamuSekcIrasas from "./Pajamu-sekc-irasas";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
-import PajamuIspl from "../Pajamu-ispl/Pajamu-ispl/Pajamu-ispl";
 
 function PajamuSekc() {
     let irasai = [
