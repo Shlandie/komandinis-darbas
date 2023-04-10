@@ -148,5 +148,10 @@ buttons
 .IncomeEntries-buttons {
     width: 35%;
 }
+.Error-msg{
+    color:#f26969;
+    margin-top: -10px;
+    margin-left: 25px;
+}
 
 
