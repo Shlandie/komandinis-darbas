@@ -38,6 +38,7 @@ function PajamuIspl() {
     const [amountInput, setAmountInput] = useState('');
     const [editIncome, setEditIncome] = useState(false);
     const [updateIncome, setUpdateIncome] = useState({});
+    const [error, setError] = useState(false);
 
     const deleteIncome = (id) => {
         setIncomes(incomes.filter((income) =>
@@ -68,18 +69,28 @@ function PajamuIspl() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(!editIncome){
-            let newIncome = {id: uuidv4(), incomeTitle: titleInput, incomeDate: dateInput, incomeAmount: amountInput}
-            //console.log(newIncome)
-            setIncomes((oldList) => [...oldList, newIncome]);
-            //console.log(incomes)
-            setTitleInput('');
-            setDateInput('');
-            setAmountInput('');
+            if(titleInput.length == 0 || dateInput.length == 0 || amountInput == 0){
+                setError(true);
+            } else{
+                let newIncome = {id: uuidv4(), incomeTitle: titleInput, incomeDate: dateInput, incomeAmount: amountInput}
+                //console.log(newIncome)
+                setIncomes((oldList) => [...oldList, newIncome]);
+                //console.log(incomes)
+                setTitleInput('');
+                setDateInput('');
+                setAmountInput('');
+                setError(false);
+            }
         } else {
-            handleUpdateIncome(updateIncome);
-            setTitleInput('');
-            setDateInput('');
-            setAmountInput('');
+            if(titleInput.length == 0 || dateInput.length == 0 || amountInput == 0){
+                setError(true);
+            } else {
+                handleUpdateIncome(updateIncome);
+                setTitleInput('');
+                setDateInput('');
+                setAmountInput('');
+                setError(false);
+            } 
         }
     }
 
@@ -150,7 +161,6 @@ function PajamuIspl() {
                                 <div class="mb-2">
                                     <input
                                         onChange={(e) => setTitleInput(e.target.value)}
-                                        required
                                         type="text"
                                         id="titleInput"
                                         name="titleInput"
@@ -159,6 +169,7 @@ function PajamuIspl() {
                                         placeholder="Pavadinimas"
                                     />
                                 </div>
+                                {error&&titleInput.length <= 0? <div className="Error-msg">Šis laukelis yra privalomas</div>:""}
                                 <div class="mb-2">
                                     <input
                                         onChange={(e) => setDateInput(e.target.value)}
@@ -167,9 +178,9 @@ function PajamuIspl() {
                                         name="dateInput"
                                         value={dateInput}
                                         class="form-control IncomeNewEntry-input F-size-20"
-                                        required
                                     />
                                 </div>
+                                {error&&dateInput.length <= 0? <div className="Error-msg">Šis laukelis yra privalomas</div>:""}
                                 <div class="mb-2">
                                     <input
                                         onChange={(e) => setAmountInput(e.target.value)}
@@ -179,9 +190,9 @@ function PajamuIspl() {
                                         value={amountInput}
                                         class="form-control IncomeNewEntry-input F-size-20"
                                         placeholder="Suma"
-                                        required
                                     />
                                 </div>
+                                {error&&amountInput.length <= 0? <div className="Error-msg">Šis laukelis yra privalomas</div>:""}
                                 <button
                                     onClick={handleSubmit}
                                     type="submit"
