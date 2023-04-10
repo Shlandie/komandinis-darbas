@@ -120,7 +120,8 @@ function PajamuIspl() {
                     </div>
                     <div className="row gap-2 g-0 mb-2">
                         <div className="p-5 IncomeSearch">
-                            <h4 className="Roboto-condensed F-size-25 IncomeSearch-title">
+                            <h4 className="Roboto-condensed F-size-25 IncomeSearch-title {
+">
                                 Paieška
                             </h4>
                             <form>
@@ -166,6 +167,7 @@ function PajamuIspl() {
                                         name="dateInput"
                                         value={dateInput}
                                         class="form-control IncomeNewEntry-input F-size-20"
+                                        required
                                     />
                                 </div>
                                 <div class="mb-2">
@@ -177,11 +179,12 @@ function PajamuIspl() {
                                         value={amountInput}
                                         class="form-control IncomeNewEntry-input F-size-20"
                                         placeholder="Suma"
+                                        required
                                     />
                                 </div>
                                 <button
                                     onClick={handleSubmit}
-                                    type="button"
+                                    type="submit"
                                     class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
                                 >
                                     Pridėti irašą

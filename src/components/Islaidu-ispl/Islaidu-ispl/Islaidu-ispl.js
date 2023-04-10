@@ -141,7 +141,7 @@ function IslaiduIspl() {
                     </div>
                     <div className="row gap-2 g-0 mb-2">
                         <div className="p-5 IncomeSearch">
-                            <h4 className="Roboto-condensed F-size-25 IncomeSearch-title">
+                            <h4 className="Roboto-condensed F-size-25 ExpenceSearch-title">
                                 Paieška
                             </h4>
                             <form>
@@ -173,7 +173,7 @@ function IslaiduIspl() {
                     </div>
                     <div className="row gap-2 g-0 ">
                         <div className="col p-5 IncomeNewEntry">
-                            <h4 className="Roboto-condensed F-size-25 IncomeNewEntry-title">
+                            <h4 className="Roboto-condensed F-size-25 ExpenceNewEntry-title">
                                 Naujas Įrašas
                             </h4>
                             <form onSubmit={handleSubmit}>
