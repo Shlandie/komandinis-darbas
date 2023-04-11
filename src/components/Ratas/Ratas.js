@@ -27,33 +27,17 @@ const Ratas = () => {
             {
                 data: Data1.map((data) => data.userGain),
                 type: "doughnut",
-                cutout: 150,
+                cutout: 190,
                 backgroundColor: [
-                    "rgba(29, 165, 255, 1)",
-                    "green",
+                    "rgba(182, 182, 182, 1)",
+                    "rgba(129, 165, 255, 1)"
                     // "lightgreen"
 
                 ],
                 borderColor: "black",
-                borderWidth: 2
+                borderWidth: 0
             },
 
-            {
-                labels: Data2.map((data) => data.year),
-                data: Data2.map((data) => data.userGain),
-                weight: 3,
-                type: "pie",
-                backgroundColor: [
-                    // "rgb(255, 30, 0)", ,
-                    "red",
-                    "rgb(160, 0, 0)",
-                    "rgb(180, 10, 0)",
-                    "rgb(210, 20, 0)",
-                    "rgb(230, 30, 20)",
-                ],
-                borderColor: "black",
-                borderWidth: 2
-            }
         ]
     });
 
@@ -98,14 +82,14 @@ const Ratas = () => {
 
                     <table className="ratas2__data">
                         <tr >
-                            <td><span style={{ color: "red" }}>{String.fromCharCode(8226)}</span></td>
+                            <td><span style={{ color: "rgba(129, 165, 255, 1)" }}>{String.fromCharCode(8226)}</span></td>
                             <td>Išlaidos</td>
-                            <td>500€</td>
+                            <td>500 Eur</td>
                         </tr>
                         <tr>
-                            <td><span style={{ color: "rgba(129, 165, 255, 1)" }}>{String.fromCharCode(8226)}</span></td>
+                            <td><span style={{ color: "rgba(182, 182, 182, 1)" }}>{String.fromCharCode(8226)}</span></td>
                             <td>Likutis</td>
-                            <td>1500€</td>
+                            <td>1500 Eur</td>
                         </tr>
                     </table>
                 </div>

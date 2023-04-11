@@ -77,7 +77,7 @@ function IslaiduIspl() {
             }
             return expence;
         });
-        setIncomes(newExpencesList);
+        // setIncomes(newExpencesList);
     };
 
     const handleSubmit = (e) => {
