@@ -152,7 +152,7 @@ function IslaiduIspl() {
                                     />
                                 </div>
                                 <select
-                                    className="form-select IncomeNewEntry-input F-size-19"
+                                    className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
                                     aria-label="Default select example"
                                     id="programSelect"
                                     name="programSelect"
@@ -192,13 +192,13 @@ function IslaiduIspl() {
                                     />
                                 </div>
                                 <select
-                                    className="form-select IncomeNewEntry-input F-size-19"
+                                    className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
                                     aria-label="Default select example"
                                     id="programSelect"
                                     name="programSelect"
                                     required
                                 >
-                                    <option defaultValue>Pagal kategoriją</option>
+                                    <option defaultValue>Kategorija</option>
                                     <option value="Java">Maistas</option>
                                     <option value="PHP">Pramogos</option>
                                 </select>
