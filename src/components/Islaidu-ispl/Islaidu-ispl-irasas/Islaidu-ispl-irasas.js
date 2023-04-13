@@ -18,8 +18,8 @@ function IslaiduIsplIrasas(props) {
                         </div>
                     </div>
                     <div>
-                        <div className="Roboto-condensed F-size-22 Line-height-23 text-success">
-                            {amount} eur
+                        <div className="Roboto-condensed F-size-22 Line-height-23 text-danger text-end">
+                            - {amount} eur
                         </div>
                         <div className="Roboto F-size-20 Line-height-23">
                             {date}
