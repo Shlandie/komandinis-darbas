@@ -5,8 +5,6 @@ import '../Budget/BudgetBP4.css';
 export default function ExpensesBP4() {
   return (
     <div className='expenses-container'>
-        <div className='scrollbar-trackDot'></div>
-
         <div className='expense-box'>
             <h3 className='d-flex justify-content-between'><span className='fs-20'>Transportas</span> <span className='pe-2 fs-22'>150 eur</span></h3>
             

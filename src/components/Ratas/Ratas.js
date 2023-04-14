@@ -45,8 +45,8 @@ const Ratas = () => {
     return (
 
         <>
-            <div className="ratas">
-                <div className="ratas1">
+            <div className="ratas BP38-child2">
+                <div className="ratas1 BP38-child2-1">
                     <select className="ratas1__select" name="ratas1__select">
                         <option value="sausis">Sausis</option>
                         <option value="vasaris">Vasaris</option>
@@ -68,7 +68,7 @@ const Ratas = () => {
                 </div>
 
 
-                <div className="ratas2">
+                <div className="ratas2 BP38-child2-2">
                     <div className="ratas2__main">
                         <PieChart chartData={chartData} />
 

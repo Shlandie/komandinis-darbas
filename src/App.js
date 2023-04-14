@@ -12,8 +12,6 @@ import HomePage from "./components/HomePage/Home-page";
 function App() {
     return (
         <>
-            <Navigation />
-
             <Routes>
                 <Route path="/" element={<HomePage />} />
             </Routes>

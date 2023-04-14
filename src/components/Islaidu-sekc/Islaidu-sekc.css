@@ -4,13 +4,11 @@ Small{
 }
  
 .Expenses-section{
-    height: 950px;
+    /* height: 950px; */
     position: relative;
     background-color: white;  
     border-radius: 30px;
-    padding: 50px 63px 43px 69px;
-    
-    
+    padding: 46px 10%;
 }
 .expense-submit-button{
     width: 100%;
@@ -60,9 +58,23 @@ Small{
    line-height: 23px;
    
  }
- 
+
+.main-expence-box{
+    overflow-y: auto;
+    height: 50%;
+    padding-right: 9.6px;
+ }
+.main-expence-box::-webkit-scrollbar {
+    width: 10px;
+}
+
+.main-expence-box::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #D0E5F4;
+}
+
 .main-expenses{
-    height: 500px;
+    height: 50%;
 
 }
 .main-expence-name{  
@@ -104,12 +116,4 @@ Small{
     line-height: 23px;
     color: #B61E1E;  
 }
-.Islaida1{
-    padding-top: 33px;
-} 
-.Islaida2{
-    padding-top: 45px;
-} 
-.Islaida3{
-    padding-top: 42px;
-}
+

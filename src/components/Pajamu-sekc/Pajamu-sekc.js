@@ -45,7 +45,7 @@ function PajamuSekc() {
     let bendraSuma = irasai.reduce((accum, irasas) => accum + irasas.suma, 0);
     return (
         <>
-            <div class="col-4 Container">
+            <div class="Container BP38-child1">
                 <div class="d-flex justify-content-between P-48">
                     <div className="Roboto-condensed Font-25 mt-1">Pajamos</div>
                     <div className="Roboto-condensed Font-30">{bendraSuma}eur</div>

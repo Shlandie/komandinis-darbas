@@ -4,28 +4,28 @@ import { Link } from "react-router-dom";
 
 function IslaiduSekc() { 
  return(
-    <div className="col-4   Expenses-section" >
+    <div className="Expenses-section BP38-child3" >
       <div className="main-expenses">
         <h5 className="d-flex justify-content-between">
             <div className="main-expence-header">Išlaidos</div>
             <div className="main-expence-sum">120eur</div>
         </h5>
        <div className="main-expence-box">
-        <div className="d-flex justify-content-between mt-1 mb-1 Islaida1">
+        <div className="d-flex justify-content-between mt-1 mb-1 P-20">
             <div className="main-expence-name">MAXIMA<small className="fw-light main-expence-category">Maistas</small></div>
             <div>
               <span className="d-flex  justify-content-end  main-expence-amount">- 30 eur</span>
               <small className="fw-light main-expence-date">2023-03-10</small>
             </div>
         </div> 
-        <div className="d-flex justify-content-between mt-1 mb-1 Islaida2">
+        <div className="d-flex justify-content-between mt-1 mb-1 P-20">
             <div className="main-expence-name">MAXIMA<small className="fw-light main-expence-category">Maistas</small></div>
             <div>
               <span className="d-flex  justify-content-end  main-expence-amount">- 30 eur</span>
               <small className="fw-light main-expence-date">2023-03-10</small>
             </div>
         </div> 
-        <div className="d-flex justify-content-between mt-1 mb-1 Islaida3">
+        <div className="d-flex justify-content-between mt-1 mb-1 P-20">
             <div className="main-expence-name">MAXIMA<small className="fw-light main-expence-category">Maistas</small></div>
             <div>
               <span className="d-flex  justify-content-end  main-expence-amount ">- 30 eur</span>
