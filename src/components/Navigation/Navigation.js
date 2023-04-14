@@ -1,5 +1,5 @@
 import React from "react";
-import "../Navigation/Navigation.css";
+import "./Navigation.css";
 import { RxExit } from "react-icons/rx";
 
 function Navigation() {

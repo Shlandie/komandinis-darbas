@@ -130,7 +130,7 @@ function IslaiduIspl() {
                     expenceAmount: amountInput,
                 };
                 //console.log(newIncome)
-                setExpences((oldList) => [...oldList, newExpence]);
+                setExpences((oldList) => [...oldList, expences]);
                 //console.log(expences)
                 setTitleInput("");
                 setDateInput("");
