@@ -41,14 +41,14 @@ function IslaiduSekc() {
 
       
          <form className="expences-addition">
-           <div className="form-group main-form-name ">
+           <div className="form-group main-form-name">
             <input type="text" class="form-control" id="expence-name" placeholder="Pavadinimas"/>
            </div>
 
            <div className="form-group">
             
-              <select className="form-control" id="expence-category" >
-                <option disabled selected>Kategorija</option>
+              <select className="form-control BP9clrGray" id="expence-category" >
+                <option disabled selected >Kategorija</option>
                 <option>Kategorija 1</option>
                 <option>Kategorija 2</option>
                 <option>Kategorija 3</option>
@@ -61,11 +61,11 @@ function IslaiduSekc() {
             </div>
 
             <div className="form-group col">
-              <input type="date" className="form-control" id="expence-date"  placeholder="Enter date"/>
+              <input type="date" className="form-control BP9clrGray" id="expence-date"  placeholder="Enter date"/>
             </div>
            </div>
 
-           <button type="submit" className="btn btn-outline-primary  expense-submit-button">Pridėti irašą</button>
+           <button type="submit" className="btn btn-outline-primary expense-submit-button BP9clrGray">Pridėti irašą</button>
 
          </form>
       

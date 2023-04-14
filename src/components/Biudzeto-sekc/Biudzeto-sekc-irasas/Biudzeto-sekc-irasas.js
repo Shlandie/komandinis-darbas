@@ -1,8 +1,8 @@
 import React from 'react';
-import './Expenses.css';
-import '../Budget/BudgetBP4.css';
+import './Biudzeto-sekc-irasas.css';
+import '../Biudzeto-sekc/Biudzeto-sekc';
 
-export default function ExpensesBP4() {
+export default function BiudzetoSekcIrasas() {
   return (
     <div className='expenses-container'>
         <div className='expense-box'>

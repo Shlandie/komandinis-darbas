@@ -1,13 +1,13 @@
 import React from "react";
-import "./BudgetBP4.css";
-import Expenses from "../ExpensesRelated/Expenses";
+import "./Biudzeto-sekc.css";
+import BiudzetoSekcIrasas from "../Biudzeto-sekc-irasas/Biudzeto-sekc-irasas";
 import { Link } from "react-router-dom";
 
-export default function BudgetBP4() {
+export default function BiudzetoSekc() {
     return (
             <div className="budget-container BP38-child4">
                 <div className="heading fs-25">Biudžetas</div>
-                    <Expenses />
+                    <BiudzetoSekcIrasas />
                 <button className="button button-fs fs-20">
                     <Link class="nav-link" to="/biudzeto-isplestine">
                         Išskleisti

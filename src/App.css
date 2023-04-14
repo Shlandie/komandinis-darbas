@@ -7,12 +7,11 @@ body {
 
 .App {
   margin: 7px;
-
 }
 
 Body {
   background-color: #D0E5F4;
-
+  overflow: hidden;
 }
 
 .App-logo {
@@ -61,7 +60,6 @@ option {
   font-size: 35px;
   font-weight: 400;
 
-  height: 90.9%;
   padding-top: 90px;
 
   background-color: white;

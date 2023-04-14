@@ -1,11 +1,11 @@
 import React from "react";
 
-import Ratas from "../Ratas/Ratas";
-import PajamuSekc from "../Pajamu-sekc/Pajamu-sekc";
-import BudgetBP4 from "../BP-4/Budget/BudgetBP4";
-import IslaiduSekc from "../Islaidu-sekc/Islaidu-sekc";
-import './HomePage.css'
 import Navigation from "../Navigation/Navigation";
+import PajamuSekc from "../Pajamu-sekc/Pajamu-sekc";
+import IslaiduSekc from "../Islaidu-sekc/Islaidu-sekc";
+import Ratas from "../Ratas/Ratas";
+import BiudzetoSekc from "../Biudzeto-sekc/Biudzeto-sekc/Biudzeto-sekc";
+import './HomePage.css'
 
 function HomePage() {
     return (
@@ -14,9 +14,9 @@ function HomePage() {
                 <div class="BP38mainGridDesign">
                     <Navigation />
                     <PajamuSekc />
-                    {/* <Ratas /> */}
+                    <Ratas />
                     <IslaiduSekc />
-                    <BudgetBP4 />
+                    <BiudzetoSekc />
                 </div>
             </div>
 

@@ -2,10 +2,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
-import EndResultBP9 from "./components/BP-9/EndResult/EndResult";
+import EndResultBP9 from "./components/Biudzeto-ispl/EndResult/EndResult";
 import PajamuIspl from "./components/Pajamu-ispl/Pajamu-ispl/Pajamu-ispl";
 import IslaiduIspl from "./components/Islaidu-ispl/Islaidu-ispl/Islaidu-ispl";
-import Navigation from "./components/Navigation/Navigation";
 import HomePage from "./components/HomePage/Home-page";
 
 
