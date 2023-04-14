@@ -293,13 +293,14 @@ function PajamuIspl() {
                     </div>
                     {list}
                 </div>
+                
                 {dialog.isLoading && (
                     <Dialog
                     onDialog={areUSureDelete}
                     message={dialog.message}
                     />
                 )};
-
+                
                 {/* POP UP FOR EDIT */}
                 <div
                     className="modal fade"
@@ -464,5 +465,5 @@ function PajamuIspl() {
         </>
     );
 }
-
+}
 export default PajamuIspl;
