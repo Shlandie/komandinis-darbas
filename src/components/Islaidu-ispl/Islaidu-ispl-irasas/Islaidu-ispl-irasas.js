@@ -31,6 +31,9 @@ function IslaiduIsplIrasas(props) {
                     <button
                         onClick={() => editExpence(id)}
                         className="btn Crud-btn Edit-btn Bg-light-blue"
+                        data-bs-toggle="modal"
+                        role="button"
+                        href="#exampleModalToggle"
                     >
                         <FiEdit />
                     </button>

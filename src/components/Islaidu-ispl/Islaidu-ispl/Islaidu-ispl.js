@@ -44,12 +44,20 @@ function IslaiduIspl() {
     ];
 
     const [expences, setExpences] = useState(expenceEntries);
+
     const [titleInput, setTitleInput] = useState("");
     const [categoryInput, setCategoryInput] = useState("");
     const [dateInput, setDateInput] = useState("");
     const [amountInput, setAmountInput] = useState("");
+
+    const [titleInputOnEdit, setTitleInputOnEdit] = useState("");
+    const [categoryInputOnEdit, setCategoryInputOnEdit] = useState("");
+    const [dateInputOnEdit, setDateInputOnEdit] = useState("");
+    const [amountInputOnEdit, setAmountInputOnEdit] = useState("");
+
     const [editExpence, setEditExpence] = useState(false);
     const [updateExpence, setUpdateExpence] = useState({});
+    const [error, setError] = useState(false);
 
     const deleteExpence = (id) => {
         setExpences(expences.filter((expence) => expence.id !== id));
@@ -59,9 +67,9 @@ function IslaiduIspl() {
         setEditExpence(true);
         let findExpence = expences.find((expence) => expence.id == id);
         //console.log(findExpence);
-        setTitleInput(findExpence.expenceTitle);
-        setDateInput(findExpence.expenceDate);
-        setAmountInput(findExpence.expenceAmount);
+        setTitleInputOnEdit(findExpence.expenceTitle);
+        setDateInputOnEdit(findExpence.expenceDate);
+        setAmountInputOnEdit(findExpence.expenceAmount);
         setUpdateExpence(findExpence);
     };
 
@@ -70,36 +78,55 @@ function IslaiduIspl() {
             if (expence.id == id) {
                 return {
                     id: uuidv4(),
-                    expenceTitle: titleInput,
-                    expenceDate: dateInput,
-                    expenceAmount: amountInput,
+                    expenceTitle: titleInputOnEdit,
+                    expenceDate: dateInputOnEdit,
+                    expenceAmount: amountInputOnEdit,
                 };
             }
             return expence;
         });
-        // setIncomes(newExpencesList);
+        setExpences(newExpencesList);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!editExpence) {
-            let newExpence = {
-                id: uuidv4(),
-                expenceTitle: titleInput,
-                expenceDate: dateInput,
-                expenceAmount: amountInput,
-            };
-            //console.log(newExpence)
-            setExpences((oldList) => [...oldList, newExpence]);
-            //console.log(expences)
-            setTitleInput("");
-            setDateInput("");
-            setAmountInput("");
+            if (
+                titleInput.length == 0 ||
+                dateInput.length == 0 ||
+                amountInput == 0
+            ) {
+                setError(true);
+            } else {
+                let newIncome = {
+                    id: uuidv4(),
+                    expenceTitle: titleInput,
+                    expenceDate: dateInput,
+                    expenceAmount: amountInput,
+                };
+                //console.log(newIncome)
+                setExpences((oldList) => [...oldList, newExpence]);
+                //console.log(expences)
+                setTitleInput("");
+                setDateInput("");
+                setAmountInput("");
+                setError(false);
+            }
         } else {
-            handleUpdateExpence(updateExpence);
-            setTitleInput("");
-            setDateInput("");
-            setAmountInput("");
+            if (
+                titleInputOnEdit.length == 0 ||
+                dateInputOnEdit.length == 0 ||
+                amountInputOnEdit == 0
+            ) {
+                setError(true);
+            } else {
+                handleUpdateExpence(updateExpence);
+                setTitleInputOnEdit("");
+                setDateInputOnEdit("");
+                setAmountInputOnEdit("");
+                setError(false);
+                setEditExpence(false);
+            }
         }
     };
 
@@ -139,6 +166,8 @@ function IslaiduIspl() {
                             </button>
                         </div>
                     </div>
+
+                    {/* SEARCH */}
                     <div className="row gap-2 g-0 mb-2">
                         <div className="p-5 IncomeSearch">
                             <h4 className="Roboto-condensed F-size-25 ExpenceSearch-title">
@@ -158,7 +187,9 @@ function IslaiduIspl() {
                                     name="programSelect"
                                     required
                                 >
-                                    <option defaultValue>Pagal kategoriją</option>
+                                    <option defaultValue>
+                                        Pagal kategoriją
+                                    </option>
                                     <option value="Java">Maistas</option>
                                     <option value="PHP">Pramogos</option>
                                 </select>
@@ -171,6 +202,8 @@ function IslaiduIspl() {
                             </form>
                         </div>
                     </div>
+
+                    {/* ADD ENTRY */}
                     <div className="row gap-2 g-0 ">
                         <div className="col p-5 IncomeNewEntry">
                             <h4 className="Roboto-condensed F-size-25 ExpenceNewEntry-title">
@@ -191,6 +224,13 @@ function IslaiduIspl() {
                                         placeholder="Pavadinimas"
                                     />
                                 </div>
+                                {error && titleInput.length <= 0 ? (
+                                    <div className="Error-msg">
+                                        Šis laukelis yra privalomas
+                                    </div>
+                                ) : (
+                                    ""
+                                )}
                                 <select
                                     className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
                                     aria-label="Default select example"
@@ -216,6 +256,13 @@ function IslaiduIspl() {
                                             placeholder="Suma"
                                         />
                                     </div>
+                                    {error && amountInput.length <= 0 ? (
+                                        <div className="Error-msg">
+                                            Šis laukelis yra privalomas
+                                        </div>
+                                    ) : (
+                                        ""
+                                    )}
                                     <div class="mb-2">
                                         <input
                                             onChange={(e) =>
@@ -229,6 +276,13 @@ function IslaiduIspl() {
                                             placeholder="Data"
                                         />
                                     </div>
+                                    {error && dateInput.length <= 0 ? (
+                                        <div className="Error-msg">
+                                            Šis laukelis yra privalomas
+                                        </div>
+                                    ) : (
+                                        ""
+                                    )}
                                 </div>
 
                                 <button
@@ -242,6 +296,8 @@ function IslaiduIspl() {
                         </div>
                     </div>
                 </div>
+
+                {/* ENTRIES */}
                 <div className="col p-5 IncomeEntries">
                     <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20">
                         <img
@@ -254,6 +310,182 @@ function IslaiduIspl() {
                         <h4 className="Roboto-condensed F-size-25">Išlaidos</h4>
                     </div>
                     {list}
+                </div>
+
+                {/* POP UP FOR EDIT */}
+                <div
+                    className="modal fade"
+                    id="exampleModalToggle"
+                    aria-hidden="true"
+                    aria-labelledby="exampleModalToggleLabel"
+                    tabIndex="-1"
+                >
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content p-4 Edit-pop-up">
+                            <div className="modal-header mx-2 border-bottom-0">
+                                <h5
+                                    className="modal-title F-size-25 Roboto-condensed"
+                                    id="exampleModalToggleLabel"
+                                >
+                                    Redaguoti įrašą
+                                </h5>
+                                <button
+                                    type="button"
+                                    className="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                ></button>
+                            </div>
+                            <div className="modal-body">
+                                <form onSubmit={handleSubmit}>
+                                    <div class="mb-2">
+                                        <input
+                                            onChange={(e) =>
+                                                setTitleInputOnEdit(
+                                                    e.target.value
+                                                )
+                                            }
+                                            type="text"
+                                            id="titleInput"
+                                            name="titleInput"
+                                            value={titleInputOnEdit}
+                                            class="form-control IncomeNewEntry-input F-size-20"
+                                            placeholder="Pavadinimas"
+                                        />
+                                    </div>
+                                    {error && titleInputOnEdit.length <= 0 ? (
+                                        <div className="Error-msg">
+                                            Šis laukelis yra privalomas
+                                        </div>
+                                    ) : (
+                                        ""
+                                    )}
+                                    <select
+                                        className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
+                                        aria-label="Default select example"
+                                        id="programSelect"
+                                        name="programSelect"
+                                        required
+                                    >
+                                        <option defaultValue>Kategorija</option>
+                                        <option value="Java">Maistas</option>
+                                        <option value="PHP">Pramogos</option>
+                                    </select>
+                                    <div className="d-flex mt-2">
+                                        <div class="mb-2 me-3">
+                                            <input
+                                                onChange={(e) =>
+                                                    setAmountInputOnEdit(
+                                                        e.target.value
+                                                    )
+                                                }
+                                                type="number"
+                                                id="amountInput"
+                                                name="amountInput"
+                                                value={amountInputOnEdit}
+                                                class="form-control IncomeNewEntry-input F-size-20"
+                                                placeholder="Suma"
+                                            />
+                                        </div>
+                                        {error &&
+                                        amountInputOnEdit.length <= 0 ? (
+                                            <div className="Error-msg">
+                                                Šis laukelis yra privalomas
+                                            </div>
+                                        ) : (
+                                            ""
+                                        )}
+                                        <div>
+                                            <input
+                                                onChange={(e) =>
+                                                    setDateInputOnEdit(
+                                                        e.target.value
+                                                    )
+                                                }
+                                                type="date"
+                                                id="dateInput"
+                                                name="dateInput"
+                                                value={dateInputOnEdit}
+                                                class="form-control IncomeNewEntry-input F-size-20"
+                                            />
+                                        </div>
+                                        {error &&
+                                        dateInputOnEdit.length <= 0 ? (
+                                            <div className="Error-msg">
+                                                Šis laukelis yra privalomas
+                                            </div>
+                                        ) : (
+                                            ""
+                                        )}
+                                    </div>
+                                    <div className="d-flex mb-3 mt-2">
+                                        <button
+                                            onClick={handleSubmit}
+                                            type="submit"
+                                            class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue me-2"
+                                            data-bs-target="#exampleModalToggle2"
+                                            data-bs-toggle="modal"
+                                            data-bs-dismiss="modal"
+                                        >
+                                            Patvirtinti
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="btn F-size-20 Roboto-condensed Main-btn Bg-light-red ms-2"
+                                            data-bs-dismiss="modal"
+                                        >
+                                            Atšaukti
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    className="modal fade"
+                    id="exampleModalToggle2"
+                    aria-hidden="true"
+                    aria-labelledby="exampleModalToggleLabel2"
+                    tabIndex="-1"
+                >
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content p-4 Edit-pop-up">
+                            <div className="modal-header border-bottom-0">
+                                <button
+                                    type="button"
+                                    className="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                ></button>
+                            </div>
+                            <div className="modal-body mb-4">
+                                <div class="success-animation mb-4">
+                                    <svg
+                                        class="checkmark"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 52 52"
+                                    >
+                                        <circle
+                                            class="checkmark__circle"
+                                            cx="26"
+                                            cy="26"
+                                            r="25"
+                                            fill="none"
+                                        />
+                                        <path
+                                            class="checkmark__check"
+                                            fill="none"
+                                            d="M14.1 27.2l7.1 7.2 16.7-16.8"
+                                        />
+                                    </svg>
+                                </div>
+                                <p className="F-size-25 Roboto-condensed text-center">
+                                    Įrašas sėkmingai atnaujintas
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
