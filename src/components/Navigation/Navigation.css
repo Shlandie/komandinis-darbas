@@ -15,10 +15,10 @@ fonts
 
 
 .Nav-container {
-    height: 60px;
+    /* height: 60px; */
     background-color: #FFFFFF;
     border-radius: 30px;
-    margin: 7px;
+    /* margin: 7px; */
     padding: 0 71px;
     color: #303030;
 }

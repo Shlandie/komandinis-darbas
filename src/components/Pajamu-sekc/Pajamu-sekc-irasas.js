@@ -4,7 +4,7 @@ import React from 'react';
 function PajamuSekcIrasas(props) {
     let {id, pavadinimas, data, suma} = props;
   return (
-    <div className="d-flex justify-content-between P-40">
+    <div className="d-flex justify-content-between P-20">
         <div>
             <div className="Roboto-condensed Font-20">{pavadinimas}</div>
             <div className="Roboto">{data}</div>

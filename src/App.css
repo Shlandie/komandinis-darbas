@@ -7,12 +7,11 @@ body {
 
 .App {
   margin: 7px;
-
 }
 
 Body {
   background-color: #D0E5F4;
-
+  overflow: hidden;
 }
 
 .App-logo {
@@ -32,8 +31,7 @@ body {
   font-family: 'Roboto Condensed';
   font-size: 32px;
 
-  width: 620px;
-  margin-bottom: 16px;
+  margin-bottom: 0.5rem;
   padding: 20px 0;
   background-color: white;
   border-radius: 30px;
@@ -62,8 +60,6 @@ option {
   font-size: 35px;
   font-weight: 400;
 
-  width: 620px;
-  height: 856px;
   padding-top: 90px;
 
   background-color: white;
@@ -140,7 +136,6 @@ option {
     font-family: 'Roboto Condensed';
     font-size: 25px;
 
-    max-width: 620px;
     margin-bottom: 0;
 
     border-bottom-left-radius: 0;
@@ -151,7 +146,6 @@ option {
     font-family: 'Roboto Condensed';
     font-size: 25px;
 
-    max-width: 620px;
 
     border-top-left-radius: 0;
     border-top-right-radius: 0;

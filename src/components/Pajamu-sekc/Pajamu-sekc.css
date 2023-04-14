@@ -33,7 +33,7 @@
     font-size: 40px;
 }
 .Button{
-    width: 100%;
+    width: 80%;
     height: 41px;
     margin-top: 47px;
     padding-top: 5px;
@@ -44,26 +44,30 @@
     text-align: center;
     text-decoration: none;
     color: inherit;
+    position: absolute;
+    bottom: 10%;
 }
+
 .Button:hover{
     color: inherit;
 }
 .Container{
-    height: 456px;
+    /* height: 456px; */
     background-color: white;
-    padding: 50px 74px 50px 72px;
+    padding: 46px 10%;
     border-radius: 30px;
+    position: relative;
 }
 .P-48{
-    padding-bottom: 48px;
+    padding-bottom: 21px;
 }
-.P-40{
-    padding-bottom: 40px;
+.P-20{
+    padding-bottom: 15px;
 }
 .Scroll{
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 175px;
+    height: 40%;
 }
 .Scroll::-webkit-scrollbar{
     width: 10px;

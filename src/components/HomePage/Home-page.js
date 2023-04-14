@@ -1,27 +1,25 @@
 import React from "react";
 
-import Ratas from "../Ratas/Ratas";
+import Navigation from "../Navigation/Navigation";
 import PajamuSekc from "../Pajamu-sekc/Pajamu-sekc";
-import BudgetBP4 from "../BP-4/Budget/BudgetBP4";
 import IslaiduSekc from "../Islaidu-sekc/Islaidu-sekc";
+import Ratas from "../Ratas/Ratas";
+import BiudzetoSekc from "../Biudzeto-sekc/Biudzeto-sekc/Biudzeto-sekc";
+import './HomePage.css'
 
 function HomePage() {
     return (
         <>
             <div>
-                <div class="row grid gap-1 App">
+                <div class="BP38mainGridDesign">
+                    <Navigation />
                     <PajamuSekc />
-                    <div class="col">
-                        <Ratas />
-                    </div>
+                    <Ratas />
                     <IslaiduSekc />
+                    <BiudzetoSekc />
                 </div>
             </div>
 
-            {/* Karolio Darbai */}
-            <div class="col-4">
-                <BudgetBP4 />
-            </div>
         </>
     );
 }

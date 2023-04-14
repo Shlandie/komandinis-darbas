@@ -12,9 +12,9 @@
     color: #303030;
     position: relative;
 
-    height: 480px;
     border-radius: 30px;
     padding: 0 10%;
+    position: relative;
 }
 
 h3 {
@@ -35,16 +35,18 @@ h3 {
 }
 
 .heading {
-    font-size: 35px;
+    font-size: 25px;
     padding: 46px 0px 21px;
 }
 .button {
     background: var(--mainBlue);
     border-radius: 40px;
    
-    width: 100%;
+    width: 80%;
     height: 41px;
 
-    margin-top: 50px;
     border: none;
+
+    position: absolute;
+    bottom: 10%;
 }
