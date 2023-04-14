@@ -1,8 +1,9 @@
 import React from "react";
 import IslaiduIsplIrasas from "../Islaidu-ispl-irasas/Islaidu-ispl-irasas";
 import "../Islaidu-ispl/Islaidu-ispl.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Dialog from "../../Delete-popup/Dialog";
 
 function IslaiduIspl() {
     const expenceEntries = [
@@ -50,9 +51,31 @@ function IslaiduIspl() {
     const [amountInput, setAmountInput] = useState("");
     const [editExpence, setEditExpence] = useState(false);
     const [updateExpence, setUpdateExpence] = useState({});
+    const [dialog, setDialog] = useState({
+        message: "",
+        isLoading: false
+      });
 
-    const deleteExpence = (id) => {
-        setExpences(expences.filter((expence) => expence.id !== id));
+    const idProductRef = useRef();
+    const handleDialog = (message, isLoading) => {
+        setDialog({
+          message,
+          isLoading
+        });
+    };
+
+    const handleDeleteExpence = (id) => {
+        handleDialog("Ar tikrai norite ištrinti?", true);
+        idProductRef.current = id;
+    };
+
+    const areUSureDelete = (choose) => {
+        if (choose) {
+            setExpences(expences.filter((expense) => expense.id !==idProductRef.current));
+            handleDialog("", false);
+        } else {
+            handleDialog("", false);
+        }
     };
 
     const handleEditExpence = (id) => {
@@ -112,7 +135,7 @@ function IslaiduIspl() {
                 category={expence.expenceCategory}
                 date={expence.expenceDate}
                 amount={expence.expenceAmount}
-                deleteExpence={deleteExpence}
+                deleteExpence={handleDeleteExpence}
                 editExpence={handleEditExpence}
             />
         );
@@ -255,6 +278,12 @@ function IslaiduIspl() {
                     </div>
                     {list}
                 </div>
+                {dialog.isLoading && (
+                    <Dialog
+                    onDialog={areUSureDelete}
+                    message={dialog.message}
+                    />
+                )};
             </div>
         </>
     );

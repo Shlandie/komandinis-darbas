@@ -1,8 +1,9 @@
 import React from "react";
 import PajamuIsplIrasas from "../Pajamu-ispl-irasas/Pajamu-ispl-irasas";
 import "../Pajamu-ispl/Pajamu-ispl.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Dialog from "../../Delete-popup/Dialog";
 
 function PajamuIspl() {
     const incomeEntries = [
@@ -45,10 +46,31 @@ function PajamuIspl() {
     const [editIncome, setEditIncome] = useState(false);
     const [updateIncome, setUpdateIncome] = useState({});
     const [error, setError] = useState(false);
+    const [dialog, setDialog] = useState({
+        message: "",
+        isLoading: false
+      });
 
-    const deleteIncome = (id) => {
-        setIncomes(incomes.filter((income) => income.id !== id));
+    const idProductRef = useRef();
+    const handleDialog = (message, isLoading) => {
+        setDialog({
+          message,
+          isLoading
+        });
     };
+
+    const handleDeleteIncome = (id) => {
+        handleDialog("Ar tikrai norite ištrinti?", true);
+        idProductRef.current = id;
+    };
+
+    const areUSureDelete = (choose) => {
+        if (choose) {
+            setIncomes(incomes.filter((income) => income.id !==idProductRef.current));
+            handleDialog("", false);
+        } else {
+            handleDialog("", false);
+        }
 
     const handleEditIncome = (id) => {
         setEditIncome(true);
@@ -125,7 +147,7 @@ function PajamuIspl() {
                 title={income.incomeTitle}
                 date={income.incomeDate}
                 amount={income.incomeAmount}
-                deleteIncome={deleteIncome}
+                deleteIncome={handleDeleteIncome}
                 editIncome={handleEditIncome}
             />
         );
@@ -271,6 +293,12 @@ function PajamuIspl() {
                     </div>
                     {list}
                 </div>
+                {dialog.isLoading && (
+                    <Dialog
+                    onDialog={areUSureDelete}
+                    message={dialog.message}
+                    />
+                )};
 
                 {/* POP UP FOR EDIT */}
                 <div
