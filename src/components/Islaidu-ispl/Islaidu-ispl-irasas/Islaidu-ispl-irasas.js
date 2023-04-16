@@ -1,5 +1,5 @@
 import React from "react";
-import { RiDeleteBinLine } from "react-icons/ri";
+import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 
 function IslaiduIsplIrasas(props) {
@@ -41,7 +41,7 @@ function IslaiduIsplIrasas(props) {
                         onClick={() => deleteExpence(id)}
                         className="btn Crud-btn Del-btn Bg-light-red"
                     >
-                        <RiDeleteBinLine />
+                        <BsTrash />
                     </button>
                 </div>
             </div>
