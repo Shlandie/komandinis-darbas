@@ -6,21 +6,21 @@ import { DoughnutController } from "chart.js";
 import ArcElement from "chart.js";
 import { Pie } from "react-chartjs-2";
 
+import useFetch from "./useFetch";
 import { Data1, Data2 } from "./data";
 import PieChart from "./Piechart";
 
 import { CategoryScale } from "chart.js";
+import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
 
 
 // Chart.register(CategoryScale);
 
 const Ratas = () => {
 
-    // document.querySelector(".monthButton1");
+    const data = useFetch("http://localhost:8000/islaidos")
 
 
-    // const monthNumber = 0;
-    // const [month, setMonth] = useState("Gruodis");
     const [chartData, setChartData] = useState({
         labels: Data1.map((data) => data.year),
         datasets: [
@@ -84,12 +84,12 @@ const Ratas = () => {
                         <tr >
                             <td><span style={{ color: "rgba(129, 165, 255, 1)" }}>{String.fromCharCode(8226)}</span></td>
                             <td>Išlaidos</td>
-                            <td>500 Eur</td>
+                            <td>500 eur</td>
                         </tr>
                         <tr>
                             <td><span style={{ color: "rgba(182, 182, 182, 1)" }}>{String.fromCharCode(8226)}</span></td>
                             <td>Likutis</td>
-                            <td>1500 Eur</td>
+                            <td>1500 eur</td>
                         </tr>
                     </table>
                 </div>
