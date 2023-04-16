@@ -73,6 +73,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 27px;
 }
 
 .BP9list-btnBlue{
@@ -81,10 +82,14 @@
 .BP9list-btnRed{
     background-color: #FF9494;
 }
-
-.icon-size {
-    transform: scale(1.7);
+.BP9list-btnBlue:hover{
+    background-color: rgb(135, 175, 204);
 }
+.BP9list-btnRed:hover{
+    background-color: rgb(242, 105, 105);
+}
+
+
 .iconGray {
     color: #868686;
 }
