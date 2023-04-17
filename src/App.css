@@ -11,7 +11,6 @@ body {
 
 Body {
   background-color: #D0E5F4;
-  overflow: hidden;
 }
 
 .App-logo {
@@ -29,7 +28,7 @@ body {
 
 .ratas1 {
   font-family: 'Roboto Condensed';
-  font-size: 32px;
+  font-size: 25px;
 
   margin-bottom: 0.5rem;
   padding: 20px 0;
@@ -57,7 +56,7 @@ option {
 
 .ratas2 {
   font-family: 'Roboto Condensed';
-  font-size: 35px;
+  font-size: 25px;
   font-weight: 400;
 
   padding-top: 90px;
@@ -102,9 +101,15 @@ option {
 }
 
 .ratas2__data td {
+
   line-height: 62px;
 
   vertical-align: middle;
+}
+
+.ratas2__data tr td:nth-of-type(3) {
+  padding-top: 10px;
+  float: inline-end;
 }
 
 .ratas2__data span {

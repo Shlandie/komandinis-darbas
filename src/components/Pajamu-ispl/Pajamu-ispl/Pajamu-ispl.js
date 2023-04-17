@@ -48,14 +48,14 @@ function PajamuIspl() {
     const [error, setError] = useState(false);
     const [dialog, setDialog] = useState({
         message: "",
-        isLoading: false
-      });
+        isLoading: false,
+    });
 
     const idProductRef = useRef();
     const handleDialog = (message, isLoading) => {
         setDialog({
-          message,
-          isLoading
+            message,
+            isLoading,
         });
     };
 
@@ -66,11 +66,14 @@ function PajamuIspl() {
 
     const areUSureDelete = (choose) => {
         if (choose) {
-            setIncomes(incomes.filter((income) => income.id !==idProductRef.current));
+            setIncomes(
+                incomes.filter((income) => income.id !== idProductRef.current)
+            );
             handleDialog("", false);
         } else {
             handleDialog("", false);
         }
+    };
 
     const handleEditIncome = (id) => {
         setEditIncome(true);
@@ -278,7 +281,6 @@ function PajamuIspl() {
                         </div>
                     </div>
                 </div>
-
                 {/* ENTRIES */}
                 <div className="col p-5 IncomeEntries">
                     <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20">
@@ -293,15 +295,7 @@ function PajamuIspl() {
                     </div>
                     {list}
                 </div>
-                
-                {dialog.isLoading && (
-                    <Dialog
-                    onDialog={areUSureDelete}
-                    message={dialog.message}
-                    />
-                )};
-                
-                {/* POP UP FOR EDIT */}
+                ;{/* POP UP FOR EDIT */}
                 <div
                     className="modal fade"
                     id="exampleModalToggle"
@@ -461,9 +455,15 @@ function PajamuIspl() {
                         </div>
                     </div>
                 </div>
+                {dialog.isLoading && (
+                    <Dialog
+                        onDialog={areUSureDelete}
+                        message={dialog.message}
+                    />
+                )}
             </div>
         </>
     );
 }
-}
+
 export default PajamuIspl;

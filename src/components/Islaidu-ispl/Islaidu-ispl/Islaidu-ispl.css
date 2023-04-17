@@ -53,11 +53,11 @@ buttons
     padding: 0 0 5px 0;
 }
 .Del-btn {
-    font-size: 22px;
+    font-size: 27px;
     width: 45%;
 }
 .Edit-btn {
-    font-size: 20px;
+    font-size: 27px;
     width: 45%;
 }
 .Main-btn {
@@ -68,10 +68,10 @@ buttons
     border:  none;
 }
 .Edit-btn:hover, .Main-btn:hover, .Close-btn:hover {
-    background-color: #87AFCC;
+    background-color: rgb(135, 175, 204);
 }
 .Del-btn:hover {
-    background-color: #f26969;
+    background-color: rgb(242, 105, 105);
 }
 .Close-btn {
     position: absolute;

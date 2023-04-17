@@ -58,19 +58,19 @@ function IslaiduIspl() {
 
     const [editExpence, setEditExpence] = useState(false);
     const [updateExpence, setUpdateExpence] = useState({});
-    
+
     const [error, setError] = useState(false);
-    
+
     const [dialog, setDialog] = useState({
         message: "",
-        isLoading: false
-      });
+        isLoading: false,
+    });
 
     const idProductRef = useRef();
     const handleDialog = (message, isLoading) => {
         setDialog({
-          message,
-          isLoading
+            message,
+            isLoading,
         });
     };
 
@@ -81,7 +81,11 @@ function IslaiduIspl() {
 
     const areUSureDelete = (choose) => {
         if (choose) {
-            setExpences(expences.filter((expense) => expense.id !==idProductRef.current));
+            setExpences(
+                expences.filter(
+                    (expense) => expense.id !== idProductRef.current
+                )
+            );
             handleDialog("", false);
         } else {
             handleDialog("", false);
@@ -123,7 +127,7 @@ function IslaiduIspl() {
             ) {
                 setError(true);
             } else {
-                let newIncome = {
+                let newExpence = {
                     id: uuidv4(),
                     expenceTitle: titleInput,
                     expenceDate: dateInput,
@@ -321,7 +325,6 @@ function IslaiduIspl() {
                         </div>
                     </div>
                 </div>
-
                 {/* ENTRIES */}
                 <div className="col p-5 IncomeEntries">
                     <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20">
@@ -336,7 +339,6 @@ function IslaiduIspl() {
                     </div>
                     {list}
                 </div>
-
                 {/* POP UP FOR EDIT */}
                 <div
                     className="modal fade"
@@ -512,14 +514,13 @@ function IslaiduIspl() {
                         </div>
                     </div>
                 </div>
-
                 {dialog.isLoading && (
                     <Dialog
-                    onDialog={areUSureDelete}
-                    message={dialog.message}
+                        onDialog={areUSureDelete}
+                        message={dialog.message}
                     />
-                )};
-
+                )}
+                ;
             </div>
         </>
     );
