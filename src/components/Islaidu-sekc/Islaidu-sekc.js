@@ -33,7 +33,7 @@ function IslaiduSekc() {
             </div>
         </div> 
        </div>  
-        <button type="button" className="btn btn-outline-primary  expenses-extend-button">
+        <button type="button" className="btn  expenses-extend-button">
             <Link class="nav-link" to="/islaidu-isplestine">
               Išskleisti
             </Link></button>
@@ -65,7 +65,7 @@ function IslaiduSekc() {
             </div>
            </div>
 
-           <button type="submit" className="btn btn-outline-primary expense-submit-button BP9clrGray">Pridėti irašą</button>
+           <button type="submit" className="btn  expense-submit-button BP9clrGray">Pridėti irašą</button>
 
          </form>
       

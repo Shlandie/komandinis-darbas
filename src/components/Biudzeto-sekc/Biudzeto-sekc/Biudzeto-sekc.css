@@ -50,3 +50,6 @@ h3 {
     position: absolute;
     bottom: 10%;
 }
+.budget-main-btn:hover{
+    background-color: rgb(135, 175, 204);
+}
