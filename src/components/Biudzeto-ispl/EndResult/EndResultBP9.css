@@ -122,18 +122,26 @@ body {
 
     .Nav-container {
         padding: 0 10% !important;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+    }
+    .nameLogoutContainer {
+        width: 140px;
+        display: flex;
+        justify-content: start;
+        position: absolute;
+        right: 0px;
     }
     .navbar-brand {
         margin: 0 !important;
         padding: 0;
     }
     .Nav-greeting {
+        margin-top: 2px;
         padding: 2px 0 0 0 !important;
         width: 50%;
+        font-size: 22px !important;
         line-height: 1em;
     }
-    .Nav-logout {
-    padding: 0 0 5px 5px !important;
-    }
-
 }

@@ -14,9 +14,7 @@ function HomePage() {
                 <div class="BP38mainGridDesign">
                     <Navigation />
                     <PajamuSekc />
-
-                    
-                    <Ratas />
+                    {/* <Ratas /> */}
                     <IslaiduSekc />
                     <BiudzetoSekc />
                 </div>
