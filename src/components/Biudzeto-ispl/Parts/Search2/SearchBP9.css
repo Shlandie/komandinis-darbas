@@ -3,6 +3,8 @@
     border-radius: 30px;
 
     padding: 0 10%;
+    position: relative;
+    overflow: visible;
 }
 
 .BP9-2-heading {

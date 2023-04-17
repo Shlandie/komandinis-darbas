@@ -10,7 +10,7 @@ import Navigation from '../../Navigation/Navigation';
 export default function EndResultBP9() {
   return (
         <div className='BP9-grid fontBP9'>
-                <Navigation className="BP9-child0"/>
+                <Navigation />
                 <BP9buttons />
                 <SearchBP9 />
                 <NewPostBP3 />

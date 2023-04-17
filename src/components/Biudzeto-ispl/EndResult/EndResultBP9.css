@@ -33,7 +33,7 @@
 /* @media (min-width:1286px) and (max-width:1920px) {
 } */
 /* Tablet */
-@media (min-width:654px) and (max-width:1285px) {
+@media (min-width:769px) and (max-width:1440px) {
     .BP9-child0 {
         grid-row: span 1 / 1;
         grid-column: span 6 / 7;
@@ -56,28 +56,27 @@
     }
 }
 /* Phone */
-@media (min-width:0px) and (max-width:653px) {
+@media (min-width:0px) and (max-width:768px) {
+    .BP9-grid {
+        height: 0;
+        overflow: visible;
+    }
     .basic-gridBP9 {
         gap: 0.25rem;
     }
     .BP9-child0 {
-        grid-row: span 1 / 1;
-        grid-column: span 6 / 7;
+        height: 80px;
     }
     .BP9-child1 {
-        grid-row: span 4 / 5;
-        grid-column: span 6 / 7;
+        height: 142px;
     }
     .BP9-child2 {
-        grid-row: span 7 / 7;
-        grid-column: span 6 / 13;
+        height: 316px;
     }
     .BP9-child3 {
-        grid-row: span 8 / 13;
-        grid-column: span 12 / 13;
+        height: 471px;
     }
     .BP9-child4 {
-        grid-row: span 8 / 13;
-        grid-column: span 12 / 13;
+        height: 795px;
     }
 }
