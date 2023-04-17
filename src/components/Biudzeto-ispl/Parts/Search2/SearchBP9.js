@@ -7,7 +7,7 @@ import {RxTriangleDown} from 'react-icons/rx';
 
 export default function SearchBP9() {
   return (
-    <div className='BP9container2 fontClr fs-20'>
+    <div className='BP9container2 fontClr fs-20 BP9-child2'>
         <h3 className='BP9-2-heading fs-25'>Paieška</h3>
 
         <div className='BP9selectContainer'>

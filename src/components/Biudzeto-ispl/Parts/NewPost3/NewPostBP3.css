@@ -1,9 +1,24 @@
 .BP9container3 {
     background-color: #fff;
-    height: 445px;
     border-radius: 30px;
 
     padding: 0 10%;
+    position: relative;
+}
+
+.BP9Container3-1 {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 25%;
+    padding-right: 9.6px;
+}
+
+.BP9Container3-1::-webkit-scrollbar {
+    width: 10px;
+}
+.BP9Container3-1::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #D0E5F4;
 }
 
 .BP9-3-heading{
@@ -13,3 +28,4 @@
 .my-20 {
     margin: 20px 0;
 }
+

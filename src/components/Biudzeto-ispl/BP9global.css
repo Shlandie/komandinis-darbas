@@ -74,17 +74,19 @@
     background-color: #978fee;
 }
 
-.BP9button {
-    height: 41px;
+.BP9button {    
     background: var(--mainBlue);
-
+    border-radius: 40px;
+    width: 80%;
+    height: 41px;
+    border: none;
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    
-    border-radius: 40px;
-    margin: 50px 0;
+
+    position: absolute;
+    bottom: 10%;
 }
 
 .BP9button:hover {
