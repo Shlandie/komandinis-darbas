@@ -22,6 +22,7 @@
 }
 .BP9-btn:hover{
     cursor: pointer;
+    background-color: rgb(135, 175, 204);
 }
 .BP9-selectedbtn{
     background-color: #87AFCC;
