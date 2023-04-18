@@ -295,7 +295,7 @@ function PajamuIspl() {
                     </div>
                     {list}
                 </div>
-                ;{/* POP UP FOR EDIT */}
+                {/* POP UP FOR EDIT */}
                 <div
                     className="modal fade"
                     id="exampleModalToggle"
