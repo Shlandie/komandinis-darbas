@@ -19,6 +19,7 @@ fonts
     border-radius: 30px;
     padding: 0 71px;
     color: #303030;
+    display: flex;
 }
 
 .Nav-logout {

@@ -64,11 +64,9 @@ buttons
     border-radius: 40px;   
     border:  none;
 }
-
-div.IncomeNav>div:first-child>button {
+.darkBlueClr {
     background-color: rgb(135, 175, 204);
 }
-
 .Edit-btn:hover, .Main-btn:hover, .Close-btn:hover {
     background-color: rgb(135, 175, 204);
 }

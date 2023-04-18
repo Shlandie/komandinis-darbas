@@ -15,6 +15,7 @@ body {
 }
 
 .BP38-child0 {
+    display: grid;
     grid-row: 1/2;
     grid-column: 1/13;
 }
