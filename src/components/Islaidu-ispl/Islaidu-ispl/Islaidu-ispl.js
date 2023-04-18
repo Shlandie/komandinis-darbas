@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
 
+
 function IslaiduIspl() {
     const expenceEntries = [
         {
@@ -44,10 +45,46 @@ function IslaiduIspl() {
         },
     ];
 
+    const options = [
+        {
+            value: "",
+            text: "Kategorija"
+        },
+        {
+            value: "Transportas",
+            text: "Transportas"
+        },
+        {
+            value: "Maistas ir gėrimai",
+            text: "Maistas ir gėrimai"
+        },
+        {
+            value: "Pramogos",
+            text: "Pramogos"
+        },
+        {
+            value: "Mokesčiai",
+            text: "Mokesčiai"
+        },
+        {
+            value: "Paslaugos",
+            text: "Paslaugos"
+        },
+        {
+            value: "Pirkiniai ir daiktai",
+            text: "Pirkiniai ir daiktai"
+        },
+        {
+            value: "Kitos išlaidos",
+            text: "Kitos išlaidos"
+        }
+    ];
+
     const [expences, setExpences] = useState(expenceEntries);
 
     const [titleInput, setTitleInput] = useState("");
-    const [categoryInput, setCategoryInput] = useState("");
+    const [categoryInput, setCategoryInput] = useState(options[0].value);
+    //console.log(categoryInput)
     const [dateInput, setDateInput] = useState("");
     const [amountInput, setAmountInput] = useState("");
 
@@ -123,7 +160,8 @@ function IslaiduIspl() {
             if (
                 titleInput.length == 0 ||
                 dateInput.length == 0 ||
-                amountInput == 0
+                amountInput == 0 ||
+                categoryInput.length == 0
             ) {
                 setError(true);
             } else {
@@ -132,20 +170,23 @@ function IslaiduIspl() {
                     expenceTitle: titleInput,
                     expenceDate: dateInput,
                     expenceAmount: amountInput,
+                    expenceCategory: categoryInput
                 };
                 //console.log(newIncome)
-                setExpences((oldList) => [...oldList, expences]);
+                setExpences((oldList) => [...oldList, newExpence]);
                 //console.log(expences)
                 setTitleInput("");
                 setDateInput("");
                 setAmountInput("");
+                setCategoryInput(options[0].value)
                 setError(false);
             }
         } else {
             if (
                 titleInputOnEdit.length == 0 ||
                 dateInputOnEdit.length == 0 ||
-                amountInputOnEdit == 0
+                amountInputOnEdit == 0 
+
             ) {
                 setError(true);
             } else {
@@ -157,6 +198,10 @@ function IslaiduIspl() {
                 setEditExpence(false);
             }
         }
+    };
+
+    const handleCategoryChange = (e) => {
+        setCategoryInput(e.target.value)
     };
 
     let list = expences.map((expence) => {
@@ -214,13 +259,15 @@ function IslaiduIspl() {
                                     aria-label="Default select example"
                                     id="programSelect"
                                     name="programSelect"
-                                    required
-                                >
-                                    <option defaultValue>
-                                        Pagal kategoriją
-                                    </option>
-                                    <option value="Java">Maistas</option>
-                                    <option value="PHP">Pramogos</option>
+                                    required>
+                                    <option selected disabled>Pagal kategoriją</option>
+                                    <option>Transportas</option>
+                                    <option>Maistas ir gėrimai</option>
+                                    <option>Pramogos</option>
+                                    <option>Mokesčiai</option>
+                                    <option>Paslaugos</option>
+                                    <option>Pirkiniai ir daiktai</option>
+                                    <option>Kitos išlaidos</option>
                                 </select>
                                 <button
                                     type="submit"
@@ -260,17 +307,17 @@ function IslaiduIspl() {
                                 ) : (
                                     ""
                                 )}
-                                <select
-                                    className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
-                                    aria-label="Default select example"
-                                    id="programSelect"
-                                    name="programSelect"
-                                    required
-                                >
-                                    <option defaultValue>Kategorija</option>
-                                    <option value="Java">Maistas</option>
-                                    <option value="PHP">Pramogos</option>
+                                
+                                <select className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed" aria-label="Default select example" value={categoryInput} onChange={handleCategoryChange}>
+                                    {options.map(option => (
+                                        <option key={option.value} value={option.value}>
+                                            {option.text}
+                                        </option>
+                                    ))};
                                 </select>
+                                {error && categoryInput.length <= 0 ? (
+                                    <div className="Error-msg">Šis laukelis yra privalomas</div>
+                                ) : ("")}
                                 <div className="d-flex mt-2">
                                     <div class="mb-2 me-3">
                                         <input
@@ -285,13 +332,7 @@ function IslaiduIspl() {
                                             placeholder="Suma"
                                         />
                                     </div>
-                                    {error && amountInput.length <= 0 ? (
-                                        <div className="Error-msg">
-                                            Šis laukelis yra privalomas
-                                        </div>
-                                    ) : (
-                                        ""
-                                    )}
+                                    
                                     <div class="mb-2">
                                         <input
                                             onChange={(e) =>
@@ -305,13 +346,14 @@ function IslaiduIspl() {
                                             placeholder="Data"
                                         />
                                     </div>
+                                </div>
+                                <div className="d-flex">
+                                    {error && amountInput.length <= 0 ? (
+                                    <div className="Error-msg">Šis laukelis yra privalomas</div>
+                                    ) : ("")}
                                     {error && dateInput.length <= 0 ? (
-                                        <div className="Error-msg">
-                                            Šis laukelis yra privalomas
-                                        </div>
-                                    ) : (
-                                        ""
-                                    )}
+                                    <div className="Error-msg">Šis laukelis yra privalomas</div>
+                                    ) : ("")}
                                 </div>
 
                                 <button
@@ -520,7 +562,7 @@ function IslaiduIspl() {
                         message={dialog.message}
                     />
                 )}
-                ;
+                
             </div>
         </>
     );

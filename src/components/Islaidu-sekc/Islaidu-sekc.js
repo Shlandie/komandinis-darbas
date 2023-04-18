@@ -48,10 +48,14 @@ function IslaiduSekc() {
            <div className="form-group">
             
               <select className="form-control BP9clrGray" id="expence-category" >
-                <option disabled selected >Kategorija</option>
-                <option>Kategorija 1</option>
-                <option>Kategorija 2</option>
-                <option>Kategorija 3</option>
+                <option disabled selected>Kategorija</option>
+                <option>Transportas</option>
+                <option>Maistas ir gėrimai</option>
+                <option>Pramogos</option>
+                <option>Mokesčiai</option>
+                <option>Paslaugos</option>
+                <option>Pirkiniai ir daiktai</option>
+                <option>Kitos išlaidos</option>
               </select>
            </div>
            
