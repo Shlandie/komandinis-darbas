@@ -1,8 +1,7 @@
-
 .BP38mainGridDesign {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(13, 1fr);
+    grid-template-rows: 56px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     margin: 0.5rem;
     gap: 0.5rem;
 
