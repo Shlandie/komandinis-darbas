@@ -76,8 +76,6 @@ const Ratas = () => {
 
 
                 </div>
-
-
                 <table className="ratas2__data">
                     <tr >
                         <td><span style={{ color: "rgba(129, 165, 255, 1)" }}>{String.fromCharCode(8226)}</span></td>
