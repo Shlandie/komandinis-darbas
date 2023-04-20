@@ -56,6 +56,11 @@ buttons
     padding: 7px 0px 7px 0px;
 }
 .Del-btn {
+    font-size: 27px;
+    width: 45%;
+}
+.Edit-btn {
+    font-size: 27px;
     width: 45%;
 }
 .Edit-btn {

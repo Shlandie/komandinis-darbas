@@ -4,6 +4,7 @@ import "../Islaidu-ispl/Islaidu-ispl.css";
 import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
+import Navigation from "../../Navigation/Navigation";
 
 
 function IslaiduIspl() {
@@ -222,15 +223,16 @@ function IslaiduIspl() {
     return (
         <>
             <div className="row gap-2 g-0 Income-wrapper">
+            <Navigation />
                 <div className="col-4 IncomeSidebar">
                     <div className="row d-flex gap-2 g-0 mb-2 IncomeNav">
                         <div className="col ">
-                            <button className="btn Main-btn Bg-light-blue Roboto-condensed F-size-20">
+                            <button className="btn Main-btn Bg-light-blue Roboto-condensed F-size-20 ">
                                 Pajamos
                             </button>
                         </div>
                         <div className="col">
-                            <button className="btn Main-btn Bg-light-blue Roboto-condensed F-size-20">
+                            <button className="btn Main-btn darkBlueClr Roboto-condensed F-size-20">
                                 Išlaidos
                             </button>
                         </div>
@@ -562,7 +564,6 @@ function IslaiduIspl() {
                         message={dialog.message}
                     />
                 )}
-                
             </div>
         </>
     );

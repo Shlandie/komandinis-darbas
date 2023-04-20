@@ -53,6 +53,11 @@ buttons
     padding: 7px 0px 7px 0px;
 }
 .Del-btn {
+    font-size: 27px;
+    width: 45%;
+}
+.Edit-btn {
+    font-size: 27px;
     width: 45%;
 }
 .Edit-btn {
@@ -64,6 +69,9 @@ buttons
     height: 41px;
     border-radius: 40px;   
     border:  none;
+}
+.darkBlueClr {
+    background-color: rgb(135, 175, 204);
 }
 .Edit-btn:hover, .Main-btn:hover, .Close-btn:hover {
     background-color: rgb(135, 175, 204);
