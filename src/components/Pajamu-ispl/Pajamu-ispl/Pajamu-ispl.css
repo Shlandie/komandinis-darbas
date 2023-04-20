@@ -46,8 +46,11 @@ buttons
     border-radius: 40px;
     margin-bottom: 50px;
     margin-top: 5px;
-    font-size: 20px;
-    padding: 0 0 5px 0;
+    font-size: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 0px 7px 0px;
 }
 .Del-btn {
     font-size: 27px;
@@ -55,6 +58,9 @@ buttons
 }
 .Edit-btn {
     font-size: 27px;
+    width: 45%;
+}
+.Edit-btn {
     width: 45%;
 }
 .Main-btn {

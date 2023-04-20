@@ -10,10 +10,17 @@ export default function SearchBP9() {
     <div className='BP9container2 fontClr fs-20 BP9-child2'>
         <h3 className='BP9-2-heading fs-25'>Paieška</h3>
 
-        <div className='BP9selectContainer'>
-          <span className='BP9clrGray'>Pagal kategoriją</span>
+        <select className="BP9selectContainer" aria-label="Default select example" id="programSelect" name="programSelect" required>
+          <option selected disabled>Kategorija</option>
+          <option>Transportas</option>
+          <option>Maistas ir gėrimai</option>
+          <option>Pramogos</option>
+          <option>Mokesčiai</option>
+          <option>Paslaugos</option>
+          <option>Pirkiniai ir daiktai</option>
+          <option>Kitos išlaidos</option>
           <div className='icon-size iconGray'><RxTriangleDown /></div>  
-        </div>
+        </select>
 
         <div className='fontClr BP9button'>Ieškoti</div>
     </div>
