@@ -33,7 +33,7 @@ function IslaiduSekc() {
             </div>
         </div> 
        </div>  
-        <button type="button" className="btn btn-outline-primary  expenses-extend-button">
+        <button type="button" className="btn  expenses-extend-button">
             <Link class="nav-link" to="/islaidu-isplestine">
               Išskleisti
             </Link></button>
@@ -48,10 +48,14 @@ function IslaiduSekc() {
            <div className="form-group">
             
               <select className="form-control BP9clrGray" id="expence-category" >
-                <option disabled selected >Kategorija</option>
-                <option>Kategorija 1</option>
-                <option>Kategorija 2</option>
-                <option>Kategorija 3</option>
+                <option disabled selected>Kategorija</option>
+                <option>Transportas</option>
+                <option>Maistas ir gėrimai</option>
+                <option>Pramogos</option>
+                <option>Mokesčiai</option>
+                <option>Paslaugos</option>
+                <option>Pirkiniai ir daiktai</option>
+                <option>Kitos išlaidos</option>
               </select>
            </div>
            
@@ -65,7 +69,7 @@ function IslaiduSekc() {
             </div>
            </div>
 
-           <button type="submit" className="btn btn-outline-primary expense-submit-button BP9clrGray">Pridėti irašą</button>
+           <button type="submit" className="btn  expense-submit-button BP9clrGray">Pridėti irašą</button>
 
          </form>
       

@@ -21,7 +21,7 @@
     left: 50%;
     transform: translate(-50%,-50%);
     background: white;
-    padding: 40px;
+    padding: 10px 40px 40px 40px;
     border-radius: 30px;
 }
 .Dialog-background{
@@ -56,9 +56,13 @@
     border: none;
     cursor: pointer;
 }
+.Btn-x{
+    margin-right: -250px;
+    padding-bottom: 20px;
+}
 .Btn-confirm:hover{
-    background-color: #87AFCC;
+    background-color: rgb(135, 175, 204);
 }
 .Btn-close:hover{
-    background-color: #f26969;
+    background-color: rgb(242, 105, 105);
 }

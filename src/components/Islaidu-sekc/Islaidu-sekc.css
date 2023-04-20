@@ -37,6 +37,9 @@ Small {
     font-weight: 400;
     line-height: 23px;
 }
+.expenses-extend-button:hover, .expense-submit-button:hover{
+    background-color: rgb(135, 175, 204);
+}
 
 .expences-addition {
     height: 250px;
