@@ -127,6 +127,7 @@ body {
         justify-content: space-between;
         position: relative;
     }
+
     .nameLogoutContainer {
         width: 140px;
         display: flex;
@@ -134,6 +135,7 @@ body {
         position: absolute;
         right: 0px;
     }
+
     .navbar-brand {
         margin: 0 !important;
         padding: 0;
