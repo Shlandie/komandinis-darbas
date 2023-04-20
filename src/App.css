@@ -27,10 +27,13 @@ body {
   background: rgba(208, 229, 244, 1);
 }
 
+.ratas {}
+
 .ratas1 {
   font-family: 'Roboto Condensed';
   font-size: 25px;
 
+  /* height: 5.5%; */
   margin-bottom: 0.5rem;
   padding: 20px 0;
   background-color: white;
@@ -60,6 +63,7 @@ option {
   font-size: 25px;
   font-weight: 400;
 
+  /* height: 84%; */
   padding-top: 90px;
 
   background-color: white;
