@@ -4,9 +4,8 @@ import "../Pajamu-ispl/Pajamu-ispl.css";
 import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
-import '../../Biudzeto-ispl/EndResult/EndResultBP9.css';
 import Navigation from "../../Navigation/Navigation";
-
+import '../Pajamu-ispl/Pajamu-ispl-grid.css'
 function PajamuIspl() {
     const incomeEntries = [
         {
@@ -160,10 +159,10 @@ function PajamuIspl() {
 
     return (
         <>
-            <div className="row gap-2 g-0 Income-wrapper">
+            <div className="g-0 Income-wrapper ">
         <Navigation />
-                <div className="col-4 IncomeSidebar">
-                    <div className="row d-flex gap-2 g-0 mb-2 IncomeNav BP9container1">
+                <div className="IncomeSidebar gridParent-0">
+                    <div className="row d-flex gap-2 g-0 mb-2 IncomeNav gridChild-1">
                         <div className="col">
                             <button className="btn Main-btn Roboto-condensed F-size-20 darkBlueClr">
                                 Pajamos
@@ -182,7 +181,7 @@ function PajamuIspl() {
                     </div>
 
                     {/* SEARCH */}
-                    <div className="row gap-2 g-0 mb-2 BP9container2">
+                    <div className="row gap-2 g-0 mb-2 gridChild-2">
                         <div className="py-5 IncomeSearch">
                             <h4
                                 className="Roboto-condensed F-size-25 IncomeSearch-title {
@@ -208,7 +207,7 @@ function PajamuIspl() {
                     </div>
 
                     {/* ADD ENTRY */}
-                    <div className="row gap-2 g-0 BP9container3">
+                    <div className="row gap-2 g-0 gridChild-3">
                         <div className="col py-5 IncomeNewEntry">
                             <h4 className="Roboto-condensed F-size-25 IncomeNewEntry-title">
                                 Naujas Įrašas
@@ -285,7 +284,7 @@ function PajamuIspl() {
                     </div>
                 </div>
                 {/* ENTRIES */}
-                <div className="col py-5 IncomeEntries BP9container4">
+                <div className="col py-5 IncomeEntries gridChild-4">
                     <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20">
                         <img
                             className="Close-btn-img"
