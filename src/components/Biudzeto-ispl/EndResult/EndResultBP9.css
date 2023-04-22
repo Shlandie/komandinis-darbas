@@ -26,12 +26,12 @@ body {
 }
 
 .BP9container2 {
-    grid-row: 3/8;
+    grid-row: 3/7;
     grid-column: 1/7;
 }
 
 .BP9container3 {
-    grid-row: 8/13;
+    grid-row: 7/13;
     grid-column: 1/7;
 }
 

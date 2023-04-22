@@ -18,7 +18,7 @@ body {
 }
 
 .IncomeSearch-title {
-    margin-bottom: 0px;
+    margin: 41px 0 32px;
 }
 
 .gridChild-1 {
@@ -44,9 +44,6 @@ body {
 @media (min-width:769px) and (max-width:1440px) {
     body {
         overflow: visible;
-    }
-    .IncomeSearch-title {
-        margin-bottom: 35px;
     }
 
     .gridParent-0 {
