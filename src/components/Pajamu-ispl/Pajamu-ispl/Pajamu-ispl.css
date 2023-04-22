@@ -89,6 +89,13 @@ buttons
     padding: 0 0 2px 0;
     margin: 0;
 }
+
+.xBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
 .Close-btn-img {
     width: 18px;
     height: 18px;
