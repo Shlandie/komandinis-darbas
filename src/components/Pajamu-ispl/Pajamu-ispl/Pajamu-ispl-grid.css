@@ -45,6 +45,9 @@ body {
     body {
         overflow: visible;
     }
+    .gridParent-0 {
+        grid-template-rows: 56px 1fr 1fr 1fr 20px 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
 
     .gridParent-0 {
         height: 1409px;
@@ -86,16 +89,16 @@ body {
 
     .gridParent-0 {
         grid-template-columns: 1fr;
-        grid-template-rows: 50px 97px 287px 399px 810px;
+        grid-template-rows: 55px 97px 287px 399px 810px;
         height: 1675px;
+        margin-top: 5rem;
     }
-
+    
     .BP38-child0 {
-        height: 50px;
         grid-column: 1 / 13;
         grid-row: 1/2;
     }
-
+    
     .gridChild-1 {
         height: 97px;
         grid-column: 1 / 13;

@@ -48,6 +48,7 @@ body {
 
     .BP9-grid {
         height: 1409px;
+        grid-template-rows: 56px 1fr 1fr 1fr 20px 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     }
 
     .BP38-child0 {
