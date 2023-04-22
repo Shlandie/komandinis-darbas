@@ -55,6 +55,7 @@ buttons
     align-items: center;
     padding: 7px 0px 7px 0px;
 }
+
 .Del-btn {
     font-size: 27px;
     width: 45%;
@@ -121,8 +122,11 @@ buttons
     background: white;
     border-radius: 30px;
 }
+.IncomeSearch-title{
+}
 .ExpenceSearch-title {
-    margin-bottom: 10px;
+    
+    margin: 20px 0 15px;
 }
 
 

@@ -6,12 +6,12 @@
     position: relative;
 }
 
-.BP9Container3-1 {
+/* .BP9Container3-1 {
     overflow-y: auto;
     overflow-x: hidden;
     height: 25%;
     padding-right: 9.6px;
-}
+} */
 
 .BP9Container3-1::-webkit-scrollbar {
     width: 10px;
@@ -26,7 +26,7 @@
 }
 
 .my-20 {
-    margin: 20px 0;
+    margin: 7px 0 7px;
 }
 .BP9button:hover{
     background-color: rgb(135, 175, 204);

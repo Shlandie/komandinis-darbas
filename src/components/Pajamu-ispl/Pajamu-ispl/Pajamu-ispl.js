@@ -161,7 +161,7 @@ function PajamuIspl() {
         <>
             <div className="g-0 Income-wrapper gridParent-0">
         <Navigation />
-                    <div className="row d-flex gap-2 g-0  IncomeNav gridChild-1">
+                    <div className="row d-flex g-0  IncomeNav gridChild-1">
                         <div className="width30">
                             <button className="btn Main-btn Roboto-condensed F-size-20 darkBlueClr">
                                 Pajamos
@@ -181,7 +181,7 @@ function PajamuIspl() {
 
                     {/* SEARCH */}
                     <div className="row gap-2 g-0  gridChild-2">
-                        <div className="py-5 IncomeSearch">
+                        <div className="IncomeSearch">
                             <h4
                                 className="Roboto-condensed F-size-25 IncomeSearch-title {
 "
