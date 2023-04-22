@@ -159,10 +159,9 @@ function PajamuIspl() {
 
     return (
         <>
-            <div className="g-0 Income-wrapper ">
+            <div className="g-0 Income-wrapper gridParent-0">
         <Navigation />
-                <div className="IncomeSidebar gridParent-0">
-                    <div className="row d-flex gap-2 g-0 mb-2 IncomeNav gridChild-1">
+                    <div className="row d-flex gap-2 g-0  IncomeNav gridChild-1">
                         <div className="col">
                             <button className="btn Main-btn Roboto-condensed F-size-20 darkBlueClr">
                                 Pajamos
@@ -181,7 +180,7 @@ function PajamuIspl() {
                     </div>
 
                     {/* SEARCH */}
-                    <div className="row gap-2 g-0 mb-2 gridChild-2">
+                    <div className="row gap-2 g-0  gridChild-2">
                         <div className="py-5 IncomeSearch">
                             <h4
                                 className="Roboto-condensed F-size-25 IncomeSearch-title {
@@ -190,7 +189,7 @@ function PajamuIspl() {
                                 Paieška
                             </h4>
                             <form>
-                                <div class="mb-2">
+                                <div class="">
                                     <input
                                         type="date"
                                         class="form-control IncomeNewEntry-input F-size-20"
@@ -213,7 +212,7 @@ function PajamuIspl() {
                                 Naujas Įrašas
                             </h4>
                             <form onSubmit={handleSubmit}>
-                                <div class="mb-2">
+                                <div class="">
                                     <input
                                         onChange={(e) =>
                                             setTitleInput(e.target.value)
@@ -233,7 +232,7 @@ function PajamuIspl() {
                                 ) : (
                                     ""
                                 )}
-                                <div class="mb-2">
+                                <div class="">
                                     <input
                                         onChange={(e) =>
                                             setDateInput(e.target.value)
@@ -252,7 +251,7 @@ function PajamuIspl() {
                                 ) : (
                                     ""
                                 )}
-                                <div class="mb-2">
+                                <div class="">
                                     <input
                                         onChange={(e) =>
                                             setAmountInput(e.target.value)
@@ -282,7 +281,6 @@ function PajamuIspl() {
                             </form>
                         </div>
                     </div>
-                </div>
                 {/* ENTRIES */}
                 <div className="col py-5 IncomeEntries gridChild-4">
                     <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20">
@@ -323,7 +321,7 @@ function PajamuIspl() {
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={handleSubmit}>
-                                    <div class="mb-2">
+                                    <div class="">
                                         <input
                                             onChange={(e) =>
                                                 setTitleInputOnEdit(
@@ -345,7 +343,7 @@ function PajamuIspl() {
                                     ) : (
                                         ""
                                     )}
-                                    <div class="mb-2">
+                                    <div class="">
                                         <input
                                             onChange={(e) =>
                                                 setDateInputOnEdit(
@@ -366,7 +364,7 @@ function PajamuIspl() {
                                     ) : (
                                         ""
                                     )}
-                                    <div class="mb-2">
+                                    <div class="">
                                         <input
                                             onChange={(e) =>
                                                 setAmountInputOnEdit(

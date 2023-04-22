@@ -99,13 +99,11 @@ buttons
 
 .Income-wrapper {
     color: #303030;
-    height: 706px;
     margin: 0.5rem;
 }
 
 
 .IncomeNav {
-    height: 90px;
     background: white;
     flex-wrap: nowrap;
     border-radius: 10px;

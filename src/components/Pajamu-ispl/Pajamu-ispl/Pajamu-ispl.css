@@ -99,13 +99,13 @@ buttons
 
 .Income-wrapper {
     color: #303030;
-    height: 706px;
-    margin: 0.5rem;
 }
 
 
 .IncomeNav {
-    height: 90px;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
     background: white;
     flex-wrap: nowrap;
     border-radius: 10px;
@@ -117,6 +117,7 @@ buttons
 .IncomeSearch {
     background: white;
     border-radius: 30px;
+    padding: 0 5%;
 }
 .IncomeSearch-title {
     margin-bottom: 35px;
@@ -127,6 +128,7 @@ buttons
     background: white;
     position: relative;
     border-radius: 30px;
+    padding: 0 5%;
 }
 .IncomeNewEntry-title {
     margin-bottom: 35px;
@@ -147,6 +149,7 @@ buttons
     background: white;
     border-radius: 30px;
     position: relative;
+    padding: 0 5%;
 }
 
 .IncomeEntries-fields {
