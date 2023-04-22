@@ -99,20 +99,23 @@ buttons
 
 .Income-wrapper {
     color: #303030;
-    height: 706px;
     margin: 0.5rem;
 }
 
 
 .IncomeNav {
-    height: 90px;
     background: white;
     flex-wrap: nowrap;
     border-radius: 10px;
-    padding: 25px 17px;
+    padding: 0 2.95%;
     border-radius: 30px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
+.width30 {
+    width: 30%;
+}
 
 .IncomeSearch {
     background: white;
