@@ -1,6 +1,7 @@
 import React from "react";
 import IslaiduIsplIrasas from "../Islaidu-ispl-irasas/Islaidu-ispl-irasas";
 import "../Islaidu-ispl/Islaidu-ispl.css";
+import "../Islaidu-ispl/Islaidu-ispl-grid.css";
 import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
@@ -222,10 +223,9 @@ function IslaiduIspl() {
 
     return (
         <>
-            <div className="row gap-2 g-0 Income-wrapper">
+            <div className="row g-0 Income-wrapper gridParent-0">
             <Navigation />
-                <div className="col-4 IncomeSidebar">
-                    <div className="row d-flex gap-2 g-0 mb-2 IncomeNav">
+                    <div className="row d-flex gap-2 g-0 IncomeNav gridChild-1">
                         <div className="col ">
                             <button className="btn Main-btn Bg-light-blue Roboto-condensed F-size-20 ">
                                 Pajamos
@@ -244,8 +244,8 @@ function IslaiduIspl() {
                     </div>
 
                     {/* SEARCH */}
-                    <div className="row gap-2 g-0 mb-2">
-                        <div className="p-5 IncomeSearch">
+                    <div className="row gap-2 g-0 gridChild-2">
+                        <div className="IncomeSearch">
                             <h4 className="Roboto-condensed F-size-25 ExpenceSearch-title">
                                 Paieška
                             </h4>
@@ -282,7 +282,7 @@ function IslaiduIspl() {
                     </div>
 
                     {/* ADD ENTRY */}
-                    <div className="row gap-2 g-0 ">
+                    <div className="row gap-2 g-0 gridChild-3">
                         <div className="col p-5 IncomeNewEntry">
                             <h4 className="Roboto-condensed F-size-25 ExpenceNewEntry-title">
                                 Naujas Įrašas
@@ -368,10 +368,9 @@ function IslaiduIspl() {
                             </form>
                         </div>
                     </div>
-                </div>
                 {/* ENTRIES */}
-                <div className="col p-5 IncomeEntries">
-                    <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20">
+                <div className="col p-5 IncomeEntries gridChild-4">
+                    <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20"><span className="xBtn">X</span>
                         <img
                             className="Close-btn-img"
                             src="https://th.bing.com/th/id/R.e24725fa2952bb5919d5ba9d22898bb7?rik=IdSOnVEyvVmW5w&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_352807.png&ehk=749keciRy4ORDsUyCQNI5DuGogVsfcVDAA7ywtAcD6Q%3d&risl=&pid=ImgRaw&r=0"
