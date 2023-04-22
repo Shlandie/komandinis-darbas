@@ -6,12 +6,12 @@
     position: relative;
 }
 
-.BP9Container3-1 {
-    /* overflow-y: auto;
+/* .BP9Container3-1 {
+    overflow-y: auto;
     overflow-x: hidden;
     height: 25%;
-    padding-right: 9.6px; */
-}
+    padding-right: 9.6px;
+} */
 
 .BP9Container3-1::-webkit-scrollbar {
     width: 10px;
