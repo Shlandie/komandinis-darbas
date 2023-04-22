@@ -162,17 +162,17 @@ function PajamuIspl() {
             <div className="g-0 Income-wrapper gridParent-0">
         <Navigation />
                     <div className="row d-flex gap-2 g-0  IncomeNav gridChild-1">
-                        <div className="col">
+                        <div className="width30">
                             <button className="btn Main-btn Roboto-condensed F-size-20 darkBlueClr">
                                 Pajamos
                             </button>
                         </div>
-                        <div className="col">
+                        <div className="width30">
                             <button className="btn Main-btn Bg-light-blue Roboto-condensed F-size-20">
                                 Išlaidos
                             </button>
                         </div>
-                        <div className="col">
+                        <div className="width30">
                             <button className="btn Main-btn Bg-light-blue Roboto-condensed F-size-20">
                                 Biudžetas
                             </button>
