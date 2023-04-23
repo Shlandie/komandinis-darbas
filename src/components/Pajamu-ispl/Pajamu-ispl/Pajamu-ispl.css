@@ -46,8 +46,11 @@ buttons
     border-radius: 40px;
     margin-bottom: 50px;
     margin-top: 5px;
-    font-size: 20px;
-    padding: 0 0 5px 0;
+    font-size: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 0px 7px 0px;
 }
 .Del-btn {
     font-size: 27px;
@@ -57,12 +60,18 @@ buttons
     font-size: 27px;
     width: 45%;
 }
+.Edit-btn {
+    width: 45%;
+}
 .Main-btn {
     position: static;
     width: 100%;
     height: 41px;
     border-radius: 40px;   
     border:  none;
+}
+.darkBlueClr {
+    background-color: rgb(135, 175, 204);
 }
 .Edit-btn:hover, .Main-btn:hover, .Close-btn:hover {
     background-color: rgb(135, 175, 204);
@@ -80,6 +89,13 @@ buttons
     padding: 0 0 2px 0;
     margin: 0;
 }
+
+.xBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
 .Close-btn-img {
     width: 18px;
     height: 18px;
@@ -90,17 +106,17 @@ buttons
 
 .Income-wrapper {
     color: #303030;
-    height: 706px;
-    margin: 7px;
 }
 
 
 .IncomeNav {
-    height: 90px;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
     background: white;
     flex-wrap: nowrap;
     border-radius: 10px;
-    padding: 25px 17px;
+    padding: 0px 17px;
     border-radius: 30px;
 }
 
@@ -108,6 +124,7 @@ buttons
 .IncomeSearch {
     background: white;
     border-radius: 30px;
+    padding: 0 5%;
 }
 .IncomeSearch-title {
     margin-bottom: 35px;
@@ -118,9 +135,7 @@ buttons
     background: white;
     position: relative;
     border-radius: 30px;
-}
-.IncomeNewEntry-title {
-    margin-bottom: 35px;
+    padding: 0 5%;
 }
 
 .IncomeNewEntry-input {
@@ -138,6 +153,7 @@ buttons
     background: white;
     border-radius: 30px;
     position: relative;
+    padding: 0 5%;
 }
 
 .IncomeEntries-fields {

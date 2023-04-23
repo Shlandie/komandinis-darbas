@@ -45,9 +45,9 @@ function IslaiduSekc() {
             <input type="text" class="form-control" id="expence-name" placeholder="Pavadinimas"/>
            </div>
 
-           <div className="form-group">
+           <div >
             
-              <select className="form-control BP9clrGray" id="expence-category" >
+              <select className="form-control" id="expence-category" >
                 <option disabled selected>Kategorija</option>
                 <option>Transportas</option>
                 <option>Maistas ir gėrimai</option>

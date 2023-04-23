@@ -49,15 +49,22 @@ buttons
     border-radius: 40px;
     margin-bottom: 50px;
     margin-top: 5px;
-    font-size: 20px;
-    padding: 0 0 5px 0;
+    font-size: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 0px 7px 0px;
 }
+
 .Del-btn {
     font-size: 27px;
     width: 45%;
 }
 .Edit-btn {
     font-size: 27px;
+    width: 45%;
+}
+.Edit-btn {
     width: 45%;
 }
 .Main-btn {
@@ -93,27 +100,33 @@ buttons
 
 .Income-wrapper {
     color: #303030;
-    height: 706px;
-    margin: 7px;
+    margin: 0.5rem;
 }
 
 
 .IncomeNav {
-    height: 90px;
     background: white;
     flex-wrap: nowrap;
     border-radius: 10px;
-    padding: 25px 17px;
+    padding: 0 2.95%;
     border-radius: 30px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
+.width30 {
+    width: 30%;
+}
 
 .IncomeSearch {
     background: white;
     border-radius: 30px;
 }
+.IncomeSearch-title{
+}
 .ExpenceSearch-title {
-    margin-bottom: 10px;
+    
+    margin: 20px 0 15px;
 }
 
 

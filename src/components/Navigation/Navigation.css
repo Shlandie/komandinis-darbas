@@ -19,12 +19,12 @@ fonts
     border-radius: 30px;
     padding: 0 71px;
     color: #303030;
+    display: flex;
 }
 
 .Nav-logout {
     font-size: 25px;
-    padding-bottom: 14px;
-    padding-left: 105px;
+    padding: 5px 15px 0;
 }
 
 .Nav-greeting {
