@@ -137,6 +137,7 @@ function IslaiduIspl() {
         //console.log(findExpence);
         setTitleInputOnEdit(findExpence.expenceTitle);
         setDateInputOnEdit(findExpence.expenceDate);
+        setCategoryInputOnEdit(findExpence.expenceCategory);
         setAmountInputOnEdit(findExpence.expenceAmount);
         setUpdateExpence(findExpence);
     };
@@ -148,6 +149,7 @@ function IslaiduIspl() {
                     id: uuidv4(),
                     expenceTitle: titleInputOnEdit,
                     expenceDate: dateInputOnEdit,
+                    expenceCategory: categoryInputOnEdit,
                     expenceAmount: amountInputOnEdit,
                 };
             }
@@ -195,6 +197,7 @@ function IslaiduIspl() {
                 handleUpdateExpence(updateExpence);
                 setTitleInputOnEdit("");
                 setDateInputOnEdit("");
+                setCategoryInputOnEdit("");
                 setAmountInputOnEdit("");
                 setError(false);
                 setEditExpence(false);
@@ -431,15 +434,26 @@ function IslaiduIspl() {
                                         ""
                                     )}
                                     <select
-                                        className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
+                                        className="BP9selectContainer IncomeNewEntry-input F-size-20"
                                         aria-label="Default select example"
                                         id="programSelect"
                                         name="programSelect"
                                         required
+                                        value={categoryInputOnEdit}
+                                        onChange={(e) =>
+                                            setCategoryInputOnEdit(e.target.value)
+                                        }
                                     >
-                                        <option defaultValue>Kategorija</option>
-                                        <option value="Java">Maistas</option>
-                                        <option value="PHP">Pramogos</option>
+                                        <option disabled value="">
+                                            Kategorija
+                                        </option>
+                                        <option>Transportas</option>
+                                        <option>Maistas ir gėrimai</option>
+                                        <option>Pramogos</option>
+                                        <option>Mokesčiai</option>
+                                        <option>Paslaugos</option>
+                                        <option>Pirkiniai ir daiktai</option>
+                                        <option>Kitos išlaidos</option>
                                     </select>
                                     <div className="d-flex mt-2">
                                         <div class="mb-2 me-3">
