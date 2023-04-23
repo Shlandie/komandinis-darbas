@@ -47,22 +47,37 @@
     height: 40px;
     border-radius: 40px;
 }
-/* unique bars */
-.blueBar {
-    background-color: var(--blue);
+/* colored bars */
+.coloredBar {
     width: 85%;
     height: 40px;
     border-radius: 40px;
 }
-.greenBar {
-    background-color: var(--green);
-    height: 40px;
-    width: 50%;
-    border-radius: 40px;
+
+.sharpPink {
+    background-color: var(--sharpPink);
 }
-.redBar {
+.bubblegumPink {
+    background-color: var(--bubblegumPink);
+}
+.purple {
+    background-color: var(--purple);
+}
+.blue {
+    background-color: var(--blue);
+}
+.lightBlue {
+    background-color: var(--lightBlue);
+}
+.green {
+    background-color: var(--green);
+}
+.yellow {
+    background-color: var(--yellow);
+}
+.orange {
+    background-color: var(--orange);
+}
+.red {
     background-color: var(--red);
-    height: 40px;
-    width: 20%;
-    border-radius: 40px;
 }
