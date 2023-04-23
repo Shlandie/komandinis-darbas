@@ -8,8 +8,8 @@ export default function NewPostBP3() {
   return (
     <div className='BP9container3 fontClr fs-20'>
         <h3 className='BP9-3-heading fs-25'>Naujas įrašas</h3>
-        <div className='BP9Container3-1 BP9clrGray'>
-            <select className='BP9selectContainer' aria-label="Default select example" id="programSelect" name="programSelect" required>
+        <div className='BP9Container3-1'>
+            <select className='BP9selectContainer BP9clrGray' aria-label="Default select example" id="programSelect" name="programSelect" required>
               <option selected disabled>Kategorija</option>
               <option>Transportas</option>
               <option>Maistas ir gėrimai</option>

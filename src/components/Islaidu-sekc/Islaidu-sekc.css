@@ -57,7 +57,7 @@ Small {
     font-size: 20px;
     font-weight: 400;
     line-height: 23px;
-
+    color: #868686 !important;
 }
 
 .main-expence-box {
@@ -124,3 +124,4 @@ Small {
     line-height: 23px;
     color: #B61E1E;
 }
+
