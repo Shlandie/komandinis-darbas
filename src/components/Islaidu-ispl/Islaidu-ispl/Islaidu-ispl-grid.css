@@ -86,7 +86,7 @@ body {
 
     .gridParent-0 {
         grid-template-columns: 1fr;
-        grid-template-rows: 55px 97px 287px 399px 810px;
+        grid-template-rows: 50px 97px 287px 399px 810px;
         height: 1675px;
     }
     
@@ -129,7 +129,7 @@ body {
     .nameLogoutContainer {
         width: 140px;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         position: absolute;
         right: 0px;
     }
