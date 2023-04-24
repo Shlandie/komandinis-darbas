@@ -269,7 +269,7 @@ export default function ListBP9() {
                                         <button
                                             onClick={handleSubmit}
                                             type="submit"
-                                            class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue me-2"
+                                            class="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-blue me-2"
                                             data-bs-target="#exampleModalToggle2"
                                             data-bs-toggle="modal"
                                             data-bs-dismiss="modal"
@@ -278,7 +278,7 @@ export default function ListBP9() {
                                         </button>
                                         <button
                                             type="button"
-                                            class="btn F-size-20 Roboto-condensed Main-btn Bg-light-red ms-2"
+                                            class="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-red ms-2"
                                             data-bs-dismiss="modal"
                                         >
                                             Atšaukti
