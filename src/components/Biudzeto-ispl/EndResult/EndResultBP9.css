@@ -89,11 +89,11 @@ body {
     .BP9-grid {
         grid-template-columns: 1fr;
         grid-template-rows: 50px 97px 287px 399px 810px;
-        height: 1675px;
+        height: 1643px;
     }
 
     .BP38-child0 {
-        height: 50px;
+        height: 50px !important;
         grid-column: 1 / 13;
         grid-row: 1/2;
     }

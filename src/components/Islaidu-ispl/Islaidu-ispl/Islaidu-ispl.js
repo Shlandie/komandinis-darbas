@@ -228,18 +228,18 @@ function IslaiduIspl() {
         <>
             <div className="row g-0 Income-wrapper gridParent-0">
             <Navigation />
-                    <div className="row d-flex gap-2 g-0 IncomeNav gridChild-1">
-                        <div className="col ">
+                    <div className="row d-flex g-0 IncomeNav gridChild-1">
+                        <div className="width30">
                             <button className="btn Main-btn Bg-light-blue Roboto-condensed F-size-20 ">
                                 Pajamos
                             </button>
                         </div>
-                        <div className="col">
+                        <div className="width30">
                             <button className="btn Main-btn darkBlueClr Roboto-condensed F-size-20">
                                 Išlaidos
                             </button>
                         </div>
-                        <div className="col">
+                        <div className="width30">
                             <button className="btn Main-btn Bg-light-blue Roboto-condensed F-size-20">
                                 Biudžetas
                             </button>
