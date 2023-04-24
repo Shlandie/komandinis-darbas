@@ -161,9 +161,9 @@ export default function ListBP9() {
                 error={error}
             />
 
-            <div className="BP9container4 fontClr">
+            <div className="BP9container4 fontClr py-5">
                 <button className="btn F-size-20 BP9-btnX">X</button>
-                <h3 className="BP9heading fs-25">Biudžetas</h3>
+                <h3 className="fs-25 mb-4">Biudžetas</h3>
 
                 <div className="BP9-ListContainer">{list}</div>
 
