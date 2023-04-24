@@ -2,6 +2,7 @@ import React from "react";
 import IslaiduIsplIrasas from "../Islaidu-ispl-irasas/Islaidu-ispl-irasas";
 import "../Islaidu-ispl/Islaidu-ispl.css";
 import "../Islaidu-ispl/Islaidu-ispl-grid.css";
+import ExpenceSearchBar from '../Islaidu-ispl/islaidu-ispl-search';
 import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
@@ -81,7 +82,7 @@ function IslaiduIspl() {
             text: "Kitos išlaidos"
         }
     ];
-
+    
     const [expences, setExpences] = useState(expenceEntries);
 
     const [titleInput, setTitleInput] = useState("");
@@ -208,7 +209,7 @@ function IslaiduIspl() {
     const handleCategoryChange = (e) => {
         setCategoryInput(e.target.value)
     };
-
+    const [filteredExpenses, setFilteredExpenses] = useState(expenceEntries);
     let list = expences.map((expence) => {
         return (
             <IslaiduIsplIrasas
@@ -245,44 +246,17 @@ function IslaiduIspl() {
                             </button>
                         </div>
                     </div>
+  
+                      
 
                     {/* SEARCH */}
-                    <div className="row gap-2 g-0 gridChild-2">
-                        <div className="IncomeSearch">
-                            <h4 className="Roboto-condensed F-size-25 ExpenceSearch-title">
-                                Paieška
-                            </h4>
-                            <form>
                                 <div class="mb-2">
-                                    <input
                                         type="date"
-                                        class="form-control IncomeNewEntry-input F-size-20"
                                     />
-                                </div>
-                                <select
-                                    className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
-                                    aria-label="Default select example"
-                                    id="programSelect"
-                                    name="programSelect"
-                                    required>
-                                    <option selected disabled>Pagal kategoriją</option>
-                                    <option>Transportas</option>
-                                    <option>Maistas ir gėrimai</option>
-                                    <option>Pramogos</option>
-                                    <option>Mokesčiai</option>
-                                    <option>Paslaugos</option>
-                                    <option>Pirkiniai ir daiktai</option>
-                                    <option>Kitos išlaidos</option>
-                                </select>
-                                <button
-                                    type="submit"
-                                    class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue mt-2"
-                                >
-                                    Ieškoti
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+                    <ExpenceSearchBar expences={expenceEntries} />
+
+
+
 
                     {/* ADD ENTRY */}
                     <div className="row gap-2 g-0 gridChild-3">
