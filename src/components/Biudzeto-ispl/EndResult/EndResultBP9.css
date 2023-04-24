@@ -132,7 +132,7 @@ body {
     .nameLogoutContainer {
         width: 140px;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         position: absolute;
         right: 0px;
     }
