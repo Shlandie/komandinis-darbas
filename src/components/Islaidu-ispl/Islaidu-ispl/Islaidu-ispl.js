@@ -287,7 +287,7 @@ function IslaiduIspl() {
                     {/* ADD ENTRY */}
                     <div className="row gap-2 g-0 gridChild-3">
                         <div className="col py-5 IncomeNewEntry">
-                            <h4 className="Roboto-condensed F-size-25 ExpenceNewEntry-title">
+                            <h4 className="Roboto-condensed F-size-25">
                                 Naujas Įrašas
                             </h4>
                             <form onSubmit={handleSubmit}>
@@ -372,7 +372,7 @@ function IslaiduIspl() {
                         </div>
                     </div>
                 {/* ENTRIES */}
-                <div className="col p-5 IncomeEntries gridChild-4">
+                <div className="col py-5 IncomeEntries gridChild-4">
                     <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20"><span className="xBtn">X</span>
                         <img
                             className="Close-btn-img"
