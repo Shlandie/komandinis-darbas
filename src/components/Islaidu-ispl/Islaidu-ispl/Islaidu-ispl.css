@@ -69,6 +69,13 @@ buttons
 }
 
 
+.Main-btn2 {
+    position: static;
+    width: 100%;
+    height: 41px;
+    border-radius: 40px;   
+    border:  none;
+}
 .Main-btn {
     position: static;
     width: 90%;
@@ -79,13 +86,6 @@ buttons
     bottom: 15px;
 }
 
-.Main-btn {
-    position: static;
-    width: 100%;
-    height: 41px;
-    border-radius: 40px;   
-    border:  none;
-}
 
 .Main-btn3 {
     position: static;
