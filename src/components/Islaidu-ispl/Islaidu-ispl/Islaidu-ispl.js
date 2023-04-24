@@ -250,9 +250,6 @@ function IslaiduIspl() {
                       
 
                     {/* SEARCH */}
-                                <div class="mb-2">
-                                        type="date"
-                                    />
                     <ExpenceSearchBar expences={expenceEntries} />
 
 
