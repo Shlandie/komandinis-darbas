@@ -3,7 +3,7 @@ const app = require("./app");
 
 
 mongoose
-    .connect("mongodb+srv://mokytoja:iYEIJjvMA5SgzGmV@cluster0.dduf9nc.mongodb.net/?retryWrites=true&w=majority")
+    .connect("mongodb+srv://budget-planner:VkxSjFN0gZmiU7vd@cluster0.aytmdss.mongodb.net/?retryWrites=true&w=majority")
     .then(console.log("Connected to MongoDB"))
     .catch((err) => console.log(err));
 
