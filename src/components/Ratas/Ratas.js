@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 
 // import { Line } from "react-chartjs-2";
 import Chart from "chart.js/auto";
@@ -20,11 +21,23 @@ const Ratas = () => {
 
     const data = useFetch("http://localhost:8000/islaidos")
 
+    const [ratasRadius, setRatasRadius] = useState(210);
+
+    window.addEventListener("resize", () => {
+        if (Window.innerWidth > 1440) {
+            setRatasRadius(210);
+        }
+        else {
+            setRatasRadius(120);
+        }
+    })
+
 
     const [chartData, setChartData] = useState({
         labels: Data1.map((data) => data.year),
         datasets: [
             {
+                radius: ratasRadius,
                 data: Data1.map((data) => data.userGain),
                 type: "doughnut",
                 cutout: 190,
