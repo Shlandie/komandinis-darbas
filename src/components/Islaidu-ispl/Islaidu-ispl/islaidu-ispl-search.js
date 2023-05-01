@@ -20,18 +20,26 @@ function ExpenceSearchBar(props) {
         setFilteredExpenses(filtered);
       };
 
-      const handleCategoryChange = (e) => {
+    const handleCategoryChange = (e) => {
         const category = e.target.value;
         console.log("Category:", category);
-        filterExpenses(searchQuery, category);
+        setCategoryInput(category);
       };
-      const handleSearchChange = (e) => {
+
+    const handleSearchChange = (e) => {
         const query = e.target.value;
         setSearchQuery(query);
         console.log("Query:", query);
-        filterExpenses(query, categoryInput);
       };
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        filterExpenses(searchQuery, categoryInput);
+      };
+
       console.log(searchQuery, filteredExpenses);
+      
+      
   
   return (
     <div className="row gap-2 g-0 gridChild-2">
@@ -39,7 +47,7 @@ function ExpenceSearchBar(props) {
     <h4 className="Roboto-condensed F-size-25 ExpenceSearch-title">
       Paieška
     </h4>
-    <form>
+    <form onSubmit={handleSearchSubmit}>
       <div className="mb-2">
         <input
           type="date"
@@ -75,18 +83,21 @@ function ExpenceSearchBar(props) {
       </button>
       </form>
       <div className="filtered-expenses">
-  {filteredExpenses.map((expense) => (
-    <div key={expense.id}>
-      <p>Title: {expense.expenceTitle}</p>
-      <p>Category: {expense.expenceCategory}</p>
-      <p>Date: {expense.expenceDate}</p>
-      <p>Amount: {expense.expenceAmount}</p>
-    </div>
+      {filteredExpenses.map((expense) => (
+    <IslaiduIsplIrasas
+      key={expense.id}
+      id={expense.id}
+      title={expense.expenceTitle}
+      category={expense.expenceCategory}
+      date={expense.expenceDate}
+      amount={expense.expenceAmount}
+      deleteExpence={props.deleteExpence}
+      editExpence={props.editExpence}
+    />
   ))}
 </div>
      </div>
     </div>
   );
 }
-
 export default ExpenceSearchBar;
