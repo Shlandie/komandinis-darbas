@@ -34,15 +34,15 @@ app.get("/expenses", async (req, res) => {
     res.status(200).json({
         status: "success",
         results: allExpenses.length,
-        data: [
+        data: {
             allExpenses
-        ],
+        }
     });
 })
 // app.use("/", mainRouter);
 
 
-const port = 3000;
+const port = 5000;
 app.listen(port, () => {
     console.log(`App running on port ${port}`);
 });

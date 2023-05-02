@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.schema({
+const userSchema = new mongoose.Schema({
     username: {
         type: String,
         minlength: 8,
@@ -26,7 +26,7 @@ const userSchema = new mongoose.schema({
 
 });
 
-const expenseSchema = new mongoose.schema({
+const expenseSchema = new mongoose.Schema({
     category: {
         type: String,
         minlength: 1,
