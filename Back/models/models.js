@@ -38,7 +38,6 @@ const expenseSchema = new mongoose.schema({
         type: String,
         minlength: 1,
         maxlength: 40,
-        required: true
     },
 
     amount: {
@@ -61,7 +60,35 @@ const expenseSchema = new mongoose.schema({
 
 });
 
+const earningsSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        minlength: 1,
+        maxlength: 64,
+        required: true
+    },
+
+    amount: {
+        type: Number,
+        min: 1,
+        max: 1000000,
+        required: true
+    },
+
+    date: {
+        type: String,
+        immutable: true,
+        required: true
+    },
+
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }
+})
+
 const User = new mongoose.model("User", userSchema);
 const Expense = new mongoose.model("Expense", expenseSchema);
+const Earning = new mongoose.model("Earning", earningsSchema);
 
-module.exports = { User, Expense };
+module.exports = { User, Expense, Earning };

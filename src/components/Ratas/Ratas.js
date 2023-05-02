@@ -8,7 +8,7 @@ import ArcElement from "chart.js";
 import { Pie } from "react-chartjs-2";
 
 import useFetch from "./useFetch";
-import { Data1, Data2 } from "./data";
+import { Data1 } from "./data";
 import PieChart from "./Piechart";
 
 import { CategoryScale } from "chart.js";
@@ -19,9 +19,48 @@ import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
 
 const Ratas = () => {
 
-    const data = useFetch("http://localhost:8000/islaidos")
+    async function getData(url) {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    }
+
+    const data = getData("localhost:3000/expenses");
+    console.log(data);
+
+    const parsedData = (data) => {
+        let cnt = 0;
+        const hold = [];
+        for (let el of data) {
+            console.log(el.category)
+            if (hold.length == 0) {
+                hold.push(el);
+            }
+            else {
+                for (let el2 of hold) {
+                    if (el.category === el2.category) {
+                        el2.amount += el.amount;
+                        cnt = 0;
+
+                    } else {
+                        cnt++;
+                    }
+                    if (hold.length == cnt && el.category !== el2.category) {
+                        hold.push(el);
+                        break;
+                    }
+                }
+                cnt = 0;
+
+            }
+
+        }
+        return hold;
+    }
+
 
     const [ratasRadius, setRatasRadius] = useState(210);
+    const [ratasData, setRatasData] = useState(parsedData(Data1));
 
     window.addEventListener("resize", () => {
         if (Window.innerWidth > 1440) {
@@ -34,17 +73,17 @@ const Ratas = () => {
 
 
     const [chartData, setChartData] = useState({
-        labels: Data1.map((data) => data.year),
+        labels: ratasData.map((data) => data.category),
         datasets: [
             {
                 radius: ratasRadius,
-                data: Data1.map((data) => data.userGain),
+                data: ratasData.map((data) => data.amount),
                 type: "doughnut",
                 cutout: 190,
                 backgroundColor: [
-                    "rgba(182, 182, 182, 1)",
-                    "rgba(129, 165, 255, 1)"
-                    // "lightgreen"
+                    "rgba(182, 120, 182, 1)",
+                    "rgba(182, 160, 182, 1)",
+                    "rgba(180, 140, 182, 1)",
 
                 ],
                 borderColor: "black",
@@ -53,6 +92,40 @@ const Ratas = () => {
 
         ]
     });
+
+    // useEffect(() => {
+    //     const parsedData = (data) => {
+    //         let cnt = 0;
+    //         const hold = [];
+    //         for (let el of data) {
+    //             console.log(el.category)
+    //             if (hold.length == 0) {
+    //                 hold.push(el);
+    //             }
+    //             else {
+    //                 for (let el2 of hold) {
+    //                     if (el.category === el2.category) {
+    //                         el2.amount += el.amount;
+    //                         cnt = 0;
+
+    //                     } else {
+    //                         cnt++;
+    //                     }
+    //                     if (hold.length == cnt && el.category !== el2.category) {
+    //                         hold.push(el);
+    //                         break;
+    //                     }
+    //                 }
+    //                 cnt = 0;
+
+    //             }
+
+    //         }
+    //         return hold;
+    //     }
+
+    //     setRatasData(parsedData(Data1));
+    // }, [])
 
 
     return (
