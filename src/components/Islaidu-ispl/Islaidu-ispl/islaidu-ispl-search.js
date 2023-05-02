@@ -82,7 +82,7 @@ function ExpenceSearchBar(props) {
         Ieškoti
       </button>
       </form>
-      <div className="filtered-expenses">
+      
       {filteredExpenses.map((expense) => (
     <IslaiduIsplIrasas
       key={expense.id}
@@ -95,7 +95,7 @@ function ExpenceSearchBar(props) {
       editExpence={props.editExpence}
     />
   ))}
-</div>
+
      </div>
     </div>
   );
