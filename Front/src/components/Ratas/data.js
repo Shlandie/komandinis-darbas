@@ -124,3 +124,35 @@ export const Data1 = [
 
 
 ];
+
+const Data2 = [
+    {
+        name: "paskola",
+        amount: 500,
+        date: "2015-07-15"
+    },
+    {
+
+        name: "darbas",
+        amount: 1000,
+        date: "2015-07-15"
+    },
+    {
+
+        name: "arbatpinigiai",
+        amount: 20,
+        date: "2015-07-15"
+    },
+    {
+
+        name: "biznis",
+        amount: 100,
+        date: "2015-07-15"
+    },
+    {
+
+        name: "gatve",
+        amount: 500,
+        date: "2015-07-15"
+    }
+];
