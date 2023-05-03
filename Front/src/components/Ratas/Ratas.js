@@ -19,20 +19,11 @@ import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
 
 const Ratas = () => {
 
-    async function getData(url) {
-        const response = await fetch(url);
-        const data = await response.json();
-        const realData = data.data.allExpenses;
-
-        return data.data.allExpenses;
-    }
-
-    const data = getData("http://localhost:5000/expenses");
-    // console.log(data);
-
     const parsedData = (data) => {
+
         let cnt = 0;
         const hold = [];
+
         for (let el of data) {
             console.log(el.category)
             if (hold.length == 0) {
@@ -60,22 +51,36 @@ const Ratas = () => {
         return hold;
     }
 
-
     const [ratasRadius, setRatasRadius] = useState(210);
-    const [ratasData, setRatasData] = useState(parsedData(data));
+    const [ratasData, setRatasData] = useState([]);
 
-    window.addEventListener("resize", () => {
-        if (Window.innerWidth > 1440) {
-            setRatasRadius(210);
-        }
-        else {
-            setRatasRadius(120);
-        }
-    })
+    async function getData(url) {
+        const response = await fetch(url);
+        const data = await response.json();
+        const data2 = parsedData(data.data.allExpenses);
+        console.log(data2);
+        setRatasData(data2);
+        console.log(ratasData.map(data => data.category));
+
+    }
+
+
+    useEffect(() => {
+        getData("http://localhost:5000/expenses");
+    }, []);
+
+    // window.addEventListener("resize", () => {
+    //     if (Window.innerWidth > 1440) {
+    //         setRatasRadius(210);
+    //     }
+    //     else {
+    //         setRatasRadius(120);
+    //     }
+    // })
 
 
     const [chartData, setChartData] = useState({
-        labels: ratasData.map((data) => data.category),
+        labels: ratasData.map(data => data.category),
         datasets: [
             {
                 radius: ratasRadius,
