@@ -28,14 +28,19 @@ app.use((req, res, next) => {
 });
 
 
-app.get("/expenses", async (req, res) => {
-    const allExpenses = await Expense.find();
+app.get("/expenses/:month", async (req, res) => {
+    const { month } = req.params;
+    const regexp = new RegExp("\\d\\d\\d\\d-" + month + "-\\d\\d");
+    console.log(regexp);
+    const allExpenses = await Expense.find({ date: { $regex: regexp } });
+    const allEarnings = await Earning.find({ date: { $regex: regexp } });
     console.log(allExpenses);
     res.status(200).json({
         status: "success",
         results: allExpenses.length,
         data: {
-            allExpenses
+            allExpenses,
+            allEarnings
         }
     });
 })
