@@ -1,19 +1,10 @@
 const express = require("express");
 const app = express();
 
-const mongoose = require("mongoose");
 const { User, Expense, Earning } = require("./models/models");
 
-
 const mainRouter = require("./routes/mainRoutes");
-
-const dotenv = require("dotenv");
-dotenv.config();
-
-mongoose
-    .connect(process.env.MONGO_URL)
-    .then(console.log("Connected to MongoDB"))
-    .catch((err) => console.log(err));
+const incomesRouter = require("./routes/incomeRoutes");
 
 app.use(express.json());
 
@@ -46,9 +37,6 @@ app.get("/expenses/:month", async (req, res) => {
 })
 // app.use("/", mainRouter);
 
+app.use("/api/v1/incomes", incomesRouter);
 
-const port = 5000;
-app.listen(port, () => {
-    console.log(`App running on port ${port}`);
-});
 module.exports = app;
