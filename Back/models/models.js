@@ -46,18 +46,19 @@ const expenseSchema = new mongoose.Schema({
         max: 1000000,
         required: true
     },
-
-    date: {
-        type: String,
-        immutable: true,
-        required: true,
-    },
+    // date: {
+    //     type: String,
+    //     immutable: true,
+    //     required: true,
+    // },
 
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }
 
+}, {
+    timestamps: true
 });
 
 const earningsSchema = new mongoose.Schema({
@@ -75,16 +76,17 @@ const earningsSchema = new mongoose.Schema({
         required: true
     },
 
-    date: {
-        type: String,
-        immutable: true,
-        required: true
-    },
+    // date: {
+    //     type: String,
+    //     immutable: true,
+    //     required: true
+    // },
 
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }
+
 })
 
 const User = new mongoose.model("User", userSchema);

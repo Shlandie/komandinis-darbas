@@ -1,5 +1,8 @@
 import React from "react";
 
+import { useState } from "react";
+
+
 import Navigation from "../Navigation/Navigation";
 import PajamuSekc from "../Pajamu-sekc/Pajamu-sekc";
 import IslaiduSekc from "../Islaidu-sekc/Islaidu-sekc";
@@ -8,6 +11,7 @@ import BiudzetoSekc from "../Biudzeto-sekc/Biudzeto-sekc/Biudzeto-sekc";
 import './HomePage.css'
 
 function HomePage() {
+    const [month, setMonth] = useState("02");
     return (
         <>
             <div>

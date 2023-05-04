@@ -43,6 +43,7 @@ body {
 
 .ratas1__select {
   font-family: 'Roboto Condensed';
+  font-size: 25px;
   text-align: center;
 
   display: block;
@@ -73,6 +74,7 @@ option {
 }
 
 .ratas2__main {
+
   width: 431px;
   height: 435px;
   margin: 0 auto;
@@ -85,6 +87,7 @@ option {
 
 
 }
+
 
 .ratas2__data {
 
@@ -143,11 +146,51 @@ option {
 
 }
 
+@media(max-width:1330px) {
+  .ratas2__main {
+    min-width: 435px;
+    min-height: 435px;
+
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ratas2__main>canvas {
+    width: 300px !important;
+    height: 300px !important;
+  }
+}
+
+@media(max-width:840px) {
+  .ratas2__main {
+    justify-content: flex-start;
+  }
+
+  .ratas2__main>canvas {
+    margin-left: 35px;
+  }
+}
+
+@media(max-width:750px) {
+  .ratas2__main {
+    justify-content: center;
+  }
+
+  .ratas2__main>canvas {
+    margin-left: 0;
+  }
+}
+
 @media(max-width:652px) {
   .ratas1 {
     font-family: 'Roboto Condensed';
     font-size: 25px;
 
+    align-items: center;
+    justify-content: center;
     margin-bottom: 0;
 
     border-bottom-left-radius: 0;

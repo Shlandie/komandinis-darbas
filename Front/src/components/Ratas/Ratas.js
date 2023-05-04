@@ -54,12 +54,14 @@ const Ratas = () => {
     const [ratasRadius, setRatasRadius] = useState(210);
     const [ratasData, setRatasData] = useState([]);
 
-    const [islaidos, setIslaidos] = useState(500);
-    const [likutis, setLikutis] = useState(1500);
+    const [islaidos, setIslaidos] = useState(0);
+    const [likutis, setLikutis] = useState(100000);
 
     const [menesis, setMenesis] = useState("01")
+    const [pavadinimas, setPavadinimas] = useState("Likutis");
 
     async function getData(url) {
+
         const response = await fetch(url);
         const data = await response.json();
         const allData = parsedData(data.data.allExpenses);
@@ -80,6 +82,13 @@ const Ratas = () => {
         }
 
         earnings.amount -= expenses;
+        if (earnings.amount < 0) {
+            earnings.amount = Math.abs(earnings.amount);
+            earnings.category = "Perteklius";
+            setPavadinimas("Perteklius");
+        } else {
+            setPavadinimas("Likutis");
+        }
 
 
         allData.unshift(earnings);
@@ -126,13 +135,14 @@ const Ratas = () => {
                     borderWidth: 0
                 },
 
+
             ]
         })
     }, [ratasData])
-
+    // ratasRadius
 
     // window.addEventListener("resize", () => {
-    //     if (Window.innerWidth > 1440) {
+    //     if (window.innerWidth > 1440) {
     //         setRatasRadius(210);
     //     }
     //     else {
@@ -209,7 +219,7 @@ const Ratas = () => {
                     </tr>
                     <tr>
                         <td><span style={{ color: "rgba(182, 182, 182, 1)" }}>{String.fromCharCode(8226)}</span></td>
-                        <td>Likutis</td>
+                        <td>{pavadinimas}</td>
                         <td>{likutis} eur</td>
                     </tr>
                 </table>

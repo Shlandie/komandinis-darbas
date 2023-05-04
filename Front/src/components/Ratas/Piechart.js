@@ -14,7 +14,9 @@ function PieChart({ chartData }) {
                     legend: {
                         display: false
                     }
-                }
+                },
+
+
             }}
         />
     );
