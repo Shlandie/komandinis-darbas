@@ -7,7 +7,6 @@ import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
 import Navigation from "../../Navigation/Navigation";
 
-
 function IslaiduIspl() {
     const expenceEntries = [
         {
@@ -50,36 +49,36 @@ function IslaiduIspl() {
     const options = [
         {
             value: "",
-            text: "Kategorija"
+            text: "Kategorija",
         },
         {
             value: "Transportas",
-            text: "Transportas"
+            text: "Transportas",
         },
         {
             value: "Maistas ir gėrimai",
-            text: "Maistas ir gėrimai"
+            text: "Maistas ir gėrimai",
         },
         {
             value: "Pramogos",
-            text: "Pramogos"
+            text: "Pramogos",
         },
         {
             value: "Mokesčiai",
-            text: "Mokesčiai"
+            text: "Mokesčiai",
         },
         {
             value: "Paslaugos",
-            text: "Paslaugos"
+            text: "Paslaugos",
         },
         {
             value: "Pirkiniai ir daiktai",
-            text: "Pirkiniai ir daiktai"
+            text: "Pirkiniai ir daiktai",
         },
         {
             value: "Kitos išlaidos",
-            text: "Kitos išlaidos"
-        }
+            text: "Kitos išlaidos",
+        },
     ];
 
     const [expences, setExpences] = useState(expenceEntries);
@@ -174,7 +173,7 @@ function IslaiduIspl() {
                     expenceTitle: titleInput,
                     expenceDate: dateInput,
                     expenceAmount: amountInput,
-                    expenceCategory: categoryInput
+                    expenceCategory: categoryInput,
                 };
                 //console.log(newIncome)
                 setExpences((oldList) => [...oldList, newExpence]);
@@ -182,15 +181,14 @@ function IslaiduIspl() {
                 setTitleInput("");
                 setDateInput("");
                 setAmountInput("");
-                setCategoryInput(options[0].value)
+                setCategoryInput(options[0].value);
                 setError(false);
             }
         } else {
             if (
                 titleInputOnEdit.length == 0 ||
                 dateInputOnEdit.length == 0 ||
-                amountInputOnEdit == 0 
-
+                amountInputOnEdit == 0
             ) {
                 setError(true);
             } else {
@@ -206,7 +204,7 @@ function IslaiduIspl() {
     };
 
     const handleCategoryChange = (e) => {
-        setCategoryInput(e.target.value)
+        setCategoryInput(e.target.value);
     };
 
     let list = expences.map((expence) => {
@@ -227,153 +225,180 @@ function IslaiduIspl() {
     return (
         <>
             <div className="row g-0 Income-wrapper gridParent-0">
-            <Navigation />
-                    <div className="row d-flex g-0 IncomeNav gridChild-1">
-                        <div className="width30">
-                            <button className="btn Main-btn3 Bg-light-blue Roboto-condensed F-size-20 ">
-                                Pajamos
-                            </button>
-                        </div>
-                        <div className="width30">
-                            <button className="btn Main-btn3 darkBlueClr Roboto-condensed F-size-20">
-                                Išlaidos
-                            </button>
-                        </div>
-                        <div className="width30">
-                            <button className="btn Main-btn3 Bg-light-blue Roboto-condensed F-size-20">
-                                Biudžetas
-                            </button>
-                        </div>
+                <Navigation />
+                <div className="row d-flex g-0 IncomeNav gridChild-1">
+                    <div className="width30">
+                        <button className="btn Main-btn3 Bg-light-blue Roboto-condensed F-size-20 ">
+                            Pajamos
+                        </button>
                     </div>
+                    <div className="width30">
+                        <button className="btn Main-btn3 darkBlueClr Roboto-condensed F-size-20">
+                            Išlaidos
+                        </button>
+                    </div>
+                    <div className="width30">
+                        <button className="btn Main-btn3 Bg-light-blue Roboto-condensed F-size-20">
+                            Biudžetas
+                        </button>
+                    </div>
+                </div>
 
-                    {/* SEARCH */}
-                    <div className="row gap-2 g-0 gridChild-2">
-                        <div className="IncomeSearch">
-                            <h4 className="Roboto-condensed F-size-25 ExpenceSearch-title">
-                                Paieška
-                            </h4>
-                            <form>
-                                <div class="mb-2">
-                                    <input
-                                        type="date"
-                                        class="form-control IncomeNewEntry-input F-size-20"
-                                    />
+                {/* SEARCH */}
+                <div className="row gap-2 g-0 gridChild-2">
+                    <div className="IncomeSearch">
+                        <h4 className="Roboto-condensed F-size-25 ExpenceSearch-title">
+                            Paieška
+                        </h4>
+                        <form>
+                            <div class="mb-2">
+                                <input
+                                    type="date"
+                                    class="form-control IncomeNewEntry-input F-size-20"
+                                />
+                            </div>
+                            <select
+                                className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
+                                aria-label="Default select example"
+                                id="programSelect"
+                                name="programSelect"
+                                required
+                            >
+                                <option selected disabled>
+                                    Pagal kategoriją
+                                </option>
+                                <option>Transportas</option>
+                                <option>Maistas ir gėrimai</option>
+                                <option>Pramogos</option>
+                                <option>Mokesčiai</option>
+                                <option>Paslaugos</option>
+                                <option>Pirkiniai ir daiktai</option>
+                                <option>Kitos išlaidos</option>
+                            </select>
+                            <button
+                                type="submit"
+                                class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue mt-2"
+                            >
+                                Ieškoti
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                {/* ADD ENTRY */}
+                <div className="row gap-2 g-0 gridChild-3">
+                    <div className="col py-5 IncomeNewEntry">
+                        <h4 className="Roboto-condensed F-size-25">
+                            Naujas Įrašas
+                        </h4>
+                        <form onSubmit={handleSubmit}>
+                            <div class="mb-2">
+                                <input
+                                    onChange={(e) =>
+                                        setTitleInput(e.target.value)
+                                    }
+                                    required
+                                    type="text"
+                                    id="titleInput"
+                                    name="titleInput"
+                                    value={titleInput}
+                                    class="form-control IncomeNewEntry-input F-size-20"
+                                    placeholder="Pavadinimas"
+                                    maxlength="20"
+                                />
+                            </div>
+                            {error && titleInput.length <= 0 ? (
+                                <div className="Error-msg pt-1">
+                                    Šis laukelis yra privalomas
                                 </div>
-                                <select
-                                    className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
-                                    aria-label="Default select example"
-                                    id="programSelect"
-                                    name="programSelect"
-                                    required>
-                                    <option selected disabled>Pagal kategoriją</option>
-                                    <option>Transportas</option>
-                                    <option>Maistas ir gėrimai</option>
-                                    <option>Pramogos</option>
-                                    <option>Mokesčiai</option>
-                                    <option>Paslaugos</option>
-                                    <option>Pirkiniai ir daiktai</option>
-                                    <option>Kitos išlaidos</option>
-                                </select>
-                                <button
-                                    type="submit"
-                                    class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue mt-2"
-                                >
-                                    Ieškoti
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+                            ) : (
+                                ""
+                            )}
 
-                    {/* ADD ENTRY */}
-                    <div className="row gap-2 g-0 gridChild-3">
-                        <div className="col py-5 IncomeNewEntry">
-                            <h4 className="Roboto-condensed F-size-25">
-                                Naujas Įrašas
-                            </h4>
-                            <form onSubmit={handleSubmit}>
+                            <select
+                                className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
+                                aria-label="Default select example"
+                                value={categoryInput}
+                                onChange={handleCategoryChange}
+                            >
+                                {options.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.text}
+                                    </option>
+                                ))}
+                                ;
+                            </select>
+                            {error && categoryInput.length <= 0 ? (
+                                <div className="Error-msg pt-1">
+                                    Šis laukelis yra privalomas
+                                </div>
+                            ) : (
+                                ""
+                            )}
+                            <div className="d-flex mt-2">
+                                <div class="mb-2 me-3">
+                                    <input
+                                        onChange={(e) => {
+                                            const regex = /^[0-9]{0,10}(\.[0-9]{0,2})?$/;
+                                            if (regex.test(e.target.value)) {
+                                                setAmountInput(e.target.value);
+                                            }
+                                        }}
+                                        type="number"
+                                        id="amountInput"
+                                        name="amountInput"
+                                        value={amountInput}
+                                        class="form-control IncomeNewEntry-input F-size-20"
+                                        placeholder="Suma"
+                                    />
+                                    {error && amountInput.length <= 0 ? (
+                                        <div className="Error-msg pt-1">
+                                            Šis laukelis yra privalomas
+                                        </div>
+                                    ) : (
+                                        ""
+                                    )}
+                                </div>
+
                                 <div class="mb-2">
                                     <input
                                         onChange={(e) =>
-                                            setTitleInput(e.target.value)
+                                            setDateInput(e.target.value)
                                         }
-                                        required
-                                        type="text"
-                                        id="titleInput"
-                                        name="titleInput"
-                                        value={titleInput}
+                                        type="date"
+                                        id="dateInput"
+                                        name="dateInput"
+                                        value={dateInput}
                                         class="form-control IncomeNewEntry-input F-size-20"
-                                        placeholder="Pavadinimas"
+                                        placeholder="Data"
                                     />
-                                </div>
-                                {error && titleInput.length <= 0 ? (
-                                    <div className="Error-msg">
-                                        Šis laukelis yra privalomas
-                                    </div>
-                                ) : (
-                                    ""
-                                )}
-                                
-                                <select className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed" aria-label="Default select example" value={categoryInput} onChange={handleCategoryChange}>
-                                    {options.map(option => (
-                                        <option key={option.value} value={option.value}>
-                                            {option.text}
-                                        </option>
-                                    ))};
-                                </select>
-                                {error && categoryInput.length <= 0 ? (
-                                    <div className="Error-msg">Šis laukelis yra privalomas</div>
-                                ) : ("")}
-                                <div className="d-flex mt-2">
-                                    <div class="mb-2 me-3">
-                                        <input
-                                            onChange={(e) =>
-                                                setAmountInput(e.target.value)
-                                            }
-                                            type="number"
-                                            id="amountInput"
-                                            name="amountInput"
-                                            value={amountInput}
-                                            class="form-control IncomeNewEntry-input F-size-20"
-                                            placeholder="Suma"
-                                        />
-                                    </div>
-                                    
-                                    <div class="mb-2">
-                                        <input
-                                            onChange={(e) =>
-                                                setDateInput(e.target.value)
-                                            }
-                                            type="date"
-                                            id="dateInput"
-                                            name="dateInput"
-                                            value={dateInput}
-                                            class="form-control IncomeNewEntry-input F-size-20"
-                                            placeholder="Data"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="d-flex">
-                                    {error && amountInput.length <= 0 ? (
-                                    <div className="Error-msg">Šis laukelis yra privalomas</div>
-                                    ) : ("")}
                                     {error && dateInput.length <= 0 ? (
-                                    <div className="Error-msg">Šis laukelis yra privalomas</div>
-                                    ) : ("")}
+                                        <div className="Error-msg pt-1">
+                                            Šis laukelis yra privalomas
+                                        </div>
+                                    ) : (
+                                        ""
+                                    )}
                                 </div>
+                            </div>
 
-                                <button
-                                    onClick={handleSubmit}
-                                    type="button"
-                                    class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
-                                >
-                                    Pridėti irašą
-                                </button>
-                            </form>
-                        </div>
+                            <button
+                                onClick={handleSubmit}
+                                type="button"
+                                class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
+                            >
+                                Pridėti irašą
+                            </button>
+                        </form>
                     </div>
+                </div>
                 {/* ENTRIES */}
                 <div className="col py-5 IncomeEntries gridChild-4">
-                    <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20"><span className="xBtn">X</span>
+                    <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20">
+                        <span className="xBtn">X</span>
                         <img
                             className="Close-btn-img"
                             src="https://th.bing.com/th/id/R.e24725fa2952bb5919d5ba9d22898bb7?rik=IdSOnVEyvVmW5w&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_352807.png&ehk=749keciRy4ORDsUyCQNI5DuGogVsfcVDAA7ywtAcD6Q%3d&risl=&pid=ImgRaw&r=0"
@@ -441,7 +466,9 @@ function IslaiduIspl() {
                                         required
                                         value={categoryInputOnEdit}
                                         onChange={(e) =>
-                                            setCategoryInputOnEdit(e.target.value)
+                                            setCategoryInputOnEdit(
+                                                e.target.value
+                                            )
                                         }
                                     >
                                         <option disabled value="">
