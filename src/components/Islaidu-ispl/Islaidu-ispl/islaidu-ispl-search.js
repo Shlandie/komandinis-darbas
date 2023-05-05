@@ -1,4 +1,4 @@
-import IslaiduIsplIrasas from "../Islaidu-ispl-irasas/Islaidu-ispl-irasas";
+
 import React from 'react';
 
 import { useState, useRef } from "react";
@@ -7,17 +7,23 @@ function ExpenceSearchBar(props) {
     
     const [searchQuery, setSearchQuery] = useState("");
     const [categoryInput, setCategoryInput] = useState("");
-    const [filteredExpenses, setFilteredExpenses] = useState([]);
+    const [filteredExpences, setFilteredExpences] = useState([]);
+    const [dateInput, setDateInput] = useState("");
 
-    const filterExpenses = (query, category) => {
+
+    const filterExpences = (query, category, date) => {
+      console.log("Query:", query);
+      console.log("Category:", category);
+      console.log("Date:", date);
         const filtered = props.expences.filter(
-          (expense) =>
-            expense.expenceTitle.toLowerCase().includes(query.toLowerCase()) &&
-            (category === "visos kategorijos" || expense.expenceCategory === category)
+          (expence) =>
+            expence.expenceTitle.toLowerCase().includes(query.toLowerCase()) &&
+            (category === "visos kategorijos" || expence.expenceCategory === category) &&
+            (!date || new Date(expence.expenceDate) >= new Date(date))
         );
         console.log(filtered);
 
-        setFilteredExpenses(filtered);
+        props.onFilterExpences(filtered);
       };
 
     const handleCategoryChange = (e) => {
@@ -26,18 +32,25 @@ function ExpenceSearchBar(props) {
         setCategoryInput(category);
       };
 
-    const handleSearchChange = (e) => {
+      const handleSearchChange = (e) => {
         const query = e.target.value;
         setSearchQuery(query);
         console.log("Query:", query);
       };
+      const handleDateChange = (e) => {
+        const date = e.target.value;
+        setDateInput(date);
+      };
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
-        filterExpenses(searchQuery, categoryInput);
+        console.log("Search query:", searchQuery);
+        console.log("Category:", categoryInput);
+        console.log("Date:", dateInput);
+        filterExpences(searchQuery, categoryInput, dateInput);
       };
 
-      console.log(searchQuery, filteredExpenses);
+      console.log(searchQuery, filteredExpences);
       
       
   
@@ -53,8 +66,8 @@ function ExpenceSearchBar(props) {
           type="date"
           className="form-control IncomeNewEntry-input F-size-20"
           placeholder="Paieška"
-          value={searchQuery}
-          onChange={handleSearchChange}
+          value={dateInput}
+          onChange={handleDateChange}
         />
       </div>
       <select
@@ -83,18 +96,7 @@ function ExpenceSearchBar(props) {
       </button>
       </form>
       
-      {filteredExpenses.map((expense) => (
-    <IslaiduIsplIrasas
-      key={expense.id}
-      id={expense.id}
-      title={expense.expenceTitle}
-      category={expense.expenceCategory}
-      date={expense.expenceDate}
-      amount={expense.expenceAmount}
-      deleteExpence={props.deleteExpence}
-      editExpence={props.editExpence}
-    />
-  ))}
+     
 
      </div>
     </div>

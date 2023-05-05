@@ -82,8 +82,9 @@ function IslaiduIspl() {
             text: "Kitos išlaidos"
         }
     ];
-      
-    const [filteredExpenses, setFilteredExpenses] = useState([]);
+     
+    
+    const [filteredExpences, setFilteredExpences] = useState([]);
     const [expences, setExpences] = useState(expenceEntries);
 
     const [titleInput, setTitleInput] = useState("");
@@ -106,6 +107,10 @@ function IslaiduIspl() {
         message: "",
         isLoading: false,
     });
+    const handleFilterExpences = (filtered) => {
+        setFilteredExpences(filtered);
+      };
+
 
     const idProductRef = useRef();
     const handleDialog = (message, isLoading) => {
@@ -211,7 +216,7 @@ function IslaiduIspl() {
         setCategoryInput(e.target.value)
     };
     
-    let list = (filteredExpenses.length > 0 ? filteredExpenses : expences).map((expence) => {
+    let list = (filteredExpences.length > 0 ? filteredExpences : expences).map((expence) => {
         return (
             <IslaiduIsplIrasas
                 key={uuidv4()}
@@ -224,6 +229,7 @@ function IslaiduIspl() {
                 editExpence={handleEditExpence}
             />
         );
+        
     });
 
     return (
@@ -251,7 +257,7 @@ function IslaiduIspl() {
                       
 
                     {/* SEARCH */}
-                    <ExpenceSearchBar expences={expenceEntries}  />
+                    <ExpenceSearchBar expences={expenceEntries}  onFilterExpences={handleFilterExpences} />
 
 
 
