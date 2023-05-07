@@ -5,7 +5,7 @@ function RegisterPage() {
     <div className='loginPage-container fs-'>
         <form className='AuthenticationForm-container p-5'>
 
-            <h1 className='pb-5'>Login Form/Signup Form</h1>
+            <h1 className='pb-5 d-flex justify-content-center'>Signup Form</h1>
             <div className='d-flex justify-content-between mb-4'>
                 <button type='button' className='logInButton width50'>Login</button>
                 <button type='button' className='signUpButton width50'>Signup</button>
@@ -19,9 +19,10 @@ function RegisterPage() {
             
             <label for="password2"></label>
             <input type="password" id="password2" placeholder='Confirm Password' className='FormButton ps-4 mb-4'></input>
-
-            <button type='button' className='FormButton FormButtonColor'>Signup</button>
-            <p className='signUpNowLink mt-5'>Not a member? <a href="#">Signup now!</a> </p>
+            
+            <div className='formContainer-2 my-3'>
+                <button type='button' className='FormButton FormButtonColor'>Login</button>
+            </div>
         </form>
     </div>
   )
