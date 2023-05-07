@@ -1,21 +1,12 @@
-.loginPage-container {
-    position: fixed;
-    inset: 0;
-
-    background-color: rgb(208, 229, 244);
-    z-index: 5;
-}
-
 .AuthenticationForm-container {
-    width: 40vw;
-    min-width: 300px;
+    width: 50vw;
+    min-width: 350px;
+    max-width: 450px;
     height: 600px;
-    margin: auto;
+    margin: 3rem auto;
 
-    margin-top: 5%;
     border-radius: 30px;
     background-color: #fff;
-    position: relative;
 }
 
 .FormButton {
@@ -26,7 +17,7 @@
 }
 
 .width50 {
-    width: 47.5%;
+    width: 80%;
     height: 50px;
     transition: 250ms;
 }
@@ -34,13 +25,13 @@
 /* Form buttons */
 .logInButton {
     border-radius: 30px;
-    background-color: rgb(208, 229, 244);    
+    background-color: rgb(208, 229, 244);
     border: none;
 }
 
 .signUpButton {
     border-radius: 30px;
-    background-color: rgb(208, 229, 244);    
+    background-color: rgb(208, 229, 244);
     border: none;
 }
 
@@ -49,18 +40,19 @@
     transition: 250ms;
     border: none;
 }
+
 /* Form buttons(Hover) */
-.logInButton:hover{
+.logInButton:hover {
     background-color: rgb(135, 175, 204);
     transition: 250ms;
 }
 
-.signUpButton:hover{
+.signUpButton:hover {
     background-color: rgb(135, 175, 204);
     transition: 250ms;
 }
 
-.FormButtonColor:hover{
+.FormButtonColor:hover {
     background-color: rgb(135, 175, 204);
     transition: 250ms;
 }
@@ -70,8 +62,18 @@
     justify-content: center;
 }
 
-.formContainer-2 {
-    width: 85%;
-    position: absolute;
-    bottom: 0;
+.authenticationButton-selected {
+    background-color: rgb(135, 175, 204);
+}
+
+.btnPositioningEnd {
+    display: flex;
+    justify-content: end;
+    text-decoration: none;
+}
+
+@media (min-width: 0px) and (max-width: 500px) {
+    .AuthenticationForm-container {
+        margin: auto;
+    }
 }
