@@ -1,0 +1,83 @@
+.AuthenticationForm-container {
+    width: 50vw;
+    min-width: 350px;
+    max-width: 450px;
+    height: 600px;
+    margin: 3rem auto;
+
+    border-radius: 30px;
+    background-color: #fff;
+}
+
+.FormButton {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    border: 1px solid #868686;
+}
+
+.width50 {
+    width: 80%;
+    height: 50px;
+    transition: 250ms;
+}
+
+/* Form buttons */
+.logInButton {
+    border-radius: 30px;
+    background-color: rgb(208, 229, 244);
+    border: none;
+}
+
+.signUpButton {
+    border-radius: 30px;
+    background-color: rgb(208, 229, 244);
+    border: none;
+}
+
+.FormButtonColor {
+    background-color: rgb(208, 229, 244);
+    transition: 250ms;
+    border: none;
+}
+
+/* Form buttons(Hover) */
+.logInButton:hover {
+    background-color: rgb(135, 175, 204);
+    transition: 250ms;
+}
+
+.signUpButton:hover {
+    background-color: rgb(135, 175, 204);
+    transition: 250ms;
+}
+
+.FormButtonColor:hover {
+    background-color: rgb(135, 175, 204);
+    transition: 250ms;
+}
+
+.signUpNowLink {
+    display: flex;
+    justify-content: center;
+}
+
+.authenticationButton-selected {
+    background-color: rgb(135, 175, 204);
+}
+
+.btnPositioningEnd {
+    display: flex;
+    justify-content: end;
+    text-decoration: none;
+}
+
+@media (min-width: 0px) and (max-width: 500px) {
+    .AuthenticationForm-container {
+        margin: auto;
+    }
+}
+
+.color-darkBlue {
+    color: rgb(8, 140, 234) !important;
+}

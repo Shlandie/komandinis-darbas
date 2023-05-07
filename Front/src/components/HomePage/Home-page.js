@@ -9,6 +9,8 @@ import IslaiduSekc from "../Islaidu-sekc/Islaidu-sekc";
 import Ratas from "../Ratas/Ratas";
 import BiudzetoSekc from "../Biudzeto-sekc/Biudzeto-sekc/Biudzeto-sekc";
 import './HomePage.css'
+import LoginPage from "../Authentication/LoginPage/LoginPage";
+import RegisterPage from "../Authentication/RegisterPage/RegisterPage";
 
 function HomePage() {
     const [month, setMonth] = useState("02");
@@ -16,6 +18,9 @@ function HomePage() {
         <>
             <div>
                 <div class="BP38mainGridDesign">
+                    {/* <LoginPage /> */}
+                    {/* <RegisterPage /> */}
+
                     <Navigation />
                     <PajamuSekc />
                     <Ratas />

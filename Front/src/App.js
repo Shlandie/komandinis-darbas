@@ -7,6 +7,8 @@ import EndResultBP9 from "./components/Biudzeto-ispl/EndResult/EndResult";
 import PajamuIspl from "./components/Pajamu-ispl/Pajamu-ispl/Pajamu-ispl";
 import IslaiduIspl from "./components/Islaidu-ispl/Islaidu-ispl/Islaidu-ispl";
 import HomePage from "./components/HomePage/Home-page";
+import LoginPage from "./components/Authentication/LoginPage/LoginPage";
+import RegisterPage from "./components/Authentication/RegisterPage/RegisterPage";
 
 
 function App() {
@@ -24,6 +26,13 @@ function App() {
             </Routes>
             <Routes>
                 <Route path="/islaidu-isplestine" element={<IslaiduIspl />} />
+            </Routes>
+
+            <Routes>
+                <Route path="/loginPage" element={<LoginPage />} />
+            </Routes>
+            <Routes>
+                <Route path="/registerPage" element={<RegisterPage />} />
             </Routes>
         </>
     );
