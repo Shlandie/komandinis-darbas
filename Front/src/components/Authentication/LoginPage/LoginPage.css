@@ -77,3 +77,7 @@
         margin: auto;
     }
 }
+
+.color-darkBlue {
+    color: rgb(8, 140, 234) !important;
+}
