@@ -2,11 +2,11 @@
     position: fixed;
     inset: 0;
 
-    background-color: #fff;
+    background-color: rgb(208, 229, 244);
     z-index: 5;
 }
 
-.loginForm-container {
+.AuthenticationForm-container {
     border: 1px solid black;
     width: 40vw;
     min-width: 300px;
@@ -15,6 +15,7 @@
 
     margin-top: 5%;
     border-radius: 30px;
+    background-color: #fff;
 }
 
 .FormButton {
@@ -23,8 +24,7 @@
     border-radius: 15px;
 }
 
-
-.width50{
+.width50 {
     width: 50%;
     height: 50px;
 }
@@ -32,10 +32,10 @@
 .logInButton {
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-    
+
 }
 
-.signUpButton{
+.signUpButton {
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 }

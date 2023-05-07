@@ -3,12 +3,12 @@ import React from 'react';
 function RegisterPage() {
   return (
     <div className='loginPage-container fs-'>
-        <form className='loginForm-container p-5'>
+        <form className='AuthenticationForm-container p-5'>
 
             <h1 className='pb-5'>Login Form/Signup Form</h1>
             
             <button type='button' className='logInButton width50'>Login</button>
-            <button type='button' className='signUpButton width50 mb-4'>Signup</button>
+            <button type='button' className='signUpButton width50 mb-3'>Signup</button>
             
             <br></br>
 
