@@ -23,10 +23,12 @@ function LoginPage() {
 
 
         <label for="password"></label>
-        <input type="password" id="password" placeholder='Password'  className='FormButton ps-4'></input>
+        <input type="password" id="password" placeholder='Password' className='FormButton ps-4'></input>
         <p className='mb-4'><a href="#" className='color-darkBlue'>Forgot password?</a></p>
 
-        <button type='button' className='FormButton FormButtonColor'>Login</button>
+        <Link to='/'>
+          <button type='button' className='FormButton FormButtonColor'>Login</button>
+        </Link>
       </form>
     </div>
   )
