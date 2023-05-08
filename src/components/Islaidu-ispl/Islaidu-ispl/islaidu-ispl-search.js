@@ -2,6 +2,7 @@
 import React from 'react';
 
 import { useState, useRef } from "react";
+import DateRangePicker from '@mui/lab/DateRangePicker';
 
 function ExpenceSearchBar(props) {
     
@@ -9,12 +10,9 @@ function ExpenceSearchBar(props) {
     const [categoryInput, setCategoryInput] = useState("");
     const [filteredExpences, setFilteredExpences] = useState([]);
     const [dateInput, setDateInput] = useState("");
-
+    const [dateRange, setDateRange] = useState({ start: null, end: null });
 
     const filterExpences = (query, category, date) => {
-      console.log("Query:", query);
-      console.log("Category:", category);
-      console.log("Date:", date);
         const filtered = props.expences.filter(
           (expence) =>
             expence.expenceTitle.toLowerCase().includes(query.toLowerCase()) &&
@@ -44,9 +42,7 @@ function ExpenceSearchBar(props) {
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
-        console.log("Search query:", searchQuery);
-        console.log("Category:", categoryInput);
-        console.log("Date:", dateInput);
+        
         filterExpences(searchQuery, categoryInput, dateInput);
       };
 
