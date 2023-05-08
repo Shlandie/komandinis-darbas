@@ -2,7 +2,7 @@
 import React from 'react';
 
 import { useState, useRef } from "react";
-import DateRangePicker from '@mui/lab/DateRangePicker';
+
 
 function ExpenceSearchBar(props) {
     
@@ -10,14 +10,18 @@ function ExpenceSearchBar(props) {
     const [categoryInput, setCategoryInput] = useState("");
     const [filteredExpences, setFilteredExpences] = useState([]);
     const [dateInput, setDateInput] = useState("");
-    const [dateRange, setDateRange] = useState({ start: null, end: null });
+    const [endDateInput, setEndDateInput] = useState("");
+    const [startDateInput, setStartDateInput] = useState('');
+    
 
-    const filterExpences = (query, category, date) => {
+    const filterExpences = (query, category, date,  startDate, endDate) => {
         const filtered = props.expences.filter(
           (expence) =>
             expence.expenceTitle.toLowerCase().includes(query.toLowerCase()) &&
             (category === "visos kategorijos" || expence.expenceCategory === category) &&
-            (!date || new Date(expence.expenceDate) >= new Date(date))
+            (!date || new Date(expence.expenceDate) >= new Date(date)) &&
+            (!startDate || new Date(expence.expenceDate) >= new Date(startDate)) &&
+            (!endDate || new Date(expence.expenceDate) <= new Date(endDate))
         );
         console.log(filtered);
 
@@ -35,15 +39,26 @@ function ExpenceSearchBar(props) {
         setSearchQuery(query);
         console.log("Query:", query);
       };
-      const handleDateChange = (e) => {
+
+       const handleDateChange = (e) => {
         const date = e.target.value;
         setDateInput(date);
+      };
+
+      const handleStartDateChange = (e) => {
+        const startDate = e.target.value;
+        setStartDateInput(startDate);
+      };
+
+      const handleEndDateChange = (e) => {
+        const endDate = e.target.value;
+        setEndDateInput(endDate);
       };
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
         
-        filterExpences(searchQuery, categoryInput, dateInput);
+        filterExpences(searchQuery, categoryInput, dateInput,  startDateInput, endDateInput);
       };
 
       console.log(searchQuery, filteredExpences);
@@ -57,14 +72,23 @@ function ExpenceSearchBar(props) {
       Paieška
     </h4>
     <form onSubmit={handleSearchSubmit}>
-      <div className="mb-2">
-        <input
-          type="date"
-          className="form-control IncomeNewEntry-input F-size-20"
-          placeholder="Paieška"
-          value={dateInput}
-          onChange={handleDateChange}
-        />
+    <div className="mb-2">
+            <input
+              type="date"
+              className="form-control IncomeNewEntry-input F-size-20"
+              placeholder="Pradžios data"
+              value={startDateInput}
+              onChange={handleStartDateChange}
+            />
+          </div>
+          <div className="mb-2">
+            <input
+              type="date"
+              className="form-control IncomeNewEntry-input F-size-20"
+              placeholder="Pabaigos data"
+              value={endDateInput}
+              onChange={handleEndDateChange}
+            />
       </div>
       <select
         className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
