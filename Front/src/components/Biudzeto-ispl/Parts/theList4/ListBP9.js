@@ -164,7 +164,7 @@ export default function ListBP9() {
 
             <div className="BP9container4 fontClr py-5">
                 <Link to='/'>
-                <button className="btn F-size-20 BP9-btnX">X</button>
+                    <button className="btn F-size-20 BP9-btnX">X</button>
                 </Link>
                 <h3 className="fs-25 mb-4">Biudžetas</h3>
 
