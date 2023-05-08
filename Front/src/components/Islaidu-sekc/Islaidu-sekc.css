@@ -39,6 +39,7 @@ Small {
 }
 .expenses-extend-button:hover, .expense-submit-button:hover{
     background-color: rgb(135, 175, 204);
+    border: 4px solid rgb(135, 175, 204);
 }
 
 .expences-addition {

@@ -16,7 +16,7 @@ function PajamuSekc() {
         console.log(data);
         setIncomes(data.earnings.allEarnings);
     };
-    
+
     useEffect(() => {
         getData();
     }, []);
@@ -44,11 +44,11 @@ let bendraSuma = irasai.reduce((accum, irasas) => accum + irasas.suma, 0);*/}
                 </div>
                 <div className="Scroll">{/*visiIrasai*/}</div>
 
-                <button type="button" class="Button Roboto-condensed Font-20">
-                    <Link class="nav-link" to="/pajamu-isplestine">
+                <Link class="nav-link" to="/pajamu-isplestine">
+                    <button type="button" class="Button Roboto-condensed Font-20">
                         Išskleisti
-                    </Link>
-                </button>
+                    </button>
+                </Link>
             </div>
         </>
     );
