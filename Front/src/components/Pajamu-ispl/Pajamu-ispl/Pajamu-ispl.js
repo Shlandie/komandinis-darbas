@@ -270,7 +270,7 @@ function PajamuIspl() {
                                 type="submit"
                                 class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
                             >
-                                Pridėti irašą
+                                Pridėti įrašą
                             </button>
                         </form>
                     </div>
