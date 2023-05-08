@@ -90,12 +90,24 @@ buttons
     margin: 0;
 }
 
+.Close-btn:hover{
+    background-color: rgb(135, 175, 204);
+    color: black;
+}
+.Close-btn:active{
+    background-color: rgb(135, 175, 204) !important;
+    color: black !important;
+}
+
 .xBtn {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 5px;
 }
+
+
+
 .Close-btn-img {
     width: 18px;
     height: 18px;

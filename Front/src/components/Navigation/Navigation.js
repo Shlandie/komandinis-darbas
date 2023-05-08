@@ -1,6 +1,8 @@
 import React from "react";
 import "./Navigation.css";
 import { RxExit } from "react-icons/rx";
+import { Link } from "react-router-dom";
+
 
 function Navigation() {
     return (
@@ -8,9 +10,11 @@ function Navigation() {
             <h2 className="navbar-brand mt-2 F-size-25 Roboto-condensed">LOGO</h2>
             <div className="d-flex justify-content-end nameLogoutContainer">
                 <div class="Roboto-condensed F-size-25 Nav-greeting">
-                        Sveiki, Vardas!
+                    Sveiki, Vardas!
                 </div>
-                <button className="btn Nav-logout">< RxExit /></button>          
+                <Link class="nav-link" to="/LoginPage">
+                    <button className="btn Nav-logout">< RxExit /></button>
+                </Link>
             </div>
         </nav>
     );

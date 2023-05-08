@@ -109,7 +109,18 @@ buttons
     border-radius: 40px; 
     padding: 0 0 2px 0;
     margin: 0;
+    
+    text-decoration: none !important;
 }
+.Close-btn:hover{
+    background-color: rgb(135, 175, 204);
+    color: black;
+}
+.Close-btn:active{
+    background-color: rgb(135, 175, 204) !important;
+    color: black !important;
+}
+
 .Close-btn-img {
     width: 18px;
     height: 18px;

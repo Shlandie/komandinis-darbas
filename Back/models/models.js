@@ -64,23 +64,22 @@ const expenseSchema = new mongoose.Schema({
 const earningsSchema = new mongoose.Schema({
     name: {
         type: String,
-        minlength: 1,
-        maxlength: 64,
+        minlength: 4,
+        maxlength: 20,
         required: true
     },
 
     amount: {
         type: Number,
         min: 1,
-        max: 1000000,
+        max: 10000,
         required: true
     },
 
-    // date: {
-    //     type: String,
-    //     immutable: true,
-    //     required: true
-    // },
+    date: {
+        type: String,
+        required: true
+    },
 
     user: {
         type: mongoose.Schema.Types.ObjectId,
