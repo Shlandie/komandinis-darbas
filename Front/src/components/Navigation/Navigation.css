@@ -56,11 +56,3 @@ h2.navbar-brand {
     top: 2px;
     border-radius: 5px;
 }
-
-.logo-title {
-    position: absolute;
-    left: 0px;
-    top: 1px;
-    z-index: 5;
-    color: black;
-}
