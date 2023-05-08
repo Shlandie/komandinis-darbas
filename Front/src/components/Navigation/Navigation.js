@@ -7,10 +7,8 @@ import { Link } from "react-router-dom";
 function Navigation() {
     return (
         <nav className="navbar Nav-container BP38-child0">
-            <Link to='/'>
+            <Link to='/' className="td-none">
                 <h2 className="navbar-brand mt-2 F-size-25 Roboto-condensed">campl</h2> 
-                    <div className="logo">
-                </div>
             </Link>
             <div className="d-flex justify-content-end nameLogoutContainer">
                 <div class="Roboto-condensed F-size-25 Nav-greeting">
