@@ -18,9 +18,6 @@ function HomePage() {
         <>
             <div>
                 <div class="BP38mainGridDesign">
-                    {/* <LoginPage /> */}
-                    {/* <RegisterPage /> */}
-
                     <Navigation />
                     <PajamuSekc />
                     <Ratas />
