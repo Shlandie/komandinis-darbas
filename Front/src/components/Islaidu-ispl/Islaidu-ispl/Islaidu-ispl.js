@@ -6,6 +6,7 @@ import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
 import Navigation from "../../Navigation/Navigation";
+import { Link } from "react-router-dom";
 
 function IslaiduIspl() {
     const expenceEntries = [
@@ -398,7 +399,9 @@ function IslaiduIspl() {
                 {/* ENTRIES */}
                 <div className="col py-5 IncomeEntries gridChild-4">
                     <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20">
-                        <span className="xBtn">X</span>
+                        <Link to='/'>
+                            <span className="xBtn">X</span>
+                        </Link>
                         <img
                             className="Close-btn-img"
                             src="https://th.bing.com/th/id/R.e24725fa2952bb5919d5ba9d22898bb7?rik=IdSOnVEyvVmW5w&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_352807.png&ehk=749keciRy4ORDsUyCQNI5DuGogVsfcVDAA7ywtAcD6Q%3d&risl=&pid=ImgRaw&r=0"
@@ -499,7 +502,7 @@ function IslaiduIspl() {
                                             />
                                         </div>
                                         {error &&
-                                        amountInputOnEdit.length <= 0 ? (
+                                            amountInputOnEdit.length <= 0 ? (
                                             <div className="Error-msg">
                                                 Šis laukelis yra privalomas
                                             </div>
@@ -521,7 +524,7 @@ function IslaiduIspl() {
                                             />
                                         </div>
                                         {error &&
-                                        dateInputOnEdit.length <= 0 ? (
+                                            dateInputOnEdit.length <= 0 ? (
                                             <div className="Error-msg">
                                                 Šis laukelis yra privalomas
                                             </div>
