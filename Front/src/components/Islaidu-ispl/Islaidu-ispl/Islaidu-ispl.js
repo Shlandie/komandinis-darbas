@@ -228,22 +228,15 @@ function IslaiduIspl() {
         <>
             <div className="row g-0 Income-wrapper gridParent-0">
                 <Navigation />
-                <div className="row d-flex g-0 IncomeNav gridChild-1">
-                    <div className="width30">
-                        <button className="btn Main-btn3 Bg-light-blue Roboto-condensed F-size-20 ">
-                            Pajamos
-                        </button>
-                    </div>
-                    <div className="width30">
-                        <button className="btn Main-btn3 darkBlueClr Roboto-condensed F-size-20">
-                            Išlaidos
-                        </button>
-                    </div>
-                    <div className="width30">
-                        <button className="btn Main-btn3 Bg-light-blue Roboto-condensed F-size-20">
-                            Biudžetas
-                        </button>
-                    </div>
+                <div className="row d-flex g-0  IncomeNav gridChild-1 Roboto-condensed F-size-20">
+                    <Link to='/pajamu-isplestine' className='BP9-btn colorAnchored'>
+                        <div>Pajamos</div> </Link>
+
+                    <Link to='/islaidu-isplestine' className='BP9-btn colorAnchored BP9-selectedbtn'>
+                        <div>Išlaidos</div> </Link>
+
+                    <Link to='/biudzeto-isplestine' className='BP9-btn colorAnchored'>
+                        <div>Biudžetas</div> </Link>
                 </div>
 
                 {/* SEARCH */}

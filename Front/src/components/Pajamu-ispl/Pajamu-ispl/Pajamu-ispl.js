@@ -161,139 +161,132 @@ function PajamuIspl() {
     return (
         <>
             <div className="g-0 Income-wrapper gridParent-0">
-        <Navigation />
-                    <div className="row d-flex g-0  IncomeNav gridChild-1">
-                        <div className="width30">
-                            <button className="btn Main-btn2 Roboto-condensed F-size-20 darkBlueClr">
-                                Pajamos
-                            </button>
-                        </div>
-                        <div className="width30">
-                            <button className="btn Main-btn2 Bg-light-blue Roboto-condensed F-size-20">
-                                Išlaidos
-                            </button>
-                        </div>
-                        <div className="width30">
-                            <button className="btn Main-btn2 Bg-light-blue Roboto-condensed F-size-20">
-                                Biudžetas
-                            </button>
-                        </div>
-                    </div>
+                <Navigation />
+                <div className="row d-flex g-0  IncomeNav gridChild-1 Roboto-condensed F-size-20">
+                    <Link to='/pajamu-isplestine' className='BP9-btn colorAnchored BP9-selectedbtn'>
+                        <div>Pajamos</div> </Link>
 
-                    {/* SEARCH */}
-                    <div className="row gap-2 g-0  gridChild-2">
-                        <div className="IncomeSearch">
-                            <h4
-                                className="Roboto-condensed F-size-25 IncomeSearch-title {
+                    <Link to='/islaidu-isplestine' className='BP9-btn colorAnchored'>
+                        <div>Išlaidos</div> </Link>
+
+                    <Link to='/biudzeto-isplestine' className='BP9-btn colorAnchored'>
+                        <div>Biudžetas</div> </Link>
+                </div>
+
+                {/* SEARCH */}
+                <div className="row gap-2 g-0  gridChild-2">
+                    <div className="IncomeSearch">
+                        <h4
+                            className="Roboto-condensed F-size-25 IncomeSearch-title {
 "
+                        >
+                            Paieška
+                        </h4>
+                        <form>
+                            <div class="">
+                                <input
+                                    type="date"
+                                    class="form-control IncomeNewEntry-input F-size-20"
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
                             >
-                                Paieška
-                            </h4>
-                            <form>
-                                <div class="">
-                                    <input
-                                        type="date"
-                                        class="form-control IncomeNewEntry-input F-size-20"
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
-                                >
-                                    Ieškoti
-                                </button>
-                            </form>
-                        </div>
+                                Ieškoti
+                            </button>
+                        </form>
                     </div>
+                </div>
 
-                    {/* ADD ENTRY */}
-                    <div className="row gap-2 g-0 gridChild-3">
-                        <div className="col py-5 IncomeNewEntry">
-                            <h4 className="Roboto-condensed F-size-25 IncomeNewEntry-title">
-                                Naujas Įrašas
-                            </h4>
-                            <form onSubmit={handleSubmit}>
-                                <div class="">
-                                    <input
-                                        onChange={(e) =>
-                                            setTitleInput(e.target.value)
-                                        }
-                                        type="text"
-                                        id="titleInput"
-                                        name="titleInput"
-                                        value={titleInput}
-                                        class="form-control IncomeNewEntry-input F-size-20"
-                                        placeholder="Pavadinimas"
-                                    />
+                {/* ADD ENTRY */}
+                <div className="row gap-2 g-0 gridChild-3">
+                    <div className="col py-5 IncomeNewEntry">
+                        <h4 className="Roboto-condensed F-size-25 IncomeNewEntry-title">
+                            Naujas Įrašas
+                        </h4>
+                        <form onSubmit={handleSubmit}>
+                            <div class="">
+                                <input
+                                    onChange={(e) =>
+                                        setTitleInput(e.target.value)
+                                    }
+                                    type="text"
+                                    id="titleInput"
+                                    name="titleInput"
+                                    value={titleInput}
+                                    class="form-control IncomeNewEntry-input F-size-20"
+                                    placeholder="Pavadinimas"
+                                />
+                            </div>
+                            {error && titleInput.length <= 0 ? (
+                                <div className="Error-msg">
+                                    Šis laukelis yra privalomas
                                 </div>
-                                {error && titleInput.length <= 0 ? (
-                                    <div className="Error-msg">
-                                        Šis laukelis yra privalomas
-                                    </div>
-                                ) : (
-                                    ""
-                                )}
-                                <div class="">
-                                    <input
-                                        onChange={(e) =>
-                                            setDateInput(e.target.value)
-                                        }
-                                        type="date"
-                                        id="dateInput"
-                                        name="dateInput"
-                                        value={dateInput}
-                                        class="form-control IncomeNewEntry-input F-size-20"
-                                    />
+                            ) : (
+                                ""
+                            )}
+                            <div class="">
+                                <input
+                                    onChange={(e) =>
+                                        setDateInput(e.target.value)
+                                    }
+                                    type="date"
+                                    id="dateInput"
+                                    name="dateInput"
+                                    value={dateInput}
+                                    class="form-control IncomeNewEntry-input F-size-20"
+                                />
+                            </div>
+                            {error && dateInput.length <= 0 ? (
+                                <div className="Error-msg">
+                                    Šis laukelis yra privalomas
                                 </div>
-                                {error && dateInput.length <= 0 ? (
-                                    <div className="Error-msg">
-                                        Šis laukelis yra privalomas
-                                    </div>
-                                ) : (
-                                    ""
-                                )}
-                                <div class="">
-                                    <input
-                                        onChange={(e) =>
-                                            setAmountInput(e.target.value)
-                                        }
-                                        type="number"
-                                        id="amountInput"
-                                        name="amountInput"
-                                        value={amountInput}
-                                        class="form-control IncomeNewEntry-input F-size-20"
-                                        placeholder="Suma"
-                                    />
+                            ) : (
+                                ""
+                            )}
+                            <div class="">
+                                <input
+                                    onChange={(e) =>
+                                        setAmountInput(e.target.value)
+                                    }
+                                    type="number"
+                                    id="amountInput"
+                                    name="amountInput"
+                                    value={amountInput}
+                                    class="form-control IncomeNewEntry-input F-size-20"
+                                    placeholder="Suma"
+                                />
+                            </div>
+                            {error && amountInput.length <= 0 ? (
+                                <div className="Error-msg">
+                                    Šis laukelis yra privalomas
                                 </div>
-                                {error && amountInput.length <= 0 ? (
-                                    <div className="Error-msg">
-                                        Šis laukelis yra privalomas
-                                    </div>
-                                ) : (
-                                    ""
-                                )}
-                                <button
-                                    onClick={handleSubmit}
-                                    type="submit"
-                                    class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
-                                >
-                                    Pridėti irašą
-                                </button>
-                            </form>
-                        </div>
+                            ) : (
+                                ""
+                            )}
+                            <button
+                                onClick={handleSubmit}
+                                type="submit"
+                                class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
+                            >
+                                Pridėti irašą
+                            </button>
+                        </form>
                     </div>
+                </div>
                 {/* ENTRIES */}
                 <div className="col py-5 IncomeEntries gridChild-4">
                     <Link to='/'>
 
-                    <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20"><span className="xBtn">X</span>
-                        <img
-                            className="Close-btn-img"
-                            src="https://th.bing.com/th/id/R.e24725fa2952bb5919d5ba9d22898bb7?rik=IdSOnVEyvVmW5w&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_352807.png&ehk=749keciRy4ORDsUyCQNI5DuGogVsfcVDAA7ywtAcD6Q%3d&risl=&pid=ImgRaw&r=0"
-                            alt=""
+                        <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20"><span className="xBtn">X</span>
+                            <img
+                                className="Close-btn-img"
+                                src="https://th.bing.com/th/id/R.e24725fa2952bb5919d5ba9d22898bb7?rik=IdSOnVEyvVmW5w&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_352807.png&ehk=749keciRy4ORDsUyCQNI5DuGogVsfcVDAA7ywtAcD6Q%3d&risl=&pid=ImgRaw&r=0"
+                                alt=""
                             />
-                    </button>
-                            </Link>
+                        </button>
+                    </Link>
                     <div className="d-flex justify-content-between mb-4">
                         <h4 className="Roboto-condensed F-size-25">Pajamos</h4>
                     </div>
