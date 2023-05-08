@@ -6,6 +6,7 @@ import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
 import Navigation from "../../Navigation/Navigation";
+import moment from 'moment';
 
 function IslaiduIspl() {
     const expenceEntries = [
@@ -341,8 +342,14 @@ function IslaiduIspl() {
                             <div className="d-flex mt-2">
                                 <div class="mb-2 me-3">
                                     <input
+                                        onKeyPress={(e) => {
+                                            if (e.key === "-")
+                                                e.preventDefault();
+                                        }}
+                                        pattern
                                         onChange={(e) => {
-                                            const regex = /^[0-9]{0,10}(\.[0-9]{0,2})?$/;
+                                            const regex =
+                                                /^(?!00)[0-9]{0,10}(?:\.[0-9]{1,2})?$/;
                                             if (regex.test(e.target.value)) {
                                                 setAmountInput(e.target.value);
                                             }
@@ -371,7 +378,9 @@ function IslaiduIspl() {
                                         type="date"
                                         id="dateInput"
                                         name="dateInput"
-                                        value={dateInput}
+                                        value={dateInput || moment().format("YYYY-MM-DD")}
+                                        max={moment().format("YYYY-MM-DD")}
+                                        min={moment().subtract(3, "years").format("YYYY-MM-DD")}
                                         class="form-control IncomeNewEntry-input F-size-20"
                                         placeholder="Data"
                                     />
