@@ -37,22 +37,23 @@ fonts
 }
 
 h2.navbar-brand {
-    background-color: red;
+    /* background-color: red; */
     position: relative;
     transform: scale(1.5);
     position: relative;
-    top: -14px;
+    top: 0px;
     left: -14px;
     font-size: 20px;
-}
-
-.logo {
+    background-color: rgb(208, 229, 244);
+    border-radius: 5px;
     width: 60px;
     height: 25px;
-    background-color: rgb(135, 175, 204);
-    background-color: rgb(208, 229, 244);
-    position: absolute;
-    left: -6px;
-    top: 2px;
-    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.td-none{
+    text-decoration: none !important;    
 }
