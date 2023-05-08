@@ -6,6 +6,7 @@ import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../../Delete-popup/Dialog";
 import NewPostBP3 from "../NewPost3/NewPostBP3";
+import { Link } from "react-router-dom";
 
 export default function ListBP9() {
     const budgetEntries = [
@@ -162,7 +163,9 @@ export default function ListBP9() {
             />
 
             <div className="BP9container4 fontClr py-5">
-                <button className="btn F-size-20 BP9-btnX">X</button>
+                <Link to='/'>
+                    <button className="btn F-size-20 BP9-btnX">X</button>
+                </Link>
                 <h3 className="fs-25 mb-4">Biudžetas</h3>
 
                 <div className="BP9-ListContainer">{list}</div>

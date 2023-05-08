@@ -21,6 +21,11 @@
 
 .BP9-btnX:hover{
     background-color: rgb(135, 175, 204);
+    color: black;
+}
+.BP9-btnX:active{
+    background-color: rgb(135, 175, 204) !important;
+    color: black !important;
 }
 
 /* heading */
