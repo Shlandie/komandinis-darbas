@@ -82,6 +82,11 @@ body {
     .BP9-btnX, .Close-btn {
         top: -410px !important;
     }
+    .BP9-btnX:active, .Close-btn:active {
+    border: 1px solid transparent !important;
+    box-shadow: 0px 0px 0px 2px black;
+    transition: 50ms;
+    }
 }
 
 /* Phone */
