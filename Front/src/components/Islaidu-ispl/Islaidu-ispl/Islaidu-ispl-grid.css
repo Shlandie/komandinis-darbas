@@ -135,7 +135,7 @@ body {
     }
 
     .navbar-brand {
-        margin: 0 !important;
+        margin-left: 15px !important;
         padding: 0;
     }
     .Nav-greeting {
