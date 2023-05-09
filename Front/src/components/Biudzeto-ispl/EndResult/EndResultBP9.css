@@ -78,6 +78,10 @@ body {
     .BP9-ListContainer {
         height: 75%;
     }
+
+    .BP9-btnX, .Close-btn {
+        top: -410px !important;
+    }
 }
 
 /* Phone */
