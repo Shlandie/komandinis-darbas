@@ -25,7 +25,7 @@ function PajamuIsplIrasas(props) {
                 <div className="d-flex justify-content-between IncomeEntries-buttons">
                     <button
                         onClick={() => editIncome(id)}
-                        className="btn Crud-btn Edit-btn Bg-light-blue"
+                        className="btn Crud-btn Edit-btn Bg-light-blue Icon"
                         data-bs-toggle="modal"
                         role="button"
                         href="#exampleModalToggle"
@@ -34,7 +34,7 @@ function PajamuIsplIrasas(props) {
                     </button>
                     <button
                         onClick={() => deleteIncome(id)}
-                        className="btn Crud-btn Del-btn Bg-light-red"
+                        className="btn Crud-btn Del-btn Bg-light-red Icon"
                     >
                         <BsTrash />
                     </button>

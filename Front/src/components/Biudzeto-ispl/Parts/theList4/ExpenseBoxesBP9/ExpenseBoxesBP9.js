@@ -19,20 +19,20 @@ export default function ExpenseBoxesBP9(props) {
             <div className="BP9List-btnContainer">
                 <button
                     onClick={() => editBudget(id)}
-                    className="BP9list-btn BP9list-btnBlue border-0"
+                    className="BP9list-btn BP9list-btnBlue Edit-btn border-0"
                     data-bs-toggle="modal"
                     role="button"
                     href="#exampleModalToggle"
                 >
-                    <div className="icon-size">
+                    <div className="Icon">
                         <FiEdit />
                     </div>
                 </button>
                 <button
                     onClick={() => deleteBudget(id)}
-                    className="BP9list-btn BP9list-btnRed border-0"
+                    className="BP9list-btn BP9list-btnRed Del-btn border-0"
                 >
-                    <div className="icon-size">
+                    <div className="Icon">
                         <BsTrash />
                     </div>
                 </button>
