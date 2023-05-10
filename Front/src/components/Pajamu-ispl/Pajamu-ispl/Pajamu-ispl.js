@@ -1,7 +1,7 @@
 import React from "react";
 import PajamuIsplIrasas from "../Pajamu-ispl-irasas/Pajamu-ispl-irasas";
 import "../Pajamu-ispl/Pajamu-ispl.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
 import Navigation from "../../Navigation/Navigation";
@@ -9,35 +9,10 @@ import '../Pajamu-ispl/Pajamu-ispl-grid.css'
 import { Link } from "react-router-dom";
 import moment from 'moment';
 
-function PajamuIspl() {
-    const incomeEntries = [
-        {
-            id: 1,
-            incomeTitle: "Alga",
-            incomeDate: "2023-02-15",
-            incomeAmount: 800,
-        },
-        {
-            id: 2,
-            incomeTitle: "Dovana",
-            incomeDate: "2023-02-20",
-            incomeAmount: 30,
-        },
-        {
-            id: 3,
-            incomeTitle: "Algos priedas",
-            incomeDate: "2023-02-15",
-            incomeAmount: 150,
-        },
-        {
-            id: 4,
-            incomeTitle: "Algos priedas",
-            incomeDate: "2023-02-15",
-            incomeAmount: 150,
-        },
-    ];
+const url = "http://localhost:4000/api/v1/incomes";
 
-    const [incomes, setIncomes] = useState(incomeEntries);
+function PajamuIspl() {
+    const [incomes, setIncomes] = useState([]);
 
     const [titleInput, setTitleInput] = useState("");
     const [dateInput, setDateInput] = useState(moment().format("YYYY-MM-DD"));
@@ -55,6 +30,16 @@ function PajamuIspl() {
         isLoading: false,
     });
 
+    const getData = async () => {
+        const response = await fetch(url);
+        const data = await response.json();
+        //console.log(data);
+        setIncomes(data.data.earnings);
+    };
+    useEffect(() => {
+        getData();
+    }, []);
+
     const idProductRef = useRef();
     const handleDialog = (message, isLoading) => {
         setDialog({
@@ -71,7 +56,7 @@ function PajamuIspl() {
     const areUSureDelete = (choose) => {
         if (choose) {
             setIncomes(
-                incomes.filter((income) => income.id !== idProductRef.current)
+                incomes.filter((income) => income._id !== idProductRef.current)
             );
             handleDialog("", false);
         } else {
@@ -81,22 +66,21 @@ function PajamuIspl() {
 
     const handleEditIncome = (id) => {
         setEditIncome(true);
-        let findIncome = incomes.find((income) => income.id == id);
+        let findIncome = incomes.find((income) => income._id == id);
         //console.log(findIncome);
-        setTitleInputOnEdit(findIncome.incomeTitle);
-        setDateInputOnEdit(findIncome.incomeDate);
-        setAmountInputOnEdit(findIncome.incomeAmount);
+        setTitleInputOnEdit(findIncome.name);
+        setDateInputOnEdit(findIncome.date);
+        setAmountInputOnEdit(findIncome.amount);
         setUpdateIncome(findIncome);
     };
 
     const handleUpdateIncome = ({ id }) => {
         let newIncomesList = incomes.map((income) => {
-            if (income.id == id) {
+            if (income._id == id) {
                 return {
-                    id: uuidv4(),
-                    incomeTitle: titleInputOnEdit,
-                    incomeDate: dateInputOnEdit,
-                    incomeAmount: amountInputOnEdit,
+                    name: titleInputOnEdit,
+                    date: dateInputOnEdit,
+                    amount: amountInputOnEdit,
                 };
             }
             return income;
@@ -114,10 +98,9 @@ function PajamuIspl() {
                 setError(true);
             } else {
                 let newIncome = {
-                    id: uuidv4(),
-                    incomeTitle: titleInput,
-                    incomeDate: dateInput,
-                    incomeAmount: amountInput,
+                    name: titleInput,
+                    date: dateInput,
+                    amount: amountInput,
                 };
                 //console.log(newIncome)
                 setIncomes((oldList) => [...oldList, newIncome]);
@@ -149,10 +132,10 @@ function PajamuIspl() {
         return (
             <PajamuIsplIrasas
                 key={uuidv4()}
-                id={income.id}
-                title={income.incomeTitle}
-                date={income.incomeDate}
-                amount={income.incomeAmount}
+                id={income._id}
+                name={income.name}
+                date={income.date}
+                amount={income.amount}
                 deleteIncome={handleDeleteIncome}
                 editIncome={handleEditIncome}
             />
@@ -162,50 +145,43 @@ function PajamuIspl() {
     return (
         <>
             <div className="g-0 Income-wrapper gridParent-0">
-        <Navigation />
-                    <div className="row d-flex g-0  IncomeNav gridChild-1">
-                        <div className="width30">
-                            <button className="btn Main-btn2 Roboto-condensed F-size-20 darkBlueClr">
-                                Pajamos
-                            </button>
-                        </div>
-                        <div className="width30">
-                            <button className="btn Main-btn2 Bg-light-blue Roboto-condensed F-size-20">
-                                Išlaidos
-                            </button>
-                        </div>
-                        <div className="width30">
-                            <button className="btn Main-btn2 Bg-light-blue Roboto-condensed F-size-20">
-                                Biudžetas
-                            </button>
-                        </div>
-                    </div>
+                <Navigation />
+                <div className="row d-flex g-0  IncomeNav gridChild-1 Roboto-condensed F-size-20">
+                    <Link to='/pajamu-isplestine' className='BP9-btn colorAnchored BP9-selectedbtn'>
+                        <div>Pajamos</div> </Link>
 
-                    {/* SEARCH */}
-                    <div className="row gap-2 g-0  gridChild-2">
-                        <div className="IncomeSearch">
-                            <h4
-                                className="Roboto-condensed F-size-25 IncomeSearch-title {
+                    <Link to='/islaidu-isplestine' className='BP9-btn colorAnchored'>
+                        <div>Išlaidos</div> </Link>
+
+                    <Link to='/biudzeto-isplestine' className='BP9-btn colorAnchored'>
+                        <div>Biudžetas</div> </Link>
+                </div>
+
+                {/* SEARCH */}
+                <div className="row gap-2 g-0  gridChild-2">
+                    <div className="IncomeSearch">
+                        <h4
+                            className="Roboto-condensed F-size-25 IncomeSearch-title {
 "
+                        >
+                            Paieška
+                        </h4>
+                        <form>
+                            <div class="">
+                                <input
+                                    type="date"
+                                    class="form-control IncomeNewEntry-input F-size-20"
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
                             >
-                                Paieška
-                            </h4>
-                            <form>
-                                <div class="">
-                                    <input
-                                        type="date"
-                                        class="form-control IncomeNewEntry-input F-size-20"
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
-                                >
-                                    Ieškoti
-                                </button>
-                            </form>
-                        </div>
+                                Ieškoti
+                            </button>
+                        </form>
                     </div>
+                </div>
 
                     {/* ADD ENTRY */}
                     <div className="row gap-2 g-0 gridChild-3">
@@ -289,20 +265,15 @@ function PajamuIspl() {
                                     Pridėti irašą
                                 </button>
                             </form>
-                        </div>
                     </div>
+                </div>
                 {/* ENTRIES */}
                 <div className="col py-5 IncomeEntries gridChild-4">
                     <Link to='/'>
 
-                    <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20"><span className="xBtn">X</span>
-                        <img
-                            className="Close-btn-img"
-                            src="https://th.bing.com/th/id/R.e24725fa2952bb5919d5ba9d22898bb7?rik=IdSOnVEyvVmW5w&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_352807.png&ehk=749keciRy4ORDsUyCQNI5DuGogVsfcVDAA7ywtAcD6Q%3d&risl=&pid=ImgRaw&r=0"
-                            alt=""
-                            />
-                    </button>
-                            </Link>
+                        <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20"><span className="xBtn">X</span>
+                        </button>
+                    </Link>
                     <div className="d-flex justify-content-between mb-4">
                         <h4 className="Roboto-condensed F-size-25">Pajamos</h4>
                     </div>

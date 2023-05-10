@@ -2,11 +2,11 @@ import React from "react";
 import IslaiduIsplIrasas from "../Islaidu-ispl-irasas/Islaidu-ispl-irasas";
 import "../Islaidu-ispl/Islaidu-ispl.css";
 import "../Islaidu-ispl/Islaidu-ispl-grid.css";
+import ExpenceSearchBar from '../Islaidu-ispl/islaidu-ispl-search';
 import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
 import Navigation from "../../Navigation/Navigation";
-import moment from 'moment';
 import { Link } from "react-router-dom";
 
 function IslaiduIspl() {
@@ -83,6 +83,7 @@ function IslaiduIspl() {
         },
     ];
 
+    const [filteredExpences, setFilteredExpences] = useState([]);
     const [expences, setExpences] = useState(expenceEntries);
 
     const [titleInput, setTitleInput] = useState("");
@@ -113,6 +114,10 @@ function IslaiduIspl() {
             isLoading,
         });
     };
+
+    const handleFilterExpences = (filtered) => {
+        setFilteredExpences(filtered);
+      };
 
     const handleDeleteExpence = (id) => {
         handleDialog("Ar tikrai norite ištrinti?", true);
@@ -207,7 +212,7 @@ function IslaiduIspl() {
         setCategoryInput(e.target.value);
     };
 
-    let list = expences.map((expence) => {
+    let list = (filteredExpences.length > 0 ? filteredExpences : expences).map((expence) => {
         return (
             <IslaiduIsplIrasas
                 key={uuidv4()}
@@ -226,64 +231,19 @@ function IslaiduIspl() {
         <>
             <div className="row g-0 Income-wrapper gridParent-0">
                 <Navigation />
-                <div className="row d-flex g-0 IncomeNav gridChild-1">
-                    <div className="width30">
-                        <button className="btn Main-btn3 Bg-light-blue Roboto-condensed F-size-20 ">
-                            Pajamos
-                        </button>
-                    </div>
-                    <div className="width30">
-                        <button className="btn Main-btn3 darkBlueClr Roboto-condensed F-size-20">
-                            Išlaidos
-                        </button>
-                    </div>
-                    <div className="width30">
-                        <button className="btn Main-btn3 Bg-light-blue Roboto-condensed F-size-20">
-                            Biudžetas
-                        </button>
-                    </div>
+                <div className="row d-flex g-0  IncomeNav gridChild-1 Roboto-condensed F-size-20">
+                    <Link to='/pajamu-isplestine' className='BP9-btn colorAnchored'>
+                        <div>Pajamos</div> </Link>
+
+                    <Link to='/islaidu-isplestine' className='BP9-btn colorAnchored BP9-selectedbtn'>
+                        <div>Išlaidos</div> </Link>
+
+                    <Link to='/biudzeto-isplestine' className='BP9-btn colorAnchored'>
+                        <div>Biudžetas</div> </Link>
                 </div>
 
                 {/* SEARCH */}
-                <div className="row gap-2 g-0 gridChild-2">
-                    <div className="IncomeSearch">
-                        <h4 className="Roboto-condensed F-size-25 ExpenceSearch-title">
-                            Paieška
-                        </h4>
-                        <form>
-                            <div class="mb-2">
-                                <input
-                                    type="date"
-                                    class="form-control IncomeNewEntry-input F-size-20"
-                                />
-                            </div>
-                            <select
-                                className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
-                                aria-label="Default select example"
-                                id="programSelect"
-                                name="programSelect"
-                                required
-                            >
-                                <option selected disabled>
-                                    Pagal kategoriją
-                                </option>
-                                <option>Transportas</option>
-                                <option>Maistas ir gėrimai</option>
-                                <option>Pramogos</option>
-                                <option>Mokesčiai</option>
-                                <option>Paslaugos</option>
-                                <option>Pirkiniai ir daiktai</option>
-                                <option>Kitos išlaidos</option>
-                            </select>
-                            <button
-                                type="submit"
-                                class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue mt-2"
-                            >
-                                Ieškoti
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                <ExpenceSearchBar expences={expenceEntries}  onFilterExpences={handleFilterExpences} />
 
                 {/* ADD ENTRY */}
                 <div className="row gap-2 g-0 gridChild-3">
@@ -346,8 +306,7 @@ function IslaiduIspl() {
                                                 e.preventDefault();
                                         }}
                                         onChange={(e) => {
-                                            const regex =
-                                                /^(?!00)[0-9]{0,10}(?:\.[0-9]{1,2})?$/;
+                                            const regex = /^[0-9]{0,10}(\.[0-9]{0,2})?$/;
                                             if (regex.test(e.target.value)) {
                                                 setAmountInput(e.target.value);
                                             }
@@ -394,7 +353,7 @@ function IslaiduIspl() {
                                 type="button"
                                 class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
                             >
-                                Pridėti irašą
+                                Pridėti įrašą
                             </button>
                         </form>
                     </div>
@@ -402,13 +361,8 @@ function IslaiduIspl() {
                 {/* ENTRIES */}
                 <div className="col py-5 IncomeEntries gridChild-4">
                     <Link to='/'>
-                        <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20">
+                        <button className="btn BP9-btnX Close-btn Bg-light-blue Roboto-condensed F-size-20">
                             <span className="xBtn">X</span>
-                            <img
-                                className="Close-btn-img"
-                                src="https://th.bing.com/th/id/R.e24725fa2952bb5919d5ba9d22898bb7?rik=IdSOnVEyvVmW5w&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_352807.png&ehk=749keciRy4ORDsUyCQNI5DuGogVsfcVDAA7ywtAcD6Q%3d&risl=&pid=ImgRaw&r=0"
-                                alt=""
-                            />
                         </button>
                     </Link>
                     <div className="d-flex justify-content-between mb-4">

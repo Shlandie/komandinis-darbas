@@ -92,3 +92,17 @@
 .BP9button:hover {
     cursor: pointer;
 }
+
+.colorAnchored {
+    text-decoration: none;
+    color: black;
+}
+
+.colorAnchored:hover{
+    background-color: rgb(135, 175, 204);
+    color: black;
+}
+.colorAnchored:active{
+    background-color: rgb(135, 175, 204) !important;
+    color: black !important;
+}

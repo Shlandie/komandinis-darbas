@@ -3,14 +3,14 @@ import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 
 function PajamuIsplIrasas(props) {
-    let { id, title, date, amount, deleteIncome, editIncome } = props;
+    let { id, name, date, amount, deleteIncome, editIncome } = props;
     return (
         <>
             <div className="d-flex justify-content-between IncomeEntries-item-row">
                 <div className="d-flex justify-content-between IncomeEntries-fields">
                     <div>
                         <div className="Roboto-condensed F-size-20 Line-height-23">
-                            {title}
+                            {name}
                         </div>
                         <div className="Roboto F-size-20 Line-height-23">
                             {date}

@@ -8,6 +8,7 @@ fonts
 .Roboto-condensed {
     font-family: 'Roboto Condensed', sans-serif;
 }
+
 .F-size-25 {
     font-size: 25px;
 }
@@ -27,10 +28,32 @@ fonts
 
     display: flex;
     align-items: center;
-    
+
 }
 
 .Nav-greeting {
     display: flex;
     align-items: center;
+}
+
+h2.navbar-brand {
+    /* background-color: red; */
+    position: relative;
+    transform: scale(1.5);
+    position: relative;
+    top: 0px;
+    left: -14px;
+    font-size: 20px;
+    background-color: rgb(208, 229, 244);
+    border-radius: 5px;
+    width: 60px;
+    height: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.td-none{
+    text-decoration: none !important;    
 }
