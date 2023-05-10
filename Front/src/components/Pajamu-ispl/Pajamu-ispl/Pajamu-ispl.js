@@ -1,41 +1,17 @@
 import React from "react";
 import PajamuIsplIrasas from "../Pajamu-ispl-irasas/Pajamu-ispl-irasas";
 import "../Pajamu-ispl/Pajamu-ispl.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
 import Navigation from "../../Navigation/Navigation";
 import '../Pajamu-ispl/Pajamu-ispl-grid.css'
 import { Link } from "react-router-dom";
-function PajamuIspl() {
-    const incomeEntries = [
-        {
-            id: 1,
-            incomeTitle: "Alga",
-            incomeDate: "2023-02-15",
-            incomeAmount: 800,
-        },
-        {
-            id: 2,
-            incomeTitle: "Dovana",
-            incomeDate: "2023-02-20",
-            incomeAmount: 30,
-        },
-        {
-            id: 3,
-            incomeTitle: "Algos priedas",
-            incomeDate: "2023-02-15",
-            incomeAmount: 150,
-        },
-        {
-            id: 4,
-            incomeTitle: "Algos priedas",
-            incomeDate: "2023-02-15",
-            incomeAmount: 150,
-        },
-    ];
 
-    const [incomes, setIncomes] = useState(incomeEntries);
+const url = "http://localhost:4000/api/v1/incomes";
+
+function PajamuIspl() {
+    const [incomes, setIncomes] = useState([]);
 
     const [titleInput, setTitleInput] = useState("");
     const [dateInput, setDateInput] = useState("");
@@ -53,6 +29,16 @@ function PajamuIspl() {
         isLoading: false,
     });
 
+    const getData = async () => {
+        const response = await fetch(url);
+        const data = await response.json();
+        //console.log(data);
+        setIncomes(data.data.earnings);
+    };
+    useEffect(() => {
+        getData();
+    }, []);
+
     const idProductRef = useRef();
     const handleDialog = (message, isLoading) => {
         setDialog({
@@ -69,7 +55,7 @@ function PajamuIspl() {
     const areUSureDelete = (choose) => {
         if (choose) {
             setIncomes(
-                incomes.filter((income) => income.id !== idProductRef.current)
+                incomes.filter((income) => income._id !== idProductRef.current)
             );
             handleDialog("", false);
         } else {
@@ -79,22 +65,21 @@ function PajamuIspl() {
 
     const handleEditIncome = (id) => {
         setEditIncome(true);
-        let findIncome = incomes.find((income) => income.id == id);
+        let findIncome = incomes.find((income) => income._id == id);
         //console.log(findIncome);
-        setTitleInputOnEdit(findIncome.incomeTitle);
-        setDateInputOnEdit(findIncome.incomeDate);
-        setAmountInputOnEdit(findIncome.incomeAmount);
+        setTitleInputOnEdit(findIncome.name);
+        setDateInputOnEdit(findIncome.date);
+        setAmountInputOnEdit(findIncome.amount);
         setUpdateIncome(findIncome);
     };
 
     const handleUpdateIncome = ({ id }) => {
         let newIncomesList = incomes.map((income) => {
-            if (income.id == id) {
+            if (income._id == id) {
                 return {
-                    id: uuidv4(),
-                    incomeTitle: titleInputOnEdit,
-                    incomeDate: dateInputOnEdit,
-                    incomeAmount: amountInputOnEdit,
+                    name: titleInputOnEdit,
+                    date: dateInputOnEdit,
+                    amount: amountInputOnEdit,
                 };
             }
             return income;
@@ -113,10 +98,9 @@ function PajamuIspl() {
                 setError(true);
             } else {
                 let newIncome = {
-                    id: uuidv4(),
-                    incomeTitle: titleInput,
-                    incomeDate: dateInput,
-                    incomeAmount: amountInput,
+                    name: titleInput,
+                    date: dateInput,
+                    amount: amountInput,
                 };
                 //console.log(newIncome)
                 setIncomes((oldList) => [...oldList, newIncome]);
@@ -148,10 +132,10 @@ function PajamuIspl() {
         return (
             <PajamuIsplIrasas
                 key={uuidv4()}
-                id={income.id}
-                title={income.incomeTitle}
-                date={income.incomeDate}
-                amount={income.incomeAmount}
+                id={income._id}
+                name={income.name}
+                date={income.date}
+                amount={income.amount}
                 deleteIncome={handleDeleteIncome}
                 editIncome={handleEditIncome}
             />

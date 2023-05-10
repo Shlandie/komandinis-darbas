@@ -13,36 +13,37 @@ function PajamuSekc() {
     const getData = async () => {
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
-        setIncomes(data.earnings.allEarnings);
+        //console.log(data);
+        setIncomes(data.data.earnings);
     };
-
     useEffect(() => {
         getData();
     }, []);
 
-    console.log(incomes);
+    //console.log(incomes);
 
-    {/*let visiIrasai = irasai.map((irasas) => {
+    let visiIrasai = incomes.map((income) => {
         return (
             <PajamuSekcIrasas
                 key={uuidv4()}
-                id={irasas.id}
-                pavadinimas={irasas.pavadinimas}
-                data={irasas.data}
-                suma={irasas.suma}
+                id={income._id}
+                name={income.name}
+                date={income.date}
+                amount={income.amount}
             />
         );
     });
-let bendraSuma = irasai.reduce((accum, irasas) => accum + irasas.suma, 0);*/}
+
+    let bendraSuma = incomes.reduce((accum, income) => accum + income.amount, 0);
+
     return (
         <>
             <div class="Container BP38-child1">
                 <div class="d-flex justify-content-between P-48">
                     <div className="Roboto-condensed Font-25 mt-1">Pajamos</div>
-                    <div className="Roboto-condensed Font-30">{/*bendraSuma*/}eur</div>
+                    <div className="Roboto-condensed Font-30">{bendraSuma}eur</div>
                 </div>
-                <div className="Scroll">{/*visiIrasai*/}</div>
+                <div className="Scroll">{visiIrasai}</div>
 
                 <Link class="nav-link" to="/pajamu-isplestine">
                     <button type="button" class="Button Roboto-condensed Font-20">
