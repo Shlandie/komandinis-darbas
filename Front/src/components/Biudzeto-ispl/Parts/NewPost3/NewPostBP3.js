@@ -32,7 +32,7 @@ export default function NewPostBP3(props) {
                     <option>Kitos išlaidos</option>
                 </select>
                 {error && category.length <= 0 ? (
-                    <div className="Error-msg">Šis laukelis yra privalomas</div>
+                    <div className="Error-msg pt-1">Šis laukelis yra privalomas</div>
                 ) : (
                     ""
                 )}
@@ -59,21 +59,31 @@ export default function NewPostBP3(props) {
                     <option value='red'>Raudona</option>
                 </select>
                 {error && color.length <= 0 ? (
-                    <div className="Error-msg">Šis laukelis yra privalomas</div>
+                    <div className="Error-msg pt-1">Šis laukelis yra privalomas</div>
                 ) : (
                     ""
                 )}
                 <input
-                    onChange={(e) => setAmountInput(e.target.value)}
+                    onKeyPress={(e) => {
+                        if (e.key === "-" || e.key === "+")
+                            e.preventDefault();
+                    }}
+                    onChange={(e) => {
+                        const regex =
+                            /^(?!00)[0-9]{0,10}(?:\.[0-9]{1,2})?$/;
+                        if (regex.test(e.target.value)) {
+                            setAmountInput(e.target.value);
+                        }
+                    }}
                     type="number"
                     id="amountInput"
                     name="amountInput"
                     value={amountInput}
-                    className="form-control IncomeNewEntry-input F-size-20"
+                    className="BP9selectContainer IncomeNewEntry-input F-size-20"
                     placeholder="Suma"
                 />
                 {error && amountInput.length <= 0 ? (
-                    <div className="Error-msg">Šis laukelis yra privalomas</div>
+                    <div className="Error-msg pt-1">Šis laukelis yra privalomas</div>
                 ) : (
                     ""
                 )}

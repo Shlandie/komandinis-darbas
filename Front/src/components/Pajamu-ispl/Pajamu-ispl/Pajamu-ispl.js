@@ -7,6 +7,8 @@ import Dialog from "../../Delete-popup/Dialog";
 import Navigation from "../../Navigation/Navigation";
 import '../Pajamu-ispl/Pajamu-ispl-grid.css'
 import { Link } from "react-router-dom";
+import moment from 'moment';
+
 function PajamuIspl() {
     const incomeEntries = [
         {
@@ -38,7 +40,7 @@ function PajamuIspl() {
     const [incomes, setIncomes] = useState(incomeEntries);
 
     const [titleInput, setTitleInput] = useState("");
-    const [dateInput, setDateInput] = useState("");
+    const [dateInput, setDateInput] = useState(moment().format("YYYY-MM-DD"));
     const [amountInput, setAmountInput] = useState("");
 
     const [titleInputOnEdit, setTitleInputOnEdit] = useState("");
@@ -107,7 +109,6 @@ function PajamuIspl() {
         if (!editIncome) {
             if (
                 titleInput.length == 0 ||
-                dateInput.length == 0 ||
                 amountInput == 0
             ) {
                 setError(true);
@@ -122,7 +123,7 @@ function PajamuIspl() {
                 setIncomes((oldList) => [...oldList, newIncome]);
                 //console.log(incomes)
                 setTitleInput("");
-                setDateInput("");
+                setDateInput(moment().format("YYYY-MM-DD"));
                 setAmountInput("");
                 setError(false);
             }
@@ -224,10 +225,11 @@ function PajamuIspl() {
                                         value={titleInput}
                                         class="form-control IncomeNewEntry-input F-size-20"
                                         placeholder="Pavadinimas"
+                                        maxlength="20"
                                     />
                                 </div>
                                 {error && titleInput.length <= 0 ? (
-                                    <div className="Error-msg">
+                                    <div className="Error-msg pt-1 ">
                                         Šis laukelis yra privalomas
                                     </div>
                                 ) : (
@@ -238,25 +240,32 @@ function PajamuIspl() {
                                         onChange={(e) =>
                                             setDateInput(e.target.value)
                                         }
+                                        onMouseDown={(e) => {
+                                            e.preventDefault();
+                                            e.target.type = 'date';
+                                        }}
                                         type="date"
                                         id="dateInput"
                                         name="dateInput"
                                         value={dateInput}
+                                        max={moment().format("YYYY-MM-DD")}
+                                        min={moment().subtract(3, "years").format("YYYY-MM-DD")}
                                         class="form-control IncomeNewEntry-input F-size-20"
                                     />
                                 </div>
-                                {error && dateInput.length <= 0 ? (
-                                    <div className="Error-msg">
-                                        Šis laukelis yra privalomas
-                                    </div>
-                                ) : (
-                                    ""
-                                )}
                                 <div class="">
                                     <input
-                                        onChange={(e) =>
-                                            setAmountInput(e.target.value)
-                                        }
+                                        onKeyPress={(e) => {
+                                            if (e.key === "-" || e.key === "+")
+                                                e.preventDefault();
+                                        }}
+                                        onChange={(e) => {
+                                            const regex =
+                                                /^(?!00)[0-9]{0,10}(?:\.[0-9]{1,2})?$/;
+                                            if (regex.test(e.target.value)) {
+                                                setAmountInput(e.target.value);
+                                            }
+                                        }}
                                         type="number"
                                         id="amountInput"
                                         name="amountInput"
@@ -266,7 +275,7 @@ function PajamuIspl() {
                                     />
                                 </div>
                                 {error && amountInput.length <= 0 ? (
-                                    <div className="Error-msg">
+                                    <div className="Error-msg pt-1">
                                         Šis laukelis yra privalomas
                                     </div>
                                 ) : (

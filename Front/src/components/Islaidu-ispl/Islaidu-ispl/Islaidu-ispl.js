@@ -88,7 +88,7 @@ function IslaiduIspl() {
     const [titleInput, setTitleInput] = useState("");
     const [categoryInput, setCategoryInput] = useState(options[0].value);
     //console.log(categoryInput)
-    const [dateInput, setDateInput] = useState("");
+    const [dateInput, setDateInput] = useState(moment().format('YYYY-MM-DD'));
     const [amountInput, setAmountInput] = useState("");
 
     const [titleInputOnEdit, setTitleInputOnEdit] = useState("");
@@ -164,7 +164,6 @@ function IslaiduIspl() {
         if (!editExpence) {
             if (
                 titleInput.length == 0 ||
-                dateInput.length == 0 ||
                 amountInput == 0 ||
                 categoryInput.length == 0
             ) {
@@ -181,7 +180,7 @@ function IslaiduIspl() {
                 setExpences((oldList) => [...oldList, newExpence]);
                 //console.log(expences)
                 setTitleInput("");
-                setDateInput("");
+                setDateInput(moment().format("YYYY-MM-DD"));
                 setAmountInput("");
                 setCategoryInput(options[0].value);
                 setError(false);
@@ -189,7 +188,6 @@ function IslaiduIspl() {
         } else {
             if (
                 titleInputOnEdit.length == 0 ||
-                dateInputOnEdit.length == 0 ||
                 amountInputOnEdit == 0
             ) {
                 setError(true);
@@ -290,8 +288,8 @@ function IslaiduIspl() {
                 {/* ADD ENTRY */}
                 <div className="row gap-2 g-0 gridChild-3">
                     <div className="col py-5 IncomeNewEntry">
-                        <h4 className="Roboto-condensed F-size-25">
-                            Naujas Įrašas
+                        <h4 className="Roboto-condensed F-size-25 mb-3">
+                            Naujas įrašas
                         </h4>
                         <form onSubmit={handleSubmit}>
                             <div class="mb-2">
@@ -344,10 +342,9 @@ function IslaiduIspl() {
                                 <div class="mb-2 me-3">
                                     <input
                                         onKeyPress={(e) => {
-                                            if (e.key === "-")
+                                            if (e.key === "-" || e.key === "+")
                                                 e.preventDefault();
                                         }}
-                                        pattern
                                         onChange={(e) => {
                                             const regex =
                                                 /^(?!00)[0-9]{0,10}(?:\.[0-9]{1,2})?$/;
@@ -371,27 +368,24 @@ function IslaiduIspl() {
                                     )}
                                 </div>
 
-                                <div class="mb-2">
+                                <div class="mb-2 w-100">
                                     <input
                                         onChange={(e) =>
                                             setDateInput(e.target.value)
                                         }
+                                        onMouseDown={(e) => {
+                                            e.preventDefault();
+                                            e.target.type = 'date';
+                                        }}
                                         type="date"
                                         id="dateInput"
                                         name="dateInput"
-                                        value={dateInput || moment().format("YYYY-MM-DD")}
+                                        value={dateInput}
                                         max={moment().format("YYYY-MM-DD")}
                                         min={moment().subtract(3, "years").format("YYYY-MM-DD")}
                                         class="form-control IncomeNewEntry-input F-size-20"
-                                        placeholder="Data"
                                     />
-                                    {error && dateInput.length <= 0 ? (
-                                        <div className="Error-msg pt-1">
-                                            Šis laukelis yra privalomas
-                                        </div>
-                                    ) : (
-                                        ""
-                                    )}
+                                    
                                 </div>
                             </div>
 
