@@ -272,7 +272,7 @@ export default function ListBP9() {
                                         <button
                                             onClick={handleSubmit}
                                             type="submit"
-                                            class="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-blue me-2"
+                                            className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-blue me-2"
                                             data-bs-target="#exampleModalToggle2"
                                             data-bs-toggle="modal"
                                             data-bs-dismiss="modal"
@@ -281,7 +281,7 @@ export default function ListBP9() {
                                         </button>
                                         <button
                                             type="button"
-                                            class="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-red ms-2"
+                                            className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-red ms-2"
                                             data-bs-dismiss="modal"
                                         >
                                             Atšaukti
@@ -310,21 +310,21 @@ export default function ListBP9() {
                                 ></button>
                             </div>
                             <div className="modal-body mb-4">
-                                <div class="success-animation mb-4">
+                                <div className="success-animation mb-4">
                                     <svg
-                                        class="checkmark"
+                                        className="checkmark"
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 52 52"
                                     >
                                         <circle
-                                            class="checkmark__circle"
+                                            className="checkmark__circle"
                                             cx="26"
                                             cy="26"
                                             r="25"
                                             fill="none"
                                         />
                                         <path
-                                            class="checkmark__check"
+                                            className="checkmark__check"
                                             fill="none"
                                             d="M14.1 27.2l7.1 7.2 16.7-16.8"
                                         />

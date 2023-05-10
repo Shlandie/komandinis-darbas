@@ -38,15 +38,15 @@ function PajamuSekc() {
 
     return (
         <>
-            <div class="Container BP38-child1">
-                <div class="d-flex justify-content-between P-48">
+            <div className="Container BP38-child1">
+                <div className="d-flex justify-content-between P-48">
                     <div className="Roboto-condensed Font-25 mt-1">Pajamos</div>
                     <div className="Roboto-condensed Font-30">{bendraSuma}eur</div>
                 </div>
                 <div className="Scroll">{visiIrasai}</div>
 
-                <Link class="nav-link" to="/pajamu-isplestine">
-                    <button type="button" class="Button Roboto-condensed Font-20">
+                <Link className="nav-link" to="/pajamu-isplestine">
+                    <button type="button" className="Button Roboto-condensed Font-20">
                         Išskleisti
                     </button>
                 </Link>

@@ -11,7 +11,7 @@ export default function SearchBP9() {
         <h3 className='BP9-2-heading fs-25'>Paieška</h3>
 
         <select className="BP9selectContainer BP9clrGray" aria-label="Default select example" id="programSelect" name="programSelect" required>
-          <option selected disabled>Kategorija</option>
+          <option defaultValue disabled>Kategorija</option>
           <option>Transportas</option>
           <option>Maistas ir gėrimai</option>
           <option>Pramogos</option>

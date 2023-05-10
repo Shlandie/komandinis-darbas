@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
 import Navigation from "../../Navigation/Navigation";
 import { Link } from "react-router-dom";
+import moment from 'moment';
 
 function IslaiduIspl() {
     const expenceEntries = [
@@ -252,7 +253,7 @@ function IslaiduIspl() {
                             Naujas įrašas
                         </h4>
                         <form onSubmit={handleSubmit}>
-                            <div class="mb-2">
+                            <div className="mb-2">
                                 <input
                                     onChange={(e) =>
                                         setTitleInput(e.target.value)
@@ -262,9 +263,9 @@ function IslaiduIspl() {
                                     id="titleInput"
                                     name="titleInput"
                                     value={titleInput}
-                                    class="form-control IncomeNewEntry-input F-size-20"
+                                    className="form-control IncomeNewEntry-input F-size-20"
                                     placeholder="Pavadinimas"
-                                    maxlength="20"
+                                    maxLength="20"
                                 />
                             </div>
                             {error && titleInput.length <= 0 ? (
@@ -299,7 +300,7 @@ function IslaiduIspl() {
                                 ""
                             )}
                             <div className="d-flex mt-2">
-                                <div class="mb-2 me-3">
+                                <div className="mb-2 me-3">
                                     <input
                                         onKeyPress={(e) => {
                                             if (e.key === "-" || e.key === "+")
@@ -315,7 +316,7 @@ function IslaiduIspl() {
                                         id="amountInput"
                                         name="amountInput"
                                         value={amountInput}
-                                        class="form-control IncomeNewEntry-input F-size-20"
+                                        className="form-control IncomeNewEntry-input F-size-20"
                                         placeholder="Suma"
                                     />
                                     {error && amountInput.length <= 0 ? (
@@ -327,7 +328,7 @@ function IslaiduIspl() {
                                     )}
                                 </div>
 
-                                <div class="mb-2 w-100">
+                                <div className="mb-2 w-100">
                                     <input
                                         onChange={(e) =>
                                             setDateInput(e.target.value)
@@ -342,7 +343,7 @@ function IslaiduIspl() {
                                         value={dateInput}
                                         max={moment().format("YYYY-MM-DD")}
                                         min={moment().subtract(3, "years").format("YYYY-MM-DD")}
-                                        class="form-control IncomeNewEntry-input F-size-20"
+                                        className="form-control IncomeNewEntry-input F-size-20"
                                     />
                                     
                                 </div>
@@ -351,7 +352,7 @@ function IslaiduIspl() {
                             <button
                                 onClick={handleSubmit}
                                 type="button"
-                                class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
+                                className="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
                             >
                                 Pridėti įrašą
                             </button>
@@ -396,7 +397,7 @@ function IslaiduIspl() {
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={handleSubmit}>
-                                    <div class="mb-2">
+                                    <div className="mb-2">
                                         <input
                                             onChange={(e) =>
                                                 setTitleInputOnEdit(
@@ -407,7 +408,7 @@ function IslaiduIspl() {
                                             id="titleInput"
                                             name="titleInput"
                                             value={titleInputOnEdit}
-                                            class="form-control IncomeNewEntry-input F-size-20"
+                                            className="form-control IncomeNewEntry-input F-size-20"
                                             placeholder="Pavadinimas"
                                         />
                                     </div>
@@ -443,7 +444,7 @@ function IslaiduIspl() {
                                         <option>Kitos išlaidos</option>
                                     </select>
                                     <div className="d-flex mt-2">
-                                        <div class="mb-2 me-3">
+                                        <div className="mb-2 me-3">
                                             <input
                                                 onChange={(e) =>
                                                     setAmountInputOnEdit(
@@ -454,7 +455,7 @@ function IslaiduIspl() {
                                                 id="amountInput"
                                                 name="amountInput"
                                                 value={amountInputOnEdit}
-                                                class="form-control IncomeNewEntry-input F-size-20"
+                                                className="form-control IncomeNewEntry-input F-size-20"
                                                 placeholder="Suma"
                                             />
                                         </div>
@@ -477,7 +478,7 @@ function IslaiduIspl() {
                                                 id="dateInput"
                                                 name="dateInput"
                                                 value={dateInputOnEdit}
-                                                class="form-control IncomeNewEntry-input F-size-20"
+                                                className="form-control IncomeNewEntry-input F-size-20"
                                             />
                                         </div>
                                         {error &&
@@ -493,7 +494,7 @@ function IslaiduIspl() {
                                         <button
                                             onClick={handleSubmit}
                                             type="submit"
-                                            class="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-blue me-2"
+                                            className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-blue me-2"
                                             data-bs-target="#exampleModalToggle2"
                                             data-bs-toggle="modal"
                                             data-bs-dismiss="modal"
@@ -502,7 +503,7 @@ function IslaiduIspl() {
                                         </button>
                                         <button
                                             type="button"
-                                            class="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-red ms-2"
+                                            className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-red ms-2"
                                             data-bs-dismiss="modal"
                                         >
                                             Atšaukti
@@ -531,21 +532,21 @@ function IslaiduIspl() {
                                 ></button>
                             </div>
                             <div className="modal-body mb-4">
-                                <div class="success-animation mb-4">
+                                <div className="success-animation mb-4">
                                     <svg
-                                        class="checkmark"
+                                        className="checkmark"
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 52 52"
                                     >
                                         <circle
-                                            class="checkmark__circle"
+                                            className="checkmark__circle"
                                             cx="26"
                                             cy="26"
                                             r="25"
                                             fill="none"
                                         />
                                         <path
-                                            class="checkmark__check"
+                                            className="checkmark__check"
                                             fill="none"
                                             d="M14.1 27.2l7.1 7.2 16.7-16.8"
                                         />
