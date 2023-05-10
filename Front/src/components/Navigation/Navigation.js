@@ -11,10 +11,10 @@ function Navigation() {
                 <h2 className="navbar-brand mt-2 F-size-25 Roboto-condensed">campl</h2> 
             </Link>
             <div className="d-flex justify-content-end nameLogoutContainer">
-                <div class="Roboto-condensed F-size-25 Nav-greeting">
+                <div className="Roboto-condensed F-size-25 Nav-greeting">
                     Sveiki, Vardas!
                 </div>
-                <Link class="nav-link" to="/LoginPage">
+                <Link className="nav-link" to="/LoginPage">
                     <button className="btn Nav-logout">< RxExit /></button>
                 </Link>
             </div>

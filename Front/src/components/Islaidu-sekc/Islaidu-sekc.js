@@ -33,7 +33,7 @@ function IslaiduSekc() {
             </div>
           </div>
         </div>
-        <Link class="nav-link" to="/islaidu-isplestine">
+        <Link className="nav-link" to="/islaidu-isplestine">
           <button type="button" className="expenses-extend-button">
             Išskleisti
           </button>
@@ -43,13 +43,13 @@ function IslaiduSekc() {
 
       <form className="expences-addition">
         <div className="form-group main-form-name">
-          <input type="text" class="form-control" id="expence-name" placeholder="Pavadinimas" />
+          <input type="text" className="form-control" id="expence-name" placeholder="Pavadinimas" />
         </div>
 
         <div >
 
           <select className="form-control" id="expence-category" >
-            <option disabled selected>Kategorija</option>
+            <option disabled defaultValue>Kategorija</option>
             <option>Transportas</option>
             <option>Maistas ir gėrimai</option>
             <option>Pramogos</option>

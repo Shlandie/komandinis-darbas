@@ -17,7 +17,7 @@ function HomePage() {
     return (
         <>
             <div>
-                <div class="BP38mainGridDesign">
+                <div className="BP38mainGridDesign">
                     <Navigation />
                     <PajamuSekc />
                     <Ratas />

@@ -8,7 +8,7 @@ export default function BiudzetoSekc() {
         <div className="budget-container BP38-child4">
             <div className="heading fs-25">Biudžetas</div>
             <BiudzetoSekcIrasas />
-            <Link class="nav-link" to="/biudzeto-isplestine">
+            <Link className="nav-link" to="/biudzeto-isplestine">
                 <button className="button button-fs fs-20 budget-main-btn">
                     Išskleisti
                 </button>

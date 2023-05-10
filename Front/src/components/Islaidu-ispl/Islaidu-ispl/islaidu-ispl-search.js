@@ -99,7 +99,7 @@ function ExpenceSearchBar(props) {
         value={categoryInput}
         required
       >
-        <option selected disabled>Pagal kategoriją</option>
+        <option defaultValue disabled>Pagal kategoriją</option>
         <option value="Transportas">Transportas</option>
         <option value="Maistas">Maistas</option>
         <option value="Pramogos">Pramogos</option>

@@ -167,15 +167,15 @@ function PajamuIspl() {
                             Paieška
                         </h4>
                         <form>
-                            <div class="">
+                            <div className="">
                                 <input
                                     type="date"
-                                    class="form-control IncomeNewEntry-input F-size-20"
+                                    className="form-control IncomeNewEntry-input F-size-20"
                                 />
                             </div>
                             <button
                                 type="submit"
-                                class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
+                                className="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
                             >
                                 Ieškoti
                             </button>
@@ -190,7 +190,7 @@ function PajamuIspl() {
                                 Naujas Įrašas
                             </h4>
                             <form onSubmit={handleSubmit}>
-                                <div class="">
+                                <div className="">
                                     <input
                                         onChange={(e) =>
                                             setTitleInput(e.target.value)
@@ -199,9 +199,9 @@ function PajamuIspl() {
                                         id="titleInput"
                                         name="titleInput"
                                         value={titleInput}
-                                        class="form-control IncomeNewEntry-input F-size-20"
+                                        className="form-control IncomeNewEntry-input F-size-20"
                                         placeholder="Pavadinimas"
-                                        maxlength="20"
+                                        maxLength="20"
                                     />
                                 </div>
                                 {error && titleInput.length <= 0 ? (
@@ -211,7 +211,7 @@ function PajamuIspl() {
                                 ) : (
                                     ""
                                 )}
-                                <div class="">
+                                <div className="">
                                     <input
                                         onChange={(e) =>
                                             setDateInput(e.target.value)
@@ -226,10 +226,10 @@ function PajamuIspl() {
                                         value={dateInput}
                                         max={moment().format("YYYY-MM-DD")}
                                         min={moment().subtract(3, "years").format("YYYY-MM-DD")}
-                                        class="form-control IncomeNewEntry-input F-size-20"
+                                        className="form-control IncomeNewEntry-input F-size-20"
                                     />
                                 </div>
-                                <div class="">
+                                <div className="">
                                     <input
                                         onKeyPress={(e) => {
                                             if (e.key === "-" || e.key === "+")
@@ -246,7 +246,7 @@ function PajamuIspl() {
                                         id="amountInput"
                                         name="amountInput"
                                         value={amountInput}
-                                        class="form-control IncomeNewEntry-input F-size-20"
+                                        className="form-control IncomeNewEntry-input F-size-20"
                                         placeholder="Suma"
                                     />
                                 </div>
@@ -260,7 +260,7 @@ function PajamuIspl() {
                                 <button
                                     onClick={handleSubmit}
                                     type="submit"
-                                    class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
+                                    className="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
                                 >
                                     Pridėti irašą
                                 </button>
@@ -305,7 +305,7 @@ function PajamuIspl() {
                             </div>
                             <div className="modal-body">
                                 <form onSubmit={handleSubmit}>
-                                    <div class="">
+                                    <div className="">
                                         <input
                                             onChange={(e) =>
                                                 setTitleInputOnEdit(
@@ -316,7 +316,7 @@ function PajamuIspl() {
                                             id="titleInput"
                                             name="titleInput"
                                             value={titleInputOnEdit}
-                                            class="form-control IncomeNewEntry-input F-size-20"
+                                            className="form-control IncomeNewEntry-input F-size-20"
                                             placeholder="Pavadinimas"
                                         />
                                     </div>
@@ -327,7 +327,7 @@ function PajamuIspl() {
                                     ) : (
                                         ""
                                     )}
-                                    <div class="">
+                                    <div className="">
                                         <input
                                             onChange={(e) =>
                                                 setDateInputOnEdit(
@@ -338,7 +338,7 @@ function PajamuIspl() {
                                             id="dateInput"
                                             name="dateInput"
                                             value={dateInputOnEdit}
-                                            class="form-control IncomeNewEntry-input F-size-20"
+                                            className="form-control IncomeNewEntry-input F-size-20"
                                         />
                                     </div>
                                     {error && dateInputOnEdit.length <= 0 ? (
@@ -348,7 +348,7 @@ function PajamuIspl() {
                                     ) : (
                                         ""
                                     )}
-                                    <div class="">
+                                    <div className="">
                                         <input
                                             onChange={(e) =>
                                                 setAmountInputOnEdit(
@@ -359,7 +359,7 @@ function PajamuIspl() {
                                             id="amountInput"
                                             name="amountInput"
                                             value={amountInputOnEdit}
-                                            class="form-control IncomeNewEntry-input F-size-20"
+                                            className="form-control IncomeNewEntry-input F-size-20"
                                             placeholder="Suma"
                                         />
                                     </div>
@@ -374,7 +374,7 @@ function PajamuIspl() {
                                         <button
                                             onClick={handleSubmit}
                                             type="submit"
-                                            class="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-blue me-2"
+                                            className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-blue me-2"
                                             data-bs-target="#exampleModalToggle2"
                                             data-bs-toggle="modal"
                                             data-bs-dismiss="modal"
@@ -383,7 +383,7 @@ function PajamuIspl() {
                                         </button>
                                         <button
                                             type="button"
-                                            class="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-red ms-2"
+                                            className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-red ms-2"
                                             data-bs-dismiss="modal"
                                         >
                                             Atšaukti
@@ -412,21 +412,21 @@ function PajamuIspl() {
                                 ></button>
                             </div>
                             <div className="modal-body mb-4">
-                                <div class="success-animation mb-4">
+                                <div className="success-animation mb-4">
                                     <svg
-                                        class="checkmark"
+                                        className="checkmark"
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 52 52"
                                     >
                                         <circle
-                                            class="checkmark__circle"
+                                            className="checkmark__circle"
                                             cx="26"
                                             cy="26"
                                             r="25"
                                             fill="none"
                                         />
                                         <path
-                                            class="checkmark__check"
+                                            className="checkmark__check"
                                             fill="none"
                                             d="M14.1 27.2l7.1 7.2 16.7-16.8"
                                         />
