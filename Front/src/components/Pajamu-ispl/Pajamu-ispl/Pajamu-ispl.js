@@ -7,6 +7,7 @@ import Dialog from "../../Delete-popup/Dialog";
 import Navigation from "../../Navigation/Navigation";
 import '../Pajamu-ispl/Pajamu-ispl-grid.css'
 import { Link } from "react-router-dom";
+import moment from 'moment';
 
 const url = "http://localhost:4000/api/v1/incomes";
 
@@ -14,7 +15,7 @@ function PajamuIspl() {
     const [incomes, setIncomes] = useState([]);
 
     const [titleInput, setTitleInput] = useState("");
-    const [dateInput, setDateInput] = useState("");
+    const [dateInput, setDateInput] = useState(moment().format("YYYY-MM-DD"));
     const [amountInput, setAmountInput] = useState("");
 
     const [titleInputOnEdit, setTitleInputOnEdit] = useState("");
@@ -92,7 +93,6 @@ function PajamuIspl() {
         if (!editIncome) {
             if (
                 titleInput.length == 0 ||
-                dateInput.length == 0 ||
                 amountInput == 0
             ) {
                 setError(true);
@@ -106,7 +106,7 @@ function PajamuIspl() {
                 setIncomes((oldList) => [...oldList, newIncome]);
                 //console.log(incomes)
                 setTitleInput("");
-                setDateInput("");
+                setDateInput(moment().format("YYYY-MM-DD"));
                 setAmountInput("");
                 setError(false);
             }
@@ -183,80 +183,88 @@ function PajamuIspl() {
                     </div>
                 </div>
 
-                {/* ADD ENTRY */}
-                <div className="row gap-2 g-0 gridChild-3">
-                    <div className="col py-5 IncomeNewEntry">
-                        <h4 className="Roboto-condensed F-size-25 IncomeNewEntry-title">
-                            Naujas Įrašas
-                        </h4>
-                        <form onSubmit={handleSubmit}>
-                            <div class="">
-                                <input
-                                    onChange={(e) =>
-                                        setTitleInput(e.target.value)
-                                    }
-                                    type="text"
-                                    id="titleInput"
-                                    name="titleInput"
-                                    value={titleInput}
-                                    class="form-control IncomeNewEntry-input F-size-20"
-                                    placeholder="Pavadinimas"
-                                />
-                            </div>
-                            {error && titleInput.length <= 0 ? (
-                                <div className="Error-msg">
-                                    Šis laukelis yra privalomas
+                    {/* ADD ENTRY */}
+                    <div className="row gap-2 g-0 gridChild-3">
+                        <div className="col py-5 IncomeNewEntry">
+                            <h4 className="Roboto-condensed F-size-25 IncomeNewEntry-title">
+                                Naujas Įrašas
+                            </h4>
+                            <form onSubmit={handleSubmit}>
+                                <div class="">
+                                    <input
+                                        onChange={(e) =>
+                                            setTitleInput(e.target.value)
+                                        }
+                                        type="text"
+                                        id="titleInput"
+                                        name="titleInput"
+                                        value={titleInput}
+                                        class="form-control IncomeNewEntry-input F-size-20"
+                                        placeholder="Pavadinimas"
+                                        maxlength="20"
+                                    />
                                 </div>
-                            ) : (
-                                ""
-                            )}
-                            <div class="">
-                                <input
-                                    onChange={(e) =>
-                                        setDateInput(e.target.value)
-                                    }
-                                    type="date"
-                                    id="dateInput"
-                                    name="dateInput"
-                                    value={dateInput}
-                                    class="form-control IncomeNewEntry-input F-size-20"
-                                />
-                            </div>
-                            {error && dateInput.length <= 0 ? (
-                                <div className="Error-msg">
-                                    Šis laukelis yra privalomas
+                                {error && titleInput.length <= 0 ? (
+                                    <div className="Error-msg pt-1 ">
+                                        Šis laukelis yra privalomas
+                                    </div>
+                                ) : (
+                                    ""
+                                )}
+                                <div class="">
+                                    <input
+                                        onChange={(e) =>
+                                            setDateInput(e.target.value)
+                                        }
+                                        onMouseDown={(e) => {
+                                            e.preventDefault();
+                                            e.target.type = 'date';
+                                        }}
+                                        type="date"
+                                        id="dateInput"
+                                        name="dateInput"
+                                        value={dateInput}
+                                        max={moment().format("YYYY-MM-DD")}
+                                        min={moment().subtract(3, "years").format("YYYY-MM-DD")}
+                                        class="form-control IncomeNewEntry-input F-size-20"
+                                    />
                                 </div>
-                            ) : (
-                                ""
-                            )}
-                            <div class="">
-                                <input
-                                    onChange={(e) =>
-                                        setAmountInput(e.target.value)
-                                    }
-                                    type="number"
-                                    id="amountInput"
-                                    name="amountInput"
-                                    value={amountInput}
-                                    class="form-control IncomeNewEntry-input F-size-20"
-                                    placeholder="Suma"
-                                />
-                            </div>
-                            {error && amountInput.length <= 0 ? (
-                                <div className="Error-msg">
-                                    Šis laukelis yra privalomas
+                                <div class="">
+                                    <input
+                                        onKeyPress={(e) => {
+                                            if (e.key === "-" || e.key === "+")
+                                                e.preventDefault();
+                                        }}
+                                        onChange={(e) => {
+                                            const regex =
+                                                /^(?!00)[0-9]{0,10}(?:\.[0-9]{1,2})?$/;
+                                            if (regex.test(e.target.value)) {
+                                                setAmountInput(e.target.value);
+                                            }
+                                        }}
+                                        type="number"
+                                        id="amountInput"
+                                        name="amountInput"
+                                        value={amountInput}
+                                        class="form-control IncomeNewEntry-input F-size-20"
+                                        placeholder="Suma"
+                                    />
                                 </div>
-                            ) : (
-                                ""
-                            )}
-                            <button
-                                onClick={handleSubmit}
-                                type="submit"
-                                class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
-                            >
-                                Pridėti įrašą
-                            </button>
-                        </form>
+                                {error && amountInput.length <= 0 ? (
+                                    <div className="Error-msg pt-1">
+                                        Šis laukelis yra privalomas
+                                    </div>
+                                ) : (
+                                    ""
+                                )}
+                                <button
+                                    onClick={handleSubmit}
+                                    type="submit"
+                                    class="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"
+                                >
+                                    Pridėti irašą
+                                </button>
+                            </form>
                     </div>
                 </div>
                 {/* ENTRIES */}
