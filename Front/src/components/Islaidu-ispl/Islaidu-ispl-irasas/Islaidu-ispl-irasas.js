@@ -30,7 +30,7 @@ function IslaiduIsplIrasas(props) {
                 <div className="d-flex justify-content-between IncomeEntries-buttons">
                     <button
                         onClick={() => editExpence(id)}
-                        className="btn Crud-btn Edit-btn Bg-light-blue"
+                        className="btn Crud-btn Edit-btn Bg-light-blue Icon"
                         data-bs-toggle="modal"
                         role="button"
                         href="#exampleModalToggle"
@@ -39,7 +39,7 @@ function IslaiduIsplIrasas(props) {
                     </button>
                     <button
                         onClick={() => deleteExpence(id)}
-                        className="btn Crud-btn Del-btn Bg-light-red"
+                        className="btn Crud-btn Del-btn Bg-light-red Icon"
                     >
                         <BsTrash />
                     </button>

@@ -374,7 +374,7 @@ function PajamuIspl() {
                                         <button
                                             onClick={handleSubmit}
                                             type="submit"
-                                            className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-blue me-2"
+                                            className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-blue Edit-btn me-2"
                                             data-bs-target="#exampleModalToggle2"
                                             data-bs-toggle="modal"
                                             data-bs-dismiss="modal"
@@ -383,7 +383,7 @@ function PajamuIspl() {
                                         </button>
                                         <button
                                             type="button"
-                                            className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-red ms-2"
+                                            className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-red Del-btn ms-2"
                                             data-bs-dismiss="modal"
                                         >
                                             Atšaukti
