@@ -1,38 +1,32 @@
 import React from "react";
+import ExpenseItem from "../Islaidu-sekc/Islaidu-sekc-irasas";
 import './Islaidu-sekc.css';
 import { Link } from "react-router-dom";
+import { useState, useRef } from "react";
 
-function IslaiduSekc() {
+function IslaiduSekc(props) {
+  const { items } = props;
+  if (!items || items.length === 0) {
+    return <div>No expenses found.</div>;
+  }
   return (
     <div className="Expenses-section BP38-child3" >
       <div className="main-expenses">
-        <h5 className="d-flex justify-content-between">
-          <div className="main-expence-header">Išlaidos</div>
-          <div className="main-expence-sum">120eur</div>
-        </h5>
-        <div className="main-expence-box">
-          <div className="d-flex justify-content-between mt-1 mb-1 P-20">
-            <div className="main-expence-name">MAXIMA<small className="fw-light main-expence-category">Maistas</small></div>
-            <div>
-              <span className="d-flex  justify-content-end  main-expence-amount">- 30 eur</span>
-              <small className="fw-light main-expence-date">2023-03-10</small>
-            </div>
-          </div>
-          <div className="d-flex justify-content-between mt-1 mb-1 P-20">
-            <div className="main-expence-name">MAXIMA<small className="fw-light main-expence-category">Maistas</small></div>
-            <div>
-              <span className="d-flex  justify-content-end  main-expence-amount">- 30 eur</span>
-              <small className="fw-light main-expence-date">2023-03-10</small>
-            </div>
-          </div>
-          <div className="d-flex justify-content-between mt-1 mb-1 P-20">
-            <div className="main-expence-name">MAXIMA<small className="fw-light main-expence-category">Maistas</small></div>
-            <div>
-              <span className="d-flex  justify-content-end  main-expence-amount ">- 30 eur</span>
-              <small className="fw-light main-expence-date">2023-03-10</small>
-            </div>
-          </div>
-        </div>
+      <h5 className="d-flex justify-content-between">
+        <div className="main-expence-header">Išlaidos</div>
+        <div className="main-expence-sum">120eur</div>
+      </h5>
+      <div className="main-expence-box">
+        {items.map((item) => (
+          <ExpenseItem
+            key={item.id}
+            title={item.expenceTitle}
+            category={item.expenceCategory}
+            date={item.expenceDate}
+            amount={item.expenceAmount}
+          />
+        ))}
+      </div>
         <Link class="nav-link" to="/islaidu-isplestine">
           <button type="button" className="expenses-extend-button">
             Išskleisti

@@ -3,6 +3,7 @@ import IslaiduIsplIrasas from "../Islaidu-ispl-irasas/Islaidu-ispl-irasas";
 import "../Islaidu-ispl/Islaidu-ispl.css";
 import "../Islaidu-ispl/Islaidu-ispl-grid.css";
 import ExpenceSearchBar from '../Islaidu-ispl/islaidu-ispl-search';
+import IslaiduSekc from "../../Islaidu-sekc/Islaidu-sekc";
 import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
@@ -47,6 +48,9 @@ function IslaiduIspl() {
             expenceAmount: 25,
         },
     ];
+     
+   
+
 
     const options = [
         {
@@ -82,7 +86,7 @@ function IslaiduIspl() {
             text: "Kitos išlaidos",
         },
     ];
-
+    
     const [filteredExpences, setFilteredExpences] = useState([]);
     const [expences, setExpences] = useState(expenceEntries);
 
@@ -246,6 +250,8 @@ function IslaiduIspl() {
 
                 {/* SEARCH */}
                 <ExpenceSearchBar expences={expenceEntries}  onFilterExpences={handleFilterExpences} />
+                <IslaiduSekc items={expenceEntries} />
+                
 
                 {/* ADD ENTRY */}
                 <div className="row gap-2 g-0 gridChild-3">
