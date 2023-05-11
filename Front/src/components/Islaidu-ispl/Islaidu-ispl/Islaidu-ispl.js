@@ -102,6 +102,7 @@ function IslaiduIspl() {
     const [updateExpence, setUpdateExpence] = useState({});
 
     const [error, setError] = useState(false);
+    const [errorOnEdit, setErrorOnEdit] = useState(false);
 
     const [dialog, setDialog] = useState({
         message: "",
@@ -115,6 +116,10 @@ function IslaiduIspl() {
             isLoading,
         });
     };
+
+    const handleDismiss = () => {
+        setEditExpence(false);
+    }
 
     const handleFilterExpences = (filtered) => {
         setFilteredExpences(filtered);
@@ -194,16 +199,16 @@ function IslaiduIspl() {
         } else {
             if (
                 titleInputOnEdit.length == 0 ||
-                amountInputOnEdit == 0
+                amountInputOnEdit.length == 0
             ) {
-                setError(true);
+                setErrorOnEdit(true);
             } else {
                 handleUpdateExpence(updateExpence);
                 setTitleInputOnEdit("");
                 setDateInputOnEdit("");
                 setCategoryInputOnEdit("");
                 setAmountInputOnEdit("");
-                setError(false);
+                setErrorOnEdit(false);
                 setEditExpence(false);
             }
         }
@@ -389,6 +394,7 @@ function IslaiduIspl() {
                                     Redaguoti įrašą
                                 </h5>
                                 <button
+                                    onClick={handleDismiss}
                                     type="button"
                                     className="btn-close"
                                     data-bs-dismiss="modal"
@@ -399,28 +405,32 @@ function IslaiduIspl() {
                                 <form onSubmit={handleSubmit}>
                                     <div className="mb-2">
                                         <input
-                                            onChange={(e) =>
+                                            onChange={(e) => {
                                                 setTitleInputOnEdit(
                                                     e.target.value
+                                                    
                                                 )
                                             }
+                                            }
+                                            required
                                             type="text"
                                             id="titleInput"
                                             name="titleInput"
                                             value={titleInputOnEdit}
                                             className="form-control IncomeNewEntry-input F-size-20"
                                             placeholder="Pavadinimas"
+                                            maxLength="20"
                                         />
                                     </div>
-                                    {error && titleInputOnEdit.length <= 0 ? (
-                                        <div className="Error-msg">
+                                    {errorOnEdit && titleInputOnEdit.length <= 0 ? (
+                                        <div className="Error-msg pt-1">
                                             Šis laukelis yra privalomas
                                         </div>
                                     ) : (
                                         ""
                                     )}
                                     <select
-                                        className="BP9selectContainer IncomeNewEntry-input F-size-20"
+                                        className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
                                         aria-label="Default select example"
                                         id="programSelect"
                                         name="programSelect"
@@ -446,11 +456,16 @@ function IslaiduIspl() {
                                     <div className="d-flex mt-2">
                                         <div className="mb-2 me-3">
                                             <input
-                                                onChange={(e) =>
-                                                    setAmountInputOnEdit(
-                                                        e.target.value
-                                                    )
-                                                }
+                                                onKeyPress={(e) => {
+                                                    if (e.key === "-" || e.key === "+")
+                                                        e.preventDefault();
+                                                }}
+                                                onChange={(e) => {
+                                                    const regex = /^[0-9]{0,10}(\.[0-9]{0,2})?$/;
+                                                    if (regex.test(e.target.value)) {
+                                                        setAmountInputOnEdit(e.target.value);
+                                                    }
+                                                }}
                                                 type="number"
                                                 id="amountInput"
                                                 name="amountInput"
@@ -458,15 +473,16 @@ function IslaiduIspl() {
                                                 className="form-control IncomeNewEntry-input F-size-20"
                                                 placeholder="Suma"
                                             />
-                                        </div>
-                                        {error &&
+                                        
+                                        {errorOnEdit &&
                                             amountInputOnEdit.length <= 0 ? (
-                                            <div className="Error-msg">
+                                            <div className="Error-msg w-100 pt-1">
                                                 Šis laukelis yra privalomas
                                             </div>
                                         ) : (
                                             ""
                                         )}
+                                        </div>
                                         <div>
                                             <input
                                                 onChange={(e) =>
@@ -479,29 +495,23 @@ function IslaiduIspl() {
                                                 name="dateInput"
                                                 value={dateInputOnEdit}
                                                 className="form-control IncomeNewEntry-input F-size-20"
+                                                max={moment().format("YYYY-MM-DD")}
+                                                min={moment().subtract(3, "years").format("YYYY-MM-DD")}
                                             />
                                         </div>
-                                        {error &&
-                                            dateInputOnEdit.length <= 0 ? (
-                                            <div className="Error-msg">
-                                                Šis laukelis yra privalomas
-                                            </div>
-                                        ) : (
-                                            ""
-                                        )}
                                     </div>
                                     <div className="d-flex mb-3 mt-2">
                                         <button
                                             onClick={handleSubmit}
                                             type="submit"
                                             className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-blue Edit-btn me-2"
-                                            data-bs-target="#exampleModalToggle2"
-                                            data-bs-toggle="modal"
-                                            data-bs-dismiss="modal"
+                                            data-bs-target={titleInputOnEdit.length <= 0 || amountInputOnEdit.length <= 0 ? '' : "#exampleModalToggle2" }
+                                            data-bs-toggle={titleInputOnEdit.length <= 0 || amountInputOnEdit.length <= 0 ? '' : 'modal'}
                                         >
                                             Patvirtinti
                                         </button>
                                         <button
+                                            onClick={handleDismiss}
                                             type="button"
                                             className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-red Del-btn ms-2"
                                             data-bs-dismiss="modal"
