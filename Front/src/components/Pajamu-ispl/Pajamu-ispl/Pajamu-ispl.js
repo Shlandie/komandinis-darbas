@@ -24,7 +24,9 @@ function PajamuIspl() {
 
     const [editIncome, setEditIncome] = useState(false);
     const [updateIncome, setUpdateIncome] = useState({});
+
     const [error, setError] = useState(false);
+
     const [dialog, setDialog] = useState({
         message: "",
         isLoading: false,

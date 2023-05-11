@@ -18,7 +18,7 @@ export default function ListBP9() {
         },
         {
             id: 2,
-            budgetCategory: "Maistas",
+            budgetCategory: "Maistas ir gėrimai",
             budgetAmount: 800,
             budgetColor: "green",
         },
@@ -43,6 +43,7 @@ export default function ListBP9() {
     const [editBudget, setEditBudget] = useState(false);
     const [updateBudget, setUpdateBudget] = useState({});
     const [error, setError] = useState(false);
+    const [errorOnEdit, setErrorOnEdit] = useState(false);
     const [dialog, setDialog] = useState({
         message: "",
         isLoading: false,
@@ -55,6 +56,10 @@ export default function ListBP9() {
             isLoading,
         });
     };
+
+    const handleDismiss = () => {
+        setEditExpence(false);
+    }
 
     const handleDeleteBudget = (id) => {
         handleDialog("Ar tikrai norite ištrinti?", true);
@@ -119,17 +124,15 @@ export default function ListBP9() {
             }
         } else {
             if (
-                categoryOnEdit.length == 0 ||
-                colorOnEdit.length == 0 ||
                 amountInputOnEdit == 0
             ) {
-                setError(true);
+                setErrorOnEdit(true);
             } else {
                 handleUpdateBudget(updateBudget);
                 setCategoryOnEdit("");
                 setColorOnEdit("");
                 setAmountInputOnEdit("");
-                setError(false);
+                setErrorOnEdit(false);
                 setEditBudget(false);
             }
         }
@@ -251,9 +254,16 @@ export default function ListBP9() {
                                         <option value="red">Raudona</option>
                                     </select>
                                     <input
-                                        onChange={(e) =>
-                                            setAmountInputOnEdit(e.target.value)
-                                        }
+                                        onKeyPress={(e) => {
+                                            if (e.key === "-" || e.key === "+")
+                                                    e.preventDefault();
+                                        }}
+                                        onChange={(e) => {
+                                            const regex = /^[0-9]{0,10}(\.[0-9]{0,2})?$/;
+                                            if (regex.test(e.target.value)) {
+                                                setAmountInputOnEdit(e.target.value);
+                                            }
+                                        }}
                                         type="number"
                                         id="amountInput"
                                         name="amountInput"
@@ -261,8 +271,8 @@ export default function ListBP9() {
                                         className="form-control IncomeNewEntry-input F-size-20"
                                         placeholder="Suma"
                                     />
-                                    {error && amountInputOnEdit.length <= 0 ? (
-                                        <div className="Error-msg">
+                                    {errorOnEdit && amountInputOnEdit.length <= 0 ? (
+                                        <div className="Error-msg pt-1">
                                             Šis laukelis yra privalomas
                                         </div>
                                     ) : (
@@ -273,13 +283,13 @@ export default function ListBP9() {
                                             onClick={handleSubmit}
                                             type="submit"
                                             className="btn F-size-20 Roboto-condensed Main-btn3 BP9list-btnBlue me-2"
-                                            data-bs-target="#exampleModalToggle2"
-                                            data-bs-toggle="modal"
-                                            data-bs-dismiss="modal"
+                                            data-bs-target={amountInputOnEdit.length <= 0 ? '' : "#exampleModalToggle2" }
+                                            data-bs-toggle={amountInputOnEdit.length <= 0 ? '' : 'modal'}
                                         >
                                             Patvirtinti
                                         </button>
                                         <button
+                                            onClick={handleDismiss}
                                             type="button"
                                             className="btn F-size-20 Roboto-condensed Main-btn3 BP9list-btnRed ms-2"
                                             data-bs-dismiss="modal"
