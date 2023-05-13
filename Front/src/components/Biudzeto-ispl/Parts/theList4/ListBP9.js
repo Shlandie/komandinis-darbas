@@ -58,7 +58,7 @@ export default function ListBP9() {
     };
 
     const handleDismiss = () => {
-        setEditExpence(false);
+        //setEditExpence(false);
     }
 
     const handleDeleteBudget = (id) => {
