@@ -2,11 +2,12 @@ import React from "react";
 import "./ListBP9.css";
 import "../../BP9global.css";
 import ExpenseBoxesBP9 from "./ExpenseBoxesBP9/ExpenseBoxesBP9";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../../Delete-popup/Dialog";
 import NewPostBP3 from "../NewPost3/NewPostBP3";
 import { Link } from "react-router-dom";
+const url = "http://localhost:4000/api/v1/budget";
 
 export default function ListBP9() {
     const budgetEntries = [
@@ -58,7 +59,7 @@ export default function ListBP9() {
     };
 
     const handleDismiss = () => {
-        setEditExpence(false);
+        // setEditExpence(false);
     }
 
     const handleDeleteBudget = (id) => {
