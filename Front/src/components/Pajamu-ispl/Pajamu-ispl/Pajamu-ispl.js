@@ -42,6 +42,15 @@ function PajamuIspl() {
         getData();
     }, []);
 
+    const deleteIncomeBackEnd = async (id) =>{
+        const remove = await fetch(url + '/' + id, {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json'
+            },
+        });
+    };
+
     const idProductRef = useRef();
     const handleDialog = (message, isLoading) => {
         setDialog({
@@ -57,9 +66,7 @@ function PajamuIspl() {
 
     const areUSureDelete = (choose) => {
         if (choose) {
-            setIncomes(
-                incomes.filter((income) => income._id !== idProductRef.current)
-            );
+            deleteIncomeBackEnd(idProductRef.current);
             handleDialog("", false);
         } else {
             handleDialog("", false);
