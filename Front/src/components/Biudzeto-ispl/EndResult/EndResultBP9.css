@@ -40,6 +40,13 @@ body {
     grid-column: 6 / 13;
 }
 
+.BP9List-btnContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 35%;
+    position: relative;
+    top: 2px;
+}
 .BP9-btnX:active, .Close-btn:active {
     border: 1px solid transparent !important;
     box-shadow: 0px 0px 0px 2px black;
@@ -87,6 +94,13 @@ body {
 
     .BP9-btnX, .Close-btn {
         top: -410px !important;
+    }
+    .BP9List-btnContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 35%;
+        position: relative;
+        top: 2px;
     }
 }
 
@@ -153,5 +167,12 @@ body {
         width: 50%;
         font-size: 22px !important;
         line-height: 1em;
+    }
+    .BP9List-btnContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 35%;
+        position: relative;
+        top: 3px;
     }
 }

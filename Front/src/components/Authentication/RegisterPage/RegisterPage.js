@@ -27,7 +27,7 @@ function RegisterPage() {
         <input type="password" id="password2" placeholder='Confirm Password' className='FormButton ps-4 mb-4'></input>
 
         <Link to='/'>
-          <button type='button' className='FormButton FormButtonColor'>Signup</button>
+          <button type='button' className='FormButton FormButtonColor'>Sign up</button>
         </Link>
       </form>
     </div>
