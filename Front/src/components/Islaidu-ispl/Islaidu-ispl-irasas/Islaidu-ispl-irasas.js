@@ -3,7 +3,7 @@ import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 
 function IslaiduIsplIrasas(props) {
-    let { id, title, category, date, amount, deleteExpence, editExpence } =
+    let { id, title, category, date, amount, deleteExpense, editExpense } =
         props;
     return (
         <>
@@ -29,7 +29,7 @@ function IslaiduIsplIrasas(props) {
 
                 <div className="d-flex justify-content-between IncomeEntries-buttons">
                     <button
-                        onClick={() => editExpence(id)}
+                        onClick={() => editExpense(id)}
                         className="btn Crud-btn Edit-btn Bg-light-blue Icon"
                         data-bs-toggle="modal"
                         role="button"
@@ -38,7 +38,7 @@ function IslaiduIsplIrasas(props) {
                         <FiEdit />
                     </button>
                     <button
-                        onClick={() => deleteExpence(id)}
+                        onClick={() => deleteExpense(id)}
                         className="btn Crud-btn Del-btn Bg-light-red Icon"
                     >
                         <BsTrash />

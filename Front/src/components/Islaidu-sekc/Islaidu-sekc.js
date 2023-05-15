@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function IslaiduSekc() {
   return (
-    <div className="Expenses-section BP38-child3" >
+    <div className="Expenses-section BP38-child3">
       <div className="main-expenses">
         <h5 className="d-flex justify-content-between">
           <div className="main-expence-header">Išlaidos</div>
