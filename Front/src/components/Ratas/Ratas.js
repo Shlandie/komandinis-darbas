@@ -101,7 +101,7 @@ const Ratas = () => {
 
 
     useEffect(() => {
-        getData(`http://localhost:5000/expenses/${menesis}`);
+        getData(`http://localhost:4000/expenses/${menesis}`);
         console.log(menesis);
     }, [menesis]);
 

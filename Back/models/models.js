@@ -83,8 +83,37 @@ const earningsSchema = new mongoose.Schema({
 
 })
 
+const budgetSchema = new mongoose.Schema({
+    category: {
+        type: String,
+        minlength: 1,
+        maxlength: 40,
+        required: true
+    },
+
+    color: {
+        type: String,
+        minlength: 1,
+        maxlength: 40,
+        required: true
+    },
+
+    amount: {
+        type: Number,
+        min: 0,
+        max: 1000000,
+        required: true
+    },
+
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }
+});
+
 const User = new mongoose.model("User", userSchema);
 const Expense = new mongoose.model("Expense", expenseSchema);
 const Earning = new mongoose.model("Earning", earningsSchema);
+const Budget = new mongoose.model("Budget", budgetSchema);
 
-module.exports = { User, Expense, Earning };
+module.exports = { User, Expense, Earning, Budget };

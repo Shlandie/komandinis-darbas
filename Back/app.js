@@ -7,6 +7,7 @@ const { User, Expense, Earning } = require("./models/models");
 const mainRouter = require("./routes/mainRoutes");
 const incomesRouter = require("./routes/incomeRoutes");
 const expencesRouter = require("./routes/expenceRoutes");
+const budgetRouter = require("./routes/budgetRoutes");
 
 app.use(express.json());
 
@@ -24,13 +25,15 @@ app.get("/expenses/:month", async (req, res) => {
     console.log(regexp);
     const allExpenses = await Expense.find({ date: { $regex: regexp } });
     const allEarnings = await Earning.find({ date: { $regex: regexp } });
+    const allBudget = await Earning.find({ date: { $regex: regexp } });
     console.log(allExpenses);
     res.status(200).json({
         status: "success",
         results: allExpenses.length,
         data: {
             allExpenses,
-            allEarnings
+            allEarnings,
+            allBudget
         }
     });
 })
@@ -39,5 +42,6 @@ app.use(cors());
 
 app.use("/api/v1/incomes", incomesRouter);
 app.use("/api/v1/expences", expencesRouter);
+app.use("/api/v1/budget", budgetRouter);
 
 module.exports = app;

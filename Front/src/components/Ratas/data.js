@@ -156,3 +156,21 @@ const Data2 = [
         date: "2015-07-15"
     }
 ];
+
+const budgetData = [
+    {
+        name: "Transportas",
+        color: "Sviesiai Rozine",
+        amount: 800
+    },
+    {
+        name: "Maistas ir gerimai",
+        color: "Zalia",
+        amount: 600
+    },
+    {
+        name: "Pramogos",
+        color: "Oranzine",
+        amount: 700
+    }
+];
