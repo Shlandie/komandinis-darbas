@@ -122,10 +122,10 @@ function IslaiduIspl() {
         setEditExpense(true);
         let findExpense = expenses.find((expense) => expense.id == id);
         //console.log(findExpense);
-        setTitleInputOnEdit(findExpense.expenseTitle);
-        setDateInputOnEdit(findExpense.expenseDate);
-        setCategoryInputOnEdit(findExpense.expenseCategory);
-        setAmountInputOnEdit(findExpense.expenseAmount);
+        setTitleInputOnEdit(findExpense.name);
+        setDateInputOnEdit(findExpense.date);
+        setCategoryInputOnEdit(findExpense.category);
+        setAmountInputOnEdit(findExpense.amount);
         setUpdateExpense(findExpense);
     };
 
@@ -134,10 +134,10 @@ function IslaiduIspl() {
             if (expense.id == id) {
                 return {
                     id: uuidv4(),
-                    expenseTitle: titleInputOnEdit,
-                    expenseDate: dateInputOnEdit,
-                    expenseCategory: categoryInputOnEdit,
-                    expenseAmount: amountInputOnEdit,
+                    name: titleInputOnEdit,
+                    date: dateInputOnEdit,
+                    category: categoryInputOnEdit,
+                    amount: amountInputOnEdit,
                 };
             }
             return expense;
@@ -157,10 +157,10 @@ function IslaiduIspl() {
             } else {
                 let newExpense = {
                     id: uuidv4(),
-                    expenseTitle: titleInput,
-                    expenseDate: dateInput,
-                    expenseAmount: amountInput,
-                    expenseCategory: categoryInput,
+                    name: titleInput,
+                    date: dateInput,
+                    amount: amountInput,
+                    category: categoryInput,
                 };
                 //console.log(newIncome)
                 setExpenses((oldList) => [...oldList, newExpense]);
@@ -198,10 +198,10 @@ function IslaiduIspl() {
             <IslaiduIsplIrasas
                 key={uuidv4()}
                 id={expense._id}
-                title={expense.expenseTitle}
-                category={expense.expenseCategory}
-                date={expense.expenseDate}
-                amount={expense.expenseAmount}
+                title={expense.name}
+                category={expense.category}
+                date={expense.date}
+                amount={expense.amount}
                 deleteExpense={handleDeleteExpense}
                 editExpense={handleEditExpense}
             />
