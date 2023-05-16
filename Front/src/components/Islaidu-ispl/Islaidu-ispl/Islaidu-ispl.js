@@ -54,7 +54,6 @@ function IslaiduIspl() {
 
     const [titleInput, setTitleInput] = useState("");
     const [categoryInput, setCategoryInput] = useState(options[0].value);
-    //console.log(categoryInput)
     const [dateInput, setDateInput] = useState(moment().format('YYYY-MM-DD'));
     const [amountInput, setAmountInput] = useState("");
 
@@ -73,11 +72,19 @@ function IslaiduIspl() {
         const response = await fetch(url);
         const data = await response.json();
         setExpenses(data.data.expenses);
-        console.log(data);
     };
     useEffect(() => {
         getData();
     }, []);
+
+    const deleteExpenseBackEnd = async (id) => {
+        const remove = await fetch("http://localhost:4000/api/v1/expenses/" + id, {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json",
+            },
+        });
+    };
 
     const [dialog, setDialog] = useState({
         message: "",
@@ -105,13 +112,14 @@ function IslaiduIspl() {
         idProductRef.current = id;
     };
 
-    const areUSureDelete = (choose) => {
+    const areUSureDelete = (choose, id) => {
         if (choose) {
             setExpenses(
                 expenses.filter(
-                    (expense) => expense.id !== idProductRef.current
+                    (expense) => expense._id !== idProductRef.current
                 )
             );
+            deleteExpenseBackEnd(id);
             handleDialog("", false);
         } else {
             handleDialog("", false);
@@ -120,7 +128,7 @@ function IslaiduIspl() {
 
     const handleEditExpense = (id) => {
         setEditExpense(true);
-        let findExpense = expenses.find((expense) => expense.id == id);
+        let findExpense = expenses.find((expense) => expense._id == id);
         //console.log(findExpense);
         setTitleInputOnEdit(findExpense.name);
         setDateInputOnEdit(findExpense.date);
@@ -131,7 +139,7 @@ function IslaiduIspl() {
 
     const handleUpdateExpense = ({ id }) => {
         let newExpensesList = expenses.map((expense) => {
-            if (expense.id == id) {
+            if (expense._id == id) {
                 return {
                     id: uuidv4(),
                     name: titleInputOnEdit,
@@ -162,9 +170,7 @@ function IslaiduIspl() {
                     amount: amountInput,
                     category: categoryInput,
                 };
-                //console.log(newIncome)
                 setExpenses((oldList) => [...oldList, newExpense]);
-                //console.log(expenses)
                 setTitleInput("");
                 setDateInput(moment().format("YYYY-MM-DD"));
                 setAmountInput("");
@@ -198,7 +204,7 @@ function IslaiduIspl() {
             <IslaiduIsplIrasas
                 key={uuidv4()}
                 id={expense._id}
-                title={expense.name}
+                name={expense.name}
                 category={expense.category}
                 date={expense.date}
                 amount={expense.amount}
@@ -348,8 +354,8 @@ function IslaiduIspl() {
                     </Link>
                     <div className="d-flex justify-content-between mb-4">
                         <h4 className="Roboto-condensed F-size-25">Išlaidos</h4>
-                    </div>
-                    {list}
+                    </div>                   
+                    <div className="BP9-ListContainer">{list}</div>
                 </div>
                 {/* POP UP FOR EDIT */}
                 <div
@@ -382,8 +388,7 @@ function IslaiduIspl() {
                                         <input
                                             onChange={(e) => {
                                                 setTitleInputOnEdit(
-                                                    e.target.value
-                                                    
+                                                    e.target.value                                                   
                                                 )
                                             }
                                             }
