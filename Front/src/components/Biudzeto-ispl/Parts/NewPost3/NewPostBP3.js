@@ -5,8 +5,8 @@ import "./NewPostBP3.css";
 export default function NewPostBP3(props) {
     let { handleSubmit, amountInput, error, setAmountInput, color, setColor, category, setCategory } = props;
     return (
-        <div className="BP9container3 fontClr fs-20 BP9-child3 py-5">
-            <h3 className="fs-25">Naujas įrašas</h3>
+        <div className="BP9container3 fontClr fs-20 py-5">
+            <h4 className="fs-25">Naujas įrašas</h4>
             <form
                 className="BP9Container3-1 BP9clrGray"
                 onSubmit={handleSubmit}
