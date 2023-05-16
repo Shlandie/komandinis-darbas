@@ -2,10 +2,28 @@ import React from "react";
 import ExpenseItem from "../Islaidu-sekc/Islaidu-sekc-irasas";
 import './Islaidu-sekc.css';
 import { Link } from "react-router-dom";
-import { useState, useRef } from "react";
+import { v4 as uuidv4 } from "uuid";
+
+
+
+
 
 function IslaiduSekc(props) {
-  const { items } = props;
+  const {items} = props;
+   
+  let ListItems = items.map((item) => {
+    return(
+    <ExpenseItem
+      key={uuidv4()}
+      title={item.expenceTitle}
+      category={item.expenceCategory}
+      date={item.expenceDate}
+      amount={item.expenceAmount}
+    />
+    );
+  });
+  
+
   if (!items || items.length === 0) {
     return <div>No expenses found.</div>;
   }
@@ -17,15 +35,7 @@ function IslaiduSekc(props) {
         <div className="main-expence-sum">120eur</div>
       </h5>
       <div className="main-expence-box">
-        {items.map((item) => (
-          <ExpenseItem
-            key={item.id}
-            title={item.expenceTitle}
-            category={item.expenceCategory}
-            date={item.expenceDate}
-            amount={item.expenceAmount}
-          />
-        ))}
+        {ListItems}
       </div>
         <Link class="nav-link" to="/islaidu-isplestine">
           <button type="button" className="expenses-extend-button">

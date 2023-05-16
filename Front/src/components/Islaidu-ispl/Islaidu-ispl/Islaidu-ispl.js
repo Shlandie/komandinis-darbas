@@ -89,7 +89,7 @@ function IslaiduIspl() {
     
     const [filteredExpences, setFilteredExpences] = useState([]);
     const [expences, setExpences] = useState(expenceEntries);
-
+    
     const [titleInput, setTitleInput] = useState("");
     const [categoryInput, setCategoryInput] = useState(options[0].value);
     //console.log(categoryInput)
@@ -248,9 +248,10 @@ function IslaiduIspl() {
                         <div>Biudžetas</div> </Link>
                 </div>
 
-                {/* SEARCH */}
+                
                 <ExpenceSearchBar expences={expenceEntries}  onFilterExpences={handleFilterExpences} />
-                <IslaiduSekc items={expenceEntries} />
+                
+                <IslaiduSekc items={expences} /> 
                 
 
                 {/* ADD ENTRY */}
