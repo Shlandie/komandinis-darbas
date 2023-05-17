@@ -12,15 +12,14 @@ import './HomePage.css'
 import LoginPage from "../Authentication/LoginPage/LoginPage";
 import RegisterPage from "../Authentication/RegisterPage/RegisterPage";
 
-function HomePage() {
-    const [month, setMonth] = useState("02");
+function HomePage(props) {
     return (
         <>
             <div>
                 <div className="BP38mainGridDesign">
                     <Navigation />
                     <PajamuSekc />
-                    <Ratas />
+                    <Ratas month={props.month} setMonth={props.setMonth} />
                     <IslaiduSekc />
                     <BiudzetoSekc />
                 </div>

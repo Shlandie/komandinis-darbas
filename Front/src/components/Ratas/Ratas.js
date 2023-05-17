@@ -17,7 +17,11 @@ import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
 
 // Chart.register(CategoryScale);
 
-const Ratas = () => {
+const Ratas = (props) => {
+
+    // const month = props.month;
+    // const setMonth = props.setMonth;
+
 
     const parsedData = (data) => {
 
@@ -57,7 +61,7 @@ const Ratas = () => {
     const [islaidos, setIslaidos] = useState(0);
     const [likutis, setLikutis] = useState(100000);
 
-    const [menesis, setMenesis] = useState("01")
+    // const [menesis, setMenesis] = useState("01")
     const [pavadinimas, setPavadinimas] = useState("Likutis");
 
     async function getData(url) {
@@ -101,9 +105,9 @@ const Ratas = () => {
 
 
     useEffect(() => {
-        getData(`http://localhost:4000/expenses/${menesis}`);
-        console.log(menesis);
-    }, [menesis]);
+        getData(`http://localhost:4000/expenses/${props.month}`);
+        console.log(props.month);
+    }, [props.month]);
 
 
     useEffect(() => {
@@ -179,8 +183,8 @@ const Ratas = () => {
 
             <div className="ratas1 BP38-child2-1">
                 <select className="ratas1__select" name="ratas1__select"
-                    value={menesis}
-                    onChange={(e) => setMenesis(e.target.value)}
+                    value={props.month}
+                    onChange={(e) => props.setMonth(e.target.value)}
                 >
                     <option value="01">Sausis</option>
                     <option value="02">Vasaris</option>

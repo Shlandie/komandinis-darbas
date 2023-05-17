@@ -17,6 +17,7 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(cors());
 
 app.get("/expenses/:month", async (req, res) => {
     const { month } = req.params;
@@ -36,8 +37,6 @@ app.get("/expenses/:month", async (req, res) => {
         }
     });
 })
-// app.use("/", mainRouter);
-app.use(cors());
 
 app.use("/api/v1/incomes", incomesRouter);
 app.use("/api/v1/budget", budgetRouter);
