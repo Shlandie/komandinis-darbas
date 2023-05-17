@@ -2,52 +2,17 @@ import React from "react";
 import IslaiduIsplIrasas from "../Islaidu-ispl-irasas/Islaidu-ispl-irasas";
 import "../Islaidu-ispl/Islaidu-ispl.css";
 import "../Islaidu-ispl/Islaidu-ispl-grid.css";
-import ExpenceSearchBar from '../Islaidu-ispl/islaidu-ispl-search';
-import { useState, useRef } from "react";
+import ExpenseSearchBar from '../Islaidu-ispl/islaidu-ispl-search';
+import { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
 import Navigation from "../../Navigation/Navigation";
 import { Link } from "react-router-dom";
 import moment from 'moment';
 
+const url = "http://localhost:4000/api/v1/expenses";
+
 function IslaiduIspl() {
-    const expenceEntries = [
-        {
-            id: 1,
-            expenceTitle: "Maxima",
-            expenceCategory: "Maistas",
-            expenceDate: "2023-02-15",
-            expenceAmount: 30,
-        },
-        {
-            id: 2,
-            expenceTitle: "IKI",
-            expenceCategory: "Maistas",
-            expenceDate: "2023-03-15",
-            expenceAmount: 55,
-        },
-        {
-            id: 3,
-            expenceTitle: "Forum Cinema",
-            expenceCategory: "Pramogos",
-            expenceDate: "2023-02-15",
-            expenceAmount: 15,
-        },
-        {
-            id: 4,
-            expenceTitle: "Maxima",
-            expenceCategory: "Maistas",
-            expenceDate: "2023-02-15",
-            expenceAmount: 41,
-        },
-        {
-            id: 5,
-            expenceTitle: "Maxima",
-            expenceCategory: "Maistas",
-            expenceDate: "2023-02-15",
-            expenceAmount: 25,
-        },
-    ];
 
     const options = [
         {
@@ -84,12 +49,11 @@ function IslaiduIspl() {
         },
     ];
 
-    const [filteredExpences, setFilteredExpences] = useState([]);
-    const [expences, setExpences] = useState(expenceEntries);
+    const [filteredExpenses, setFilteredExpenses] = useState([]);
+    const [expenses, setExpenses] = useState([]);
 
     const [titleInput, setTitleInput] = useState("");
     const [categoryInput, setCategoryInput] = useState(options[0].value);
-    //console.log(categoryInput)
     const [dateInput, setDateInput] = useState(moment().format('YYYY-MM-DD'));
     const [amountInput, setAmountInput] = useState("");
 
@@ -98,11 +62,29 @@ function IslaiduIspl() {
     const [dateInputOnEdit, setDateInputOnEdit] = useState("");
     const [amountInputOnEdit, setAmountInputOnEdit] = useState("");
 
-    const [editExpence, setEditExpence] = useState(false);
-    const [updateExpence, setUpdateExpence] = useState({});
+    const [editExpense, setEditExpense] = useState(false);
+    const [updateExpense, setUpdateExpense] = useState({});
 
     const [error, setError] = useState(false);
     const [errorOnEdit, setErrorOnEdit] = useState(false);
+
+    const getData = async () => {
+        const response = await fetch(url);
+        const data = await response.json();
+        setExpenses(data.data.expenses);
+    };
+    useEffect(() => {
+        getData();
+    }, []);
+
+    const deleteExpenseBackEnd = async (id) => {
+        const remove = await fetch("http://localhost:4000/api/v1/expenses/" + id, {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json",
+            },
+        });
+    };
 
     const [dialog, setDialog] = useState({
         message: "",
@@ -118,61 +100,62 @@ function IslaiduIspl() {
     };
 
     const handleDismiss = () => {
-        setEditExpence(false);
+        setEditExpense(false);
     }
 
-    const handleFilterExpences = (filtered) => {
-        setFilteredExpences(filtered);
-      };
+    const handleFilterExpenses = (filtered) => {
+        setFilteredExpenses(filtered);
+    };
 
-    const handleDeleteExpence = (id) => {
+    const handleDeleteExpense = (id) => {
         handleDialog("Ar tikrai norite ištrinti?", true);
         idProductRef.current = id;
     };
 
-    const areUSureDelete = (choose) => {
+    const areUSureDelete = (choose, id) => {
         if (choose) {
-            setExpences(
-                expences.filter(
-                    (expense) => expense.id !== idProductRef.current
+            setExpenses(
+                expenses.filter(
+                    (expense) => expense._id !== idProductRef.current
                 )
             );
+            deleteExpenseBackEnd(id);
             handleDialog("", false);
         } else {
             handleDialog("", false);
         }
     };
 
-    const handleEditExpence = (id) => {
-        setEditExpence(true);
-        let findExpence = expences.find((expence) => expence.id == id);
-        //console.log(findExpence);
-        setTitleInputOnEdit(findExpence.expenceTitle);
-        setDateInputOnEdit(findExpence.expenceDate);
-        setCategoryInputOnEdit(findExpence.expenceCategory);
-        setAmountInputOnEdit(findExpence.expenceAmount);
-        setUpdateExpence(findExpence);
+    const handleEditExpense = (id) => {
+        setEditExpense(true);
+        let findExpense = expenses.find((expense) => expense._id == id);
+        //console.log(findExpense);
+        setTitleInputOnEdit(findExpense.name);
+        setDateInputOnEdit(findExpense.date);
+        setCategoryInputOnEdit(findExpense.category);
+        setAmountInputOnEdit(findExpense.amount);
+        setUpdateExpense(findExpense);
     };
 
-    const handleUpdateExpence = ({ id }) => {
-        let newExpencesList = expences.map((expence) => {
-            if (expence.id == id) {
+    const handleUpdateExpense = ({ id }) => {
+        let newExpensesList = expenses.map((expense) => {
+            if (expense._id == id) {
                 return {
                     id: uuidv4(),
-                    expenceTitle: titleInputOnEdit,
-                    expenceDate: dateInputOnEdit,
-                    expenceCategory: categoryInputOnEdit,
-                    expenceAmount: amountInputOnEdit,
+                    name: titleInputOnEdit,
+                    date: dateInputOnEdit,
+                    category: categoryInputOnEdit,
+                    amount: amountInputOnEdit,
                 };
             }
-            return expence;
+            return expense;
         });
-        setExpences(newExpencesList);
+        setExpenses(newExpensesList);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!editExpence) {
+        if (!editExpense) {
             if (
                 titleInput.length == 0 ||
                 amountInput == 0 ||
@@ -180,16 +163,14 @@ function IslaiduIspl() {
             ) {
                 setError(true);
             } else {
-                let newExpence = {
+                let newExpense = {
                     id: uuidv4(),
-                    expenceTitle: titleInput,
-                    expenceDate: dateInput,
-                    expenceAmount: amountInput,
-                    expenceCategory: categoryInput,
+                    name: titleInput,
+                    date: dateInput,
+                    amount: amountInput,
+                    category: categoryInput,
                 };
-                //console.log(newIncome)
-                setExpences((oldList) => [...oldList, newExpence]);
-                //console.log(expences)
+                setExpenses((oldList) => [...oldList, newExpense]);
                 setTitleInput("");
                 setDateInput(moment().format("YYYY-MM-DD"));
                 setAmountInput("");
@@ -203,13 +184,13 @@ function IslaiduIspl() {
             ) {
                 setErrorOnEdit(true);
             } else {
-                handleUpdateExpence(updateExpence);
+                handleUpdateExpense(updateExpense);
                 setTitleInputOnEdit("");
                 setDateInputOnEdit("");
                 setCategoryInputOnEdit("");
                 setAmountInputOnEdit("");
                 setErrorOnEdit(false);
-                setEditExpence(false);
+                setEditExpense(false);
             }
         }
     };
@@ -218,17 +199,17 @@ function IslaiduIspl() {
         setCategoryInput(e.target.value);
     };
 
-    let list = (filteredExpences.length > 0 ? filteredExpences : expences).map((expence) => {
+    let list = (filteredExpenses.length > 0 ? filteredExpenses : expenses).map((expense) => {
         return (
             <IslaiduIsplIrasas
                 key={uuidv4()}
-                id={expence.id}
-                title={expence.expenceTitle}
-                category={expence.expenceCategory}
-                date={expence.expenceDate}
-                amount={expence.expenceAmount}
-                deleteExpence={handleDeleteExpence}
-                editExpence={handleEditExpence}
+                id={expense._id}
+                name={expense.name}
+                category={expense.category}
+                date={expense.date}
+                amount={expense.amount}
+                deleteExpense={handleDeleteExpense}
+                editExpense={handleEditExpense}
             />
         );
     });
@@ -249,7 +230,7 @@ function IslaiduIspl() {
                 </div>
 
                 {/* SEARCH */}
-                <ExpenceSearchBar expences={expenceEntries}  onFilterExpences={handleFilterExpences} />
+                <ExpenseSearchBar expenses={expenses}  onFilterExpenses={handleFilterExpenses} />
 
                 {/* ADD ENTRY */}
                 <div className="row gap-2 g-0 gridChild-3">
@@ -373,8 +354,8 @@ function IslaiduIspl() {
                     </Link>
                     <div className="d-flex justify-content-between mb-4">
                         <h4 className="Roboto-condensed F-size-25">Išlaidos</h4>
-                    </div>
-                    {list}
+                    </div>                   
+                    <div className="BP9-ListContainer">{list}</div>
                 </div>
                 {/* POP UP FOR EDIT */}
                 <div
@@ -407,8 +388,7 @@ function IslaiduIspl() {
                                         <input
                                             onChange={(e) => {
                                                 setTitleInputOnEdit(
-                                                    e.target.value
-                                                    
+                                                    e.target.value                                                   
                                                 )
                                             }
                                             }

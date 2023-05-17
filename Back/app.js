@@ -6,6 +6,7 @@ const { User, Expense, Earning } = require("./models/models");
 
 const mainRouter = require("./routes/mainRoutes");
 const incomesRouter = require("./routes/incomeRoutes");
+const expensesRouter = require("./routes/expenseRoutes");
 const budgetRouter = require("./routes/budgetRoutes");
 
 app.use(express.json());
@@ -39,6 +40,7 @@ app.get("/expenses/:month", async (req, res) => {
 })
 
 app.use("/api/v1/incomes", incomesRouter);
+app.use("/api/v1/expenses", expensesRouter);
 app.use("/api/v1/budget", budgetRouter);
 
 module.exports = app;

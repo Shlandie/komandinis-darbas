@@ -27,31 +27,26 @@ const userSchema = new mongoose.Schema({
 });
 
 const expenseSchema = new mongoose.Schema({
-    category: {
-        type: String,
-        minlength: 1,
-        maxlength: 40,
-        required: true,
-    },
-
     name: {
         type: String,
         minlength: 1,
-        maxlength: 40,
+        maxlength: 20,
+        required: true,
     },
-
+    category: {
+        type: String,
+        required: true,
+    },
+    date: {
+        type: String,
+        required: true
+    },
     amount: {
         type: Number,
         min: 0,
-        max: 1000000,
+        max: 10000,
         required: true
     },
-    // date: {
-    //     type: String,
-    //     immutable: true,
-    //     required: true,
-    // },
-
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"

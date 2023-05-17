@@ -4,28 +4,28 @@ import React from 'react';
 import { useState, useRef } from "react";
 
 
-function ExpenceSearchBar(props) {
+function ExpenseSearchBar(props) {
     
     const [searchQuery, setSearchQuery] = useState("");
     const [categoryInput, setCategoryInput] = useState("");
-    const [filteredExpences, setFilteredExpences] = useState([]);
+    const [filteredExpenses, setFilteredExpenses] = useState([]);
     const [dateInput, setDateInput] = useState("");
     const [endDateInput, setEndDateInput] = useState("");
     const [startDateInput, setStartDateInput] = useState('');
     
 
-    const filterExpences = (query, category, date,  startDate, endDate) => {
-        const filtered = props.expences.filter(
-          (expence) =>
-            expence.expenceTitle.toLowerCase().includes(query.toLowerCase()) &&
-            (category === "visos kategorijos" || expence.expenceCategory === category) &&
-            (!date || new Date(expence.expenceDate) >= new Date(date)) &&
-            (!startDate || new Date(expence.expenceDate) >= new Date(startDate)) &&
-            (!endDate || new Date(expence.expenceDate) <= new Date(endDate))
+    const filterExpenses = (query, category, date,  startDate, endDate) => {
+        const filtered = props.expenses.filter(
+          (expense) =>
+            expense.expenseTitle.toLowerCase().includes(query.toLowerCase()) &&
+            (category === "visos kategorijos" || expense.expenseCategory === category) &&
+            (!date || new Date(expense.expencsDate) >= new Date(date)) &&
+            (!startDate || new Date(expense.expenseDate) >= new Date(startDate)) &&
+            (!endDate || new Date(expense.expenseDate) <= new Date(endDate))
         );
         console.log(filtered);
 
-        props.onFilterExpences(filtered);
+        props.onFilterExpenses(filtered);
       };
 
     const handleCategoryChange = (e) => {
@@ -58,17 +58,17 @@ function ExpenceSearchBar(props) {
     const handleSearchSubmit = (e) => {
         e.preventDefault();
         
-        filterExpences(searchQuery, categoryInput, dateInput,  startDateInput, endDateInput);
+        filterExpenses(searchQuery, categoryInput, dateInput,  startDateInput, endDateInput);
       };
 
-      console.log(searchQuery, filteredExpences);
+      console.log(searchQuery, filteredExpenses);
       
       
   
   return (
     <div className="row gap-2 g-0 gridChild-2">
   <div className="IncomeSearch">
-    <h4 className="Roboto-condensed F-size-25 ExpenceSearch-title">
+    <h4 className="Roboto-condensed F-size-25 ExpenseSearch-title">
       Paieška
     </h4>
     <form onSubmit={handleSearchSubmit}>
@@ -122,4 +122,4 @@ function ExpenceSearchBar(props) {
     </div>
   );
 }
-export default ExpenceSearchBar;
+export default ExpenseSearchBar;

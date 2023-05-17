@@ -12,7 +12,7 @@ export default function NewPostBP3(props) {
                 onSubmit={handleSubmit}
             >
                 <select
-                    className="BP9selectContainer IncomeNewEntry-input F-size-20"
+                    className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
                     aria-label="Default select example"
                     id="programSelect"
                     name="programSelect"
@@ -20,6 +20,7 @@ export default function NewPostBP3(props) {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                 >
+
                     <option disabled value="">
                         Kategorija
                     </option>
@@ -37,10 +38,10 @@ export default function NewPostBP3(props) {
                     ""
                 )}
                 <select
-                    className="BP9selectContainer IncomeNewEntry-input F-size-20"
+                    className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
                     aria-label="Default select example"
-                    id="colorSelect"
-                    name="colorSelect"
+                    id="programSelect"
+                    name="programSelect"
                     required
                     value={color}
                     onChange={(e) => setColor(e.target.value)}
@@ -88,7 +89,7 @@ export default function NewPostBP3(props) {
                     ""
                 )}
                 <button onClick={handleSubmit} type="submit" className="fs-32px fontClr BP9button">Pridėti įrašą</button>
-            </form>            
+            </form>
         </div>
     );
 }
