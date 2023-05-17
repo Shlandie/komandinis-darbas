@@ -11,6 +11,7 @@ import Navigation from "../../Navigation/Navigation";
 import { Link } from "react-router-dom";
 
 function IslaiduIspl() {
+    
     const expenceEntries = [
         {
             id: 1,
@@ -248,10 +249,9 @@ function IslaiduIspl() {
                         <div>Biudžetas</div> </Link>
                 </div>
 
-                
+                {/* search */}
                 <ExpenceSearchBar expences={expenceEntries}  onFilterExpences={handleFilterExpences} />
                 
-                <IslaiduSekc items={expences} /> 
                 
 
                 {/* ADD ENTRY */}
