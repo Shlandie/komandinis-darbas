@@ -5,7 +5,7 @@ function RegisterPage() {
   return (
     <div className='loginPage-container'>
       <form className='AuthenticationForm-container p-5'>
-        <h1 className='pb-5 d-flex justify-content-center'>Signup Form</h1>
+        <h1 className='pb-5 d-flex justify-content-center'>Sign up Form</h1>
 
         <div className='d-flex justify-content-between mb-4'>
 
