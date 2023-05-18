@@ -61,7 +61,7 @@ function ExpenseSearchBar(props) {
         filterExpenses(searchQuery, categoryInput, dateInput,  startDateInput, endDateInput);
       };
 
-      console.log(searchQuery, filteredExpenses);
+      // console.log(searchQuery, filteredExpenses);
       
       
   

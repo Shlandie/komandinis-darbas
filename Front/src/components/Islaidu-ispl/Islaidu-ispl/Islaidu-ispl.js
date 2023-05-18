@@ -10,7 +10,7 @@ import Navigation from "../../Navigation/Navigation";
 import { Link } from "react-router-dom";
 import moment from 'moment';
 
-const url = "http://localhost:4000/api/v1/expenses";
+const url = "http://localhost:4000/api/v1/expenses/";
 
 function IslaiduIspl() {
 
@@ -49,8 +49,9 @@ function IslaiduIspl() {
         },
     ];
 
-    const [filteredExpenses, setFilteredExpenses] = useState([]);
     const [expenses, setExpenses] = useState([]);
+
+    const [filteredExpenses, setFilteredExpenses] = useState([]);
 
     const [titleInput, setTitleInput] = useState("");
     const [categoryInput, setCategoryInput] = useState(options[0].value);
@@ -68,6 +69,11 @@ function IslaiduIspl() {
     const [error, setError] = useState(false);
     const [errorOnEdit, setErrorOnEdit] = useState(false);
 
+    const [dialog, setDialog] = useState({
+        message: "",
+        isLoading: false,
+    });
+
     const getData = async () => {
         const response = await fetch(url);
         const data = await response.json();
@@ -75,21 +81,38 @@ function IslaiduIspl() {
     };
     useEffect(() => {
         getData();
-    }, []);
+    }, [expenses]);
+
+    const addExpenseBackEnd = async (newExpense) => {
+        const add = await fetch(url, {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newExpense),
+        });
+    };
+
+    const updateExpenseBackEnd = async (id) => {
+        const update = await fetch(url + id, {
+            method: "PATCH",
+
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name: titleInputOnEdit, date: dateInputOnEdit, amount: amountInputOnEdit, category: categoryInputOnEdit }),
+        });
+    };
 
     const deleteExpenseBackEnd = async (id) => {
-        const remove = await fetch("http://localhost:4000/api/v1/expenses/" + id, {
+        const remove = await fetch(url + id, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json",
             },
         });
     };
-
-    const [dialog, setDialog] = useState({
-        message: "",
-        isLoading: false,
-    });
 
     const idProductRef = useRef();
     const handleDialog = (message, isLoading) => {
@@ -112,14 +135,14 @@ function IslaiduIspl() {
         idProductRef.current = id;
     };
 
-    const areUSureDelete = (choose, id) => {
+    const areUSureDelete = (choose) => {
         if (choose) {
-            setExpenses(
-                expenses.filter(
-                    (expense) => expense._id !== idProductRef.current
-                )
-            );
-            deleteExpenseBackEnd(id);
+            // setExpenses(
+            //     expenses.filter(
+            //         (expense) => expense._id !== idProductRef.current
+            //     )
+            // );
+            deleteExpenseBackEnd(idProductRef.current);
             handleDialog("", false);
         } else {
             handleDialog("", false);
@@ -141,7 +164,7 @@ function IslaiduIspl() {
         let newExpensesList = expenses.map((expense) => {
             if (expense._id == id) {
                 return {
-                    id: uuidv4(),
+                    key: uuidv4(),
                     name: titleInputOnEdit,
                     date: dateInputOnEdit,
                     category: categoryInputOnEdit,
@@ -150,7 +173,8 @@ function IslaiduIspl() {
             }
             return expense;
         });
-        setExpenses(newExpensesList);
+        // setExpenses(newExpensesList);
+        updateExpenseBackEnd(id);
     };
 
     const handleSubmit = (e) => {
@@ -164,17 +188,18 @@ function IslaiduIspl() {
                 setError(true);
             } else {
                 let newExpense = {
-                    id: uuidv4(),
+                    key: uuidv4(),
                     name: titleInput,
                     date: dateInput,
                     amount: amountInput,
                     category: categoryInput,
                 };
-                setExpenses((oldList) => [...oldList, newExpense]);
+                // setExpenses((oldList) => [...oldList, newExpense]);
                 setTitleInput("");
                 setDateInput(moment().format("YYYY-MM-DD"));
                 setAmountInput("");
                 setCategoryInput(options[0].value);
+                addExpenseBackEnd(newExpense);
                 setError(false);
             }
         } else {
@@ -184,7 +209,7 @@ function IslaiduIspl() {
             ) {
                 setErrorOnEdit(true);
             } else {
-                handleUpdateExpense(updateExpense);
+                handleUpdateExpense({ id: updateExpense._id});
                 setTitleInputOnEdit("");
                 setDateInputOnEdit("");
                 setCategoryInputOnEdit("");
@@ -470,6 +495,10 @@ function IslaiduIspl() {
                                                         e.target.value
                                                     )
                                                 }
+                                                // onMouseDown={(e) => {
+                                                //     e.preventDefault();
+                                                //     e.target.type = 'date';
+                                                // }}
                                                 type="date"
                                                 id="dateInput"
                                                 name="dateInput"
