@@ -241,7 +241,7 @@ function IslaiduIspl() {
 
     return (
         <>
-            <div className="row g-0 Income-wrapper gridParent-0">
+            <div className="g-0 Income-wrapper gridParent-0">
                 <Navigation />
                 <div className="row d-flex g-0  IncomeNav gridChild-1 Roboto-condensed F-size-20">
                     <Link to='/pajamu-isplestine' className='BP9-btn colorAnchored'>
@@ -260,7 +260,7 @@ function IslaiduIspl() {
                 {/* ADD ENTRY */}
                 <div className="row gap-2 g-0 gridChild-3">
                     <div className="col py-5 IncomeNewEntry">
-                        <h4 className="Roboto-condensed F-size-25 mb-3">
+                        <h4 className="Roboto-condensed F-size-25">
                             Naujas įrašas
                         </h4>
                         <form onSubmit={handleSubmit}>
