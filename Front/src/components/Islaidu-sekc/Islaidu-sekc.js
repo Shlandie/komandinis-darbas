@@ -62,12 +62,12 @@ function IslaiduSekc() {
        const handleFormSubmit = (event) => {
         event.preventDefault();
         
+        if (!expenceName || !expenceCategory || !expenceSum || !expenceDate) {
+          setError(true);
+          return;
+        }
       
-          // Check if the expense amount is 0
-          if (parseFloat(expenceSum) === 0) {
-            setError(true);
-            return;
-          }
+          
       
         // Create a new expense object
         const newExpense = {
@@ -89,14 +89,22 @@ function IslaiduSekc() {
       
         // Focus on the expense name input field
         expenceNameInputRef.current.focus();
+        setError(false);
       };
 
+      // count total amount
+      const totalExpenseAmount = expences.reduce((total, expence) => {
+        return total + expence.expenceAmount;
+      }, 0);
 
 
 
 
 
-  let ListItems = (expences).map((expence) => {
+
+      let ListItems = expences
+      .sort((a, b) => new Date(b.expenceDate) - new Date(a.expenceDate))
+      .map((expence) => {
     return(
     <ExpenseItem
       key={uuidv4()}
@@ -115,7 +123,7 @@ function IslaiduSekc() {
       <div className="main-expenses">
       <h5 className="d-flex justify-content-between">
         <div className="main-expence-header">Išlaidos</div>
-        <div className="main-expence-sum">120eur</div>
+        <div className="main-expence-sum">{totalExpenseAmount}</div>
       </h5>
       <div className="main-expence-box">
         {ListItems}
@@ -131,7 +139,7 @@ function IslaiduSekc() {
       <form className="expences-addition">
         <div className="form-group main-form-name">
           <input type="text" 
-          className="form-control" 
+          className={`form-control ${error && !expenceName ? "is-invalid" : ""}`}
           id="expence-name" 
           placeholder="Pavadinimas" 
           value={expenceName}  
@@ -142,7 +150,10 @@ function IslaiduSekc() {
 
         <div >
 
-          <select className="form-control" id="expence-category" value={expenceCategory}  onChange={(event) => setExpenceCategory(event.target.value)}
+          <select className={`form-control ${error && !expenceCategory ? "is-invalid" : ""}`}
+          id="expence-category" 
+          value={expenceCategory}  
+          onChange={(event) => setExpenceCategory(event.target.value)}
       required >
             <option disabled selected>Kategorija</option>
             <option>Transportas</option>
@@ -163,30 +174,23 @@ function IslaiduSekc() {
              }
            }}
             type="number"
-             className="form-control" 
+             className={`form-control ${error && !expenceSum ? "is-invalid" : ""}`}
              id="expence-sum" 
              placeholder="Suma"
              value={expenceSum}      
              />
-             {error && !expenceDate ? (
-             <div className="Error-msg pt-1">
-               Šis laukelis yra privalomas
-             </div>
-            ) : (
-              ""
-              )}
+             
    
           </div>
 
           <div className="form-group col">
             <input type="date" 
-            className="form-control BP9clrGray" 
+            className={`form-control BP9clrGray ${error && !expenceName ? "is-invalid" : ""}`}
             id="expence-date" 
             placeholder="Enter date"
             value={expenceDate} 
             onChange={(event) => setExpenceDate(event.target.value)}
             required/>
-
           </div>
         </div>
 
