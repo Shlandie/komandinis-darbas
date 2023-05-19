@@ -123,7 +123,7 @@ function IslaiduSekc() {
       <div className="main-expenses">
       <h5 className="d-flex justify-content-between">
         <div className="main-expence-header">Išlaidos</div>
-        <div className="main-expence-sum">{totalExpenseAmount}</div>
+        <div className="main-expence-sum">{totalExpenseAmount}eur</div>
       </h5>
       <div className="main-expence-box">
         {ListItems}
