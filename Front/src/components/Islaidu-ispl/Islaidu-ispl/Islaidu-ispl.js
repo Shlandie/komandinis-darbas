@@ -2,18 +2,17 @@ import React from "react";
 import IslaiduIsplIrasas from "../Islaidu-ispl-irasas/Islaidu-ispl-irasas";
 import "../Islaidu-ispl/Islaidu-ispl.css";
 import "../Islaidu-ispl/Islaidu-ispl-grid.css";
-import ExpenseSearchBar from '../Islaidu-ispl/islaidu-ispl-search';
+import ExpenseSearchBar from "../Islaidu-ispl/islaidu-ispl-search";
 import { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
 import Navigation from "../../Navigation/Navigation";
 import { Link } from "react-router-dom";
-import moment from 'moment';
+import moment from "moment";
 
 const url = "http://localhost:4000/api/v1/expenses/";
 
 function IslaiduIspl() {
-
     const options = [
         {
             value: "",
@@ -55,7 +54,7 @@ function IslaiduIspl() {
 
     const [titleInput, setTitleInput] = useState("");
     const [categoryInput, setCategoryInput] = useState(options[0].value);
-    const [dateInput, setDateInput] = useState(moment().format('YYYY-MM-DD'));
+    const [dateInput, setDateInput] = useState(moment().format("YYYY-MM-DD"));
     const [amountInput, setAmountInput] = useState("");
 
     const [titleInputOnEdit, setTitleInputOnEdit] = useState("");
@@ -81,38 +80,41 @@ function IslaiduIspl() {
     };
     useEffect(() => {
         getData();
-    }, [expenses]);
+    }, []);
 
-    const addExpenseBackEnd = async (newExpense) => {
-        const add = await fetch(url, {
-            method: "POST",
+    // const addExpenseBackEnd = async (newExpense) => {
+    //     const add = await fetch(url, {
+    //         method: "POST",
 
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newExpense),
-        });
-    };
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(newExpense),
+    //     });
+    //     getData();
+    // };
 
-    const updateExpenseBackEnd = async (id) => {
-        const update = await fetch(url + id, {
-            method: "PATCH",
+    // const updateExpenseBackEnd = async (id) => {
+    //     const update = await fetch(url + id, {
+    //         method: "PATCH",
 
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ name: titleInputOnEdit, date: dateInputOnEdit, amount: amountInputOnEdit, category: categoryInputOnEdit }),
-        });
-    };
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({ name: titleInputOnEdit, date: dateInputOnEdit, amount: amountInputOnEdit, category: categoryInputOnEdit }),
+    //     });
+    //     getData();
+    // };
 
-    const deleteExpenseBackEnd = async (id) => {
-        const remove = await fetch(url + id, {
-            method: "DELETE",
-            headers: {
-                "Content-type": "application/json",
-            },
-        });
-    };
+    // const deleteExpenseBackEnd = async (id) => {
+    //     const remove = await fetch(url + id, {
+    //         method: "DELETE",
+    //         headers: {
+    //             "Content-type": "application/json",
+    //         },
+    //     });
+    //     getData();
+    // };
 
     const idProductRef = useRef();
     const handleDialog = (message, isLoading) => {
@@ -124,7 +126,7 @@ function IslaiduIspl() {
 
     const handleDismiss = () => {
         setEditExpense(false);
-    }
+    };
 
     const handleFilterExpenses = (filtered) => {
         setFilteredExpenses(filtered);
@@ -135,14 +137,24 @@ function IslaiduIspl() {
         idProductRef.current = id;
     };
 
-    const areUSureDelete = (choose) => {
+    const areUSureDelete = async (choose) => {
         if (choose) {
-            // setExpenses(
-            //     expenses.filter(
-            //         (expense) => expense._id !== idProductRef.current
-            //     )
-            // );
-            deleteExpenseBackEnd(idProductRef.current);
+            // const deleteExpenseBackEnd = async (id) => {
+            const remove = await fetch(url + idProductRef.current, {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json",
+                },
+            });
+            setExpenses(
+                expenses.filter(
+                    (expense) => expense._id !== idProductRef.current
+                )
+            );
+            // getData();
+            // };
+            // deleteExpenseBackEnd(idProductRef.current);
+
             handleDialog("", false);
         } else {
             handleDialog("", false);
@@ -160,7 +172,20 @@ function IslaiduIspl() {
         setUpdateExpense(findExpense);
     };
 
-    const handleUpdateExpense = ({ id }) => {
+    const handleUpdateExpense = async ({ id }) => {
+        const update = await fetch(url + id, {
+            method: "PATCH",
+
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: titleInputOnEdit,
+                date: dateInputOnEdit,
+                amount: amountInputOnEdit,
+                category: categoryInputOnEdit,
+            }),
+        });
         let newExpensesList = expenses.map((expense) => {
             if (expense._id == id) {
                 return {
@@ -173,11 +198,10 @@ function IslaiduIspl() {
             }
             return expense;
         });
-        // setExpenses(newExpensesList);
-        updateExpenseBackEnd(id);
+        setExpenses(newExpensesList);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!editExpense) {
             if (
@@ -194,22 +218,25 @@ function IslaiduIspl() {
                     amount: amountInput,
                     category: categoryInput,
                 };
-                // setExpenses((oldList) => [...oldList, newExpense]);
+                const add = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(newExpense),
+                });
+                setExpenses((oldList) => [...oldList, newExpense]);
                 setTitleInput("");
                 setDateInput(moment().format("YYYY-MM-DD"));
                 setAmountInput("");
                 setCategoryInput(options[0].value);
-                addExpenseBackEnd(newExpense);
                 setError(false);
             }
         } else {
-            if (
-                titleInputOnEdit.length == 0 ||
-                amountInputOnEdit.length == 0
-            ) {
+            if (titleInputOnEdit.length == 0 || amountInputOnEdit.length == 0) {
                 setErrorOnEdit(true);
             } else {
-                handleUpdateExpense({ id: updateExpense._id});
+                handleUpdateExpense({ id: updateExpense._id });
                 setTitleInputOnEdit("");
                 setDateInputOnEdit("");
                 setCategoryInputOnEdit("");
@@ -224,38 +251,55 @@ function IslaiduIspl() {
         setCategoryInput(e.target.value);
     };
 
-    let list = (filteredExpenses.length > 0 ? filteredExpenses : expenses).map((expense) => {
-        return (
-            <IslaiduIsplIrasas
-                key={uuidv4()}
-                id={expense._id}
-                name={expense.name}
-                category={expense.category}
-                date={expense.date}
-                amount={expense.amount}
-                deleteExpense={handleDeleteExpense}
-                editExpense={handleEditExpense}
-            />
-        );
-    });
+    let list = (filteredExpenses.length > 0 ? filteredExpenses : expenses).map(
+        (expense) => {
+            return (
+                <IslaiduIsplIrasas
+                    key={uuidv4()}
+                    id={expense._id}
+                    name={expense.name}
+                    category={expense.category}
+                    date={expense.date}
+                    amount={expense.amount}
+                    deleteExpense={handleDeleteExpense}
+                    editExpense={handleEditExpense}
+                />
+            );
+        }
+    );
 
     return (
         <>
             <div className="row g-0 Income-wrapper gridParent-0">
                 <Navigation />
                 <div className="row d-flex g-0  IncomeNav gridChild-1 Roboto-condensed F-size-20">
-                    <Link to='/pajamu-isplestine' className='BP9-btn colorAnchored'>
-                        <div>Pajamos</div> </Link>
+                    <Link
+                        to="/pajamu-isplestine"
+                        className="BP9-btn colorAnchored"
+                    >
+                        <div>Pajamos</div>{" "}
+                    </Link>
 
-                    <Link to='/islaidu-isplestine' className='BP9-btn colorAnchored BP9-selectedbtn'>
-                        <div>Išlaidos</div> </Link>
+                    <Link
+                        to="/islaidu-isplestine"
+                        className="BP9-btn colorAnchored BP9-selectedbtn"
+                    >
+                        <div>Išlaidos</div>{" "}
+                    </Link>
 
-                    <Link to='/biudzeto-isplestine' className='BP9-btn colorAnchored'>
-                        <div>Biudžetas</div> </Link>
+                    <Link
+                        to="/biudzeto-isplestine"
+                        className="BP9-btn colorAnchored"
+                    >
+                        <div>Biudžetas</div>{" "}
+                    </Link>
                 </div>
 
                 {/* SEARCH */}
-                <ExpenseSearchBar expenses={expenses}  onFilterExpenses={handleFilterExpenses} />
+                <ExpenseSearchBar
+                    expenses={expenses}
+                    onFilterExpenses={handleFilterExpenses}
+                />
 
                 {/* ADD ENTRY */}
                 <div className="row gap-2 g-0 gridChild-3">
@@ -318,7 +362,8 @@ function IslaiduIspl() {
                                                 e.preventDefault();
                                         }}
                                         onChange={(e) => {
-                                            const regex = /^[0-9]{0,10}(\.[0-9]{0,2})?$/;
+                                            const regex =
+                                                /^[0-9]{0,10}(\.[0-9]{0,2})?$/;
                                             if (regex.test(e.target.value)) {
                                                 setAmountInput(e.target.value);
                                             }
@@ -346,17 +391,18 @@ function IslaiduIspl() {
                                         }
                                         onMouseDown={(e) => {
                                             e.preventDefault();
-                                            e.target.type = 'date';
+                                            e.target.type = "date";
                                         }}
                                         type="date"
                                         id="dateInput"
                                         name="dateInput"
                                         value={dateInput}
                                         max={moment().format("YYYY-MM-DD")}
-                                        min={moment().subtract(3, "years").format("YYYY-MM-DD")}
+                                        min={moment()
+                                            .subtract(3, "years")
+                                            .format("YYYY-MM-DD")}
                                         className="form-control IncomeNewEntry-input F-size-20"
                                     />
-                                    
                                 </div>
                             </div>
 
@@ -372,14 +418,14 @@ function IslaiduIspl() {
                 </div>
                 {/* ENTRIES */}
                 <div className="col py-5 IncomeEntries gridChild-4">
-                    <Link to='/'>
+                    <Link to="/">
                         <button className="btn BP9-btnX Close-btn Bg-light-blue Roboto-condensed F-size-20">
                             <span className="xBtn">X</span>
                         </button>
                     </Link>
                     <div className="d-flex justify-content-between mb-4">
                         <h4 className="Roboto-condensed F-size-25">Išlaidos</h4>
-                    </div>                   
+                    </div>
                     <div className="BP9-ListContainer">{list}</div>
                 </div>
                 {/* POP UP FOR EDIT */}
@@ -413,10 +459,9 @@ function IslaiduIspl() {
                                         <input
                                             onChange={(e) => {
                                                 setTitleInputOnEdit(
-                                                    e.target.value                                                   
-                                                )
-                                            }
-                                            }
+                                                    e.target.value
+                                                );
+                                            }}
                                             required
                                             type="text"
                                             id="titleInput"
@@ -427,7 +472,8 @@ function IslaiduIspl() {
                                             maxLength="20"
                                         />
                                     </div>
-                                    {errorOnEdit && titleInputOnEdit.length <= 0 ? (
+                                    {errorOnEdit &&
+                                    titleInputOnEdit.length <= 0 ? (
                                         <div className="Error-msg pt-1">
                                             Šis laukelis yra privalomas
                                         </div>
@@ -462,13 +508,23 @@ function IslaiduIspl() {
                                         <div className="mb-2 me-3">
                                             <input
                                                 onKeyPress={(e) => {
-                                                    if (e.key === "-" || e.key === "+")
+                                                    if (
+                                                        e.key === "-" ||
+                                                        e.key === "+"
+                                                    )
                                                         e.preventDefault();
                                                 }}
                                                 onChange={(e) => {
-                                                    const regex = /^[0-9]{0,10}(\.[0-9]{0,2})?$/;
-                                                    if (regex.test(e.target.value)) {
-                                                        setAmountInputOnEdit(e.target.value);
+                                                    const regex =
+                                                        /^[0-9]{0,10}(\.[0-9]{0,2})?$/;
+                                                    if (
+                                                        regex.test(
+                                                            e.target.value
+                                                        )
+                                                    ) {
+                                                        setAmountInputOnEdit(
+                                                            e.target.value
+                                                        );
                                                     }
                                                 }}
                                                 type="number"
@@ -478,15 +534,15 @@ function IslaiduIspl() {
                                                 className="form-control IncomeNewEntry-input F-size-20"
                                                 placeholder="Suma"
                                             />
-                                        
-                                        {errorOnEdit &&
+
+                                            {errorOnEdit &&
                                             amountInputOnEdit.length <= 0 ? (
-                                            <div className="Error-msg w-100 pt-1">
-                                                Šis laukelis yra privalomas
-                                            </div>
-                                        ) : (
-                                            ""
-                                        )}
+                                                <div className="Error-msg w-100 pt-1">
+                                                    Šis laukelis yra privalomas
+                                                </div>
+                                            ) : (
+                                                ""
+                                            )}
                                         </div>
                                         <div>
                                             <input
@@ -504,8 +560,12 @@ function IslaiduIspl() {
                                                 name="dateInput"
                                                 value={dateInputOnEdit}
                                                 className="form-control IncomeNewEntry-input F-size-20"
-                                                max={moment().format("YYYY-MM-DD")}
-                                                min={moment().subtract(3, "years").format("YYYY-MM-DD")}
+                                                max={moment().format(
+                                                    "YYYY-MM-DD"
+                                                )}
+                                                min={moment()
+                                                    .subtract(3, "years")
+                                                    .format("YYYY-MM-DD")}
                                             />
                                         </div>
                                     </div>
@@ -514,8 +574,18 @@ function IslaiduIspl() {
                                             onClick={handleSubmit}
                                             type="submit"
                                             className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-blue Edit-btn me-2"
-                                            data-bs-target={titleInputOnEdit.length <= 0 || amountInputOnEdit.length <= 0 ? '' : "#exampleModalToggle2" }
-                                            data-bs-toggle={titleInputOnEdit.length <= 0 || amountInputOnEdit.length <= 0 ? '' : 'modal'}
+                                            data-bs-target={
+                                                titleInputOnEdit.length <= 0 ||
+                                                amountInputOnEdit.length <= 0
+                                                    ? ""
+                                                    : "#exampleModalToggle2"
+                                            }
+                                            data-bs-toggle={
+                                                titleInputOnEdit.length <= 0 ||
+                                                amountInputOnEdit.length <= 0
+                                                    ? ""
+                                                    : "modal"
+                                            }
                                         >
                                             Patvirtinti
                                         </button>
