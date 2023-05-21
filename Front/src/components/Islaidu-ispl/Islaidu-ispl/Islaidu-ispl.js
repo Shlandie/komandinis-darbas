@@ -12,7 +12,8 @@ import moment from "moment";
 
 const url = "http://localhost:4000/api/v1/expenses/";
 
-function IslaiduIspl() {
+function IslaiduIspl(props) {
+    const {month} = props;
     const options = [
         {
             value: "",
@@ -207,6 +208,7 @@ function IslaiduIspl() {
             if (
                 titleInput.length == 0 ||
                 amountInput == 0 ||
+                dateInput.length == 0 ||
                 categoryInput.length == 0
             ) {
                 setError(true);
@@ -233,7 +235,11 @@ function IslaiduIspl() {
                 setError(false);
             }
         } else {
-            if (titleInputOnEdit.length == 0 || amountInputOnEdit.length == 0) {
+            if (
+                titleInputOnEdit.length == 0 ||
+                amountInputOnEdit.length == 0 ||
+                dateInputOnEdit.length == 0
+            ) {
                 setErrorOnEdit(true);
             } else {
                 handleUpdateExpense({ id: updateExpense._id });
@@ -251,8 +257,9 @@ function IslaiduIspl() {
         setCategoryInput(e.target.value);
     };
 
-    let list = (filteredExpenses.length > 0 ? filteredExpenses : expenses).map(
-        (expense) => {
+    let list = (filteredExpenses.length > 0 ? filteredExpenses : expenses)
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .map((expense) => {
             return (
                 <IslaiduIsplIrasas
                     key={uuidv4()}
@@ -265,8 +272,7 @@ function IslaiduIspl() {
                     editExpense={handleEditExpense}
                 />
             );
-        }
-    );
+        })
 
     return (
         <>
@@ -363,7 +369,7 @@ function IslaiduIspl() {
                                         }}
                                         onChange={(e) => {
                                             const regex =
-                                                /^[0-9]{0,10}(\.[0-9]{0,2})?$/;
+                                                /^(?!00)[0-9]{0,10}(?:\.[0-9]{1,2})?$/;
                                             if (regex.test(e.target.value)) {
                                                 setAmountInput(e.target.value);
                                             }
@@ -399,10 +405,17 @@ function IslaiduIspl() {
                                         value={dateInput}
                                         max={moment().format("YYYY-MM-DD")}
                                         min={moment()
-                                            .subtract(3, "years")
+                                            .subtract(1, "years")
                                             .format("YYYY-MM-DD")}
                                         className="form-control IncomeNewEntry-input F-size-20"
                                     />
+                                    {error && dateInput.length <= 0 ? (
+                                        <div className="Error-msg pt-1">
+                                            Šis laukelis yra privalomas
+                                        </div>
+                                    ) : (
+                                        ""
+                                    )}
                                 </div>
                             </div>
 
@@ -516,7 +529,7 @@ function IslaiduIspl() {
                                                 }}
                                                 onChange={(e) => {
                                                     const regex =
-                                                        /^[0-9]{0,10}(\.[0-9]{0,2})?$/;
+                                                        /^(?!00)[0-9]{0,10}(?:\.[0-9]{1,2})?$/;
                                                     if (
                                                         regex.test(
                                                             e.target.value
@@ -551,10 +564,10 @@ function IslaiduIspl() {
                                                         e.target.value
                                                     )
                                                 }
-                                                // onMouseDown={(e) => {
-                                                //     e.preventDefault();
-                                                //     e.target.type = 'date';
-                                                // }}
+                                                onMouseDown={(e) => {
+                                                    e.preventDefault();
+                                                    e.target.type = "date";
+                                                }}
                                                 type="date"
                                                 id="dateInput"
                                                 name="dateInput"
@@ -564,9 +577,17 @@ function IslaiduIspl() {
                                                     "YYYY-MM-DD"
                                                 )}
                                                 min={moment()
-                                                    .subtract(3, "years")
+                                                    .subtract(1, "years")
                                                     .format("YYYY-MM-DD")}
                                             />
+                                            {errorOnEdit &&
+                                            dateInputOnEdit.length <= 0 ? (
+                                                <div className="Error-msg pt-1">
+                                                    Šis laukelis yra privalomas
+                                                </div>
+                                            ) : (
+                                                ""
+                                            )}
                                         </div>
                                     </div>
                                     <div className="d-flex mb-3 mt-2">
@@ -576,12 +597,14 @@ function IslaiduIspl() {
                                             className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-blue Edit-btn me-2"
                                             data-bs-target={
                                                 titleInputOnEdit.length <= 0 ||
+                                                dateInputOnEdit.length <= 0 ||
                                                 amountInputOnEdit.length <= 0
                                                     ? ""
                                                     : "#exampleModalToggle2"
                                             }
                                             data-bs-toggle={
                                                 titleInputOnEdit.length <= 0 ||
+                                                dateInputOnEdit.length <= 0 ||
                                                 amountInputOnEdit.length <= 0
                                                     ? ""
                                                     : "modal"

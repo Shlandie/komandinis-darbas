@@ -5,11 +5,11 @@ import { useState, useRef, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
 import Navigation from "../../Navigation/Navigation";
-import '../Pajamu-ispl/Pajamu-ispl-grid.css'
+import "../Pajamu-ispl/Pajamu-ispl-grid.css";
 import { Link } from "react-router-dom";
-import moment from 'moment';
+import moment from "moment";
 
-const url = "http://localhost:4000/api/v1/incomes";
+const url = "http://localhost:4000/api/v1/incomes/";
 
 function PajamuIspl() {
     const [incomes, setIncomes] = useState([]);
@@ -26,6 +26,7 @@ function PajamuIspl() {
     const [updateIncome, setUpdateIncome] = useState({});
 
     const [error, setError] = useState(false);
+    const [errorOnEdit, setErrorOnEdit] = useState(false);
 
     const [dialog, setDialog] = useState({
         message: "",
@@ -42,14 +43,14 @@ function PajamuIspl() {
         getData();
     }, []);
 
-    const deleteIncomeBackEnd = async (id) => {
-        const remove = await fetch(url + '/' + id, {
-            method: 'DELETE',
-            headers: {
-                'Content-type': 'application/json'
-            },
-        });
-    };
+    // const deleteIncomeBackEnd = async (id) => {
+    //     const remove = await fetch(url + '/' + id, {
+    //         method: 'DELETE',
+    //         headers: {
+    //             'Content-type': 'application/json'
+    //         },
+    //     });
+    // };
 
     const idProductRef = useRef();
     const handleDialog = (message, isLoading) => {
@@ -59,14 +60,26 @@ function PajamuIspl() {
         });
     };
 
+    const handleDismiss = () => {
+        setEditIncome(false);
+    };
+
     const handleDeleteIncome = (id) => {
         handleDialog("Ar tikrai norite ištrinti?", true);
         idProductRef.current = id;
     };
 
-    const areUSureDelete = (choose) => {
+    const areUSureDelete = async (choose) => {
         if (choose) {
-            deleteIncomeBackEnd(idProductRef.current);
+            const remove = await fetch(url + idProductRef.current, {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json",
+                },
+            });
+            setIncomes(
+                incomes.filter((income) => income._id !== idProductRef.current)
+            );
             handleDialog("", false);
         } else {
             handleDialog("", false);
@@ -83,7 +96,7 @@ function PajamuIspl() {
         setUpdateIncome(findIncome);
     };
 
-    const handleUpdateIncome = ({ id }) => {
+    const handleUpdateIncome = async ({ id }) => {
         let newIncomesList = incomes.map((income) => {
             if (income._id == id) {
                 return {
@@ -94,15 +107,28 @@ function PajamuIspl() {
             }
             return income;
         });
+        const update = await fetch(url + id, {
+            method: "PATCH",
+
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: titleInputOnEdit,
+                date: dateInputOnEdit,
+                amount: amountInputOnEdit,
+            }),
+        });
         setIncomes(newIncomesList);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!editIncome) {
             if (
                 titleInput.length == 0 ||
-                amountInput == 0
+                amountInput == 0 ||
+                dateInput.length == 0
             ) {
                 setError(true);
             } else {
@@ -111,6 +137,13 @@ function PajamuIspl() {
                     date: dateInput,
                     amount: amountInput,
                 };
+                const add = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(newIncome),
+                });
                 //console.log(newIncome)
                 setIncomes((oldList) => [...oldList, newIncome]);
                 //console.log(incomes)
@@ -122,48 +155,62 @@ function PajamuIspl() {
         } else {
             if (
                 titleInputOnEdit.length == 0 ||
-                dateInputOnEdit.length == 0 ||
-                amountInputOnEdit == 0
+                amountInputOnEdit.length == 0 ||
+                dateInputOnEdit.length == 0
             ) {
-                setError(true);
+                setErrorOnEdit(true);
             } else {
-                handleUpdateIncome(updateIncome);
+                handleUpdateIncome({ id: updateIncome._id });
                 setTitleInputOnEdit("");
                 setDateInputOnEdit("");
                 setAmountInputOnEdit("");
-                setError(false);
+                setErrorOnEdit(false);
                 setEditIncome(false);
             }
         }
     };
 
-    let list = incomes.map((income) => {
-        return (
-            <PajamuIsplIrasas
-                key={uuidv4()}
-                id={income._id}
-                name={income.name}
-                date={income.date}
-                amount={income.amount}
-                deleteIncome={handleDeleteIncome}
-                editIncome={handleEditIncome}
-            />
-        );
-    });
+    let list = incomes
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .map((income) => {
+            return (
+                <PajamuIsplIrasas
+                    key={uuidv4()}
+                    id={income._id}
+                    name={income.name}
+                    date={income.date}
+                    amount={income.amount}
+                    deleteIncome={handleDeleteIncome}
+                    editIncome={handleEditIncome}
+                />
+            );
+        });
 
     return (
         <>
             <div className="g-0 Income-wrapper gridParent-0">
                 <Navigation />
                 <div className="row d-flex g-0  IncomeNav gridChild-1 Roboto-condensed F-size-20">
-                    <Link to='/pajamu-isplestine' className='BP9-btn colorAnchored BP9-selectedbtn'>
-                        <div>Pajamos</div> </Link>
+                    <Link
+                        to="/pajamu-isplestine"
+                        className="BP9-btn colorAnchored BP9-selectedbtn"
+                    >
+                        <div>Pajamos</div>{" "}
+                    </Link>
 
-                    <Link to='/islaidu-isplestine' className='BP9-btn colorAnchored'>
-                        <div>Išlaidos</div> </Link>
+                    <Link
+                        to="/islaidu-isplestine"
+                        className="BP9-btn colorAnchored"
+                    >
+                        <div>Išlaidos</div>{" "}
+                    </Link>
 
-                    <Link to='/biudzeto-isplestine' className='BP9-btn colorAnchored'>
-                        <div>Biudžetas</div> </Link>
+                    <Link
+                        to="/biudzeto-isplestine"
+                        className="BP9-btn colorAnchored"
+                    >
+                        <div>Biudžetas</div>{" "}
+                    </Link>
                 </div>
 
                 {/* SEARCH */}
@@ -227,16 +274,25 @@ function PajamuIspl() {
                                     }
                                     onMouseDown={(e) => {
                                         e.preventDefault();
-                                        e.target.type = 'date';
+                                        e.target.type = "date";
                                     }}
                                     type="date"
                                     id="dateInput"
                                     name="dateInput"
                                     value={dateInput}
                                     max={moment().format("YYYY-MM-DD")}
-                                    min={moment().subtract(3, "years").format("YYYY-MM-DD")}
+                                    min={moment()
+                                        .subtract(1, "years")
+                                        .format("YYYY-MM-DD")}
                                     className="form-control IncomeNewEntry-input F-size-20"
                                 />
+                                {error && dateInput.length <= 0 ? (
+                                    <div className="Error-msg pt-1">
+                                        Šis laukelis yra privalomas
+                                    </div>
+                                ) : (
+                                    ""
+                                )}
                             </div>
                             <div className="">
                                 <input
@@ -278,23 +334,25 @@ function PajamuIspl() {
                 </div>
                 {/* ENTRIES */}
                 <div className="col py-5 IncomeEntries gridChild-4">
-                    <Link to='/'>
-
-                        <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20"><span className="xBtn">X</span>
+                    <Link to="/">
+                        <button className="btn Close-btn Bg-light-blue Roboto-condensed F-size-20">
+                            <span className="xBtn">X</span>
                         </button>
                     </Link>
                     <div className="d-flex justify-content-between mb-4">
                         <h4 className="Roboto-condensed F-size-25">Pajamos</h4>
                     </div>
-                    {list}
+                    <div className="BP9-ListContainer">{list}</div>
                 </div>
                 {/* POP UP FOR EDIT */}
                 <div
-                    className="modal fade"
-                    id="exampleModalToggle"
+                    class="modal fade"
+                    id="staticBackdrop"
+                    data-bs-backdrop="static"
+                    data-bs-keyboard="false"
+                    tabindex="-1"
+                    aria-labelledby="staticBackdropLabel"
                     aria-hidden="true"
-                    aria-labelledby="exampleModalToggleLabel"
-                    tabIndex="-1"
                 >
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content p-4 Edit-pop-up">
@@ -306,6 +364,7 @@ function PajamuIspl() {
                                     Redaguoti įrašą
                                 </h5>
                                 <button
+                                    onClick={handleDismiss}
                                     type="button"
                                     className="btn-close"
                                     data-bs-dismiss="modal"
@@ -327,9 +386,11 @@ function PajamuIspl() {
                                             value={titleInputOnEdit}
                                             className="form-control IncomeNewEntry-input F-size-20"
                                             placeholder="Pavadinimas"
+                                            maxLength="20"
                                         />
                                     </div>
-                                    {error && titleInputOnEdit.length <= 0 ? (
+                                    {errorOnEdit &&
+                                    titleInputOnEdit.length <= 0 ? (
                                         <div className="Error-msg">
                                             Šis laukelis yra privalomas
                                         </div>
@@ -343,27 +404,49 @@ function PajamuIspl() {
                                                     e.target.value
                                                 )
                                             }
+                                            onMouseDown={(e) => {
+                                                e.preventDefault();
+                                                e.target.type = "date";
+                                            }}
                                             type="date"
                                             id="dateInput"
                                             name="dateInput"
                                             value={dateInputOnEdit}
                                             className="form-control IncomeNewEntry-input F-size-20"
+                                            max={moment().format("YYYY-MM-DD")}
+                                            min={moment()
+                                                .subtract(1, "years")
+                                                .format("YYYY-MM-DD")}
                                         />
+                                        {errorOnEdit &&
+                                        dateInputOnEdit.length <= 0 ? (
+                                            <div className="Error-msg pt-1">
+                                                Šis laukelis yra privalomas
+                                            </div>
+                                        ) : (
+                                            ""
+                                        )}
                                     </div>
-                                    {error && dateInputOnEdit.length <= 0 ? (
-                                        <div className="Error-msg">
-                                            Šis laukelis yra privalomas
-                                        </div>
-                                    ) : (
-                                        ""
-                                    )}
                                     <div className="">
                                         <input
-                                            onChange={(e) =>
-                                                setAmountInputOnEdit(
-                                                    e.target.value
+                                            onKeyPress={(e) => {
+                                                if (
+                                                    e.key === "-" ||
+                                                    e.key === "+"
                                                 )
-                                            }
+                                                    e.preventDefault();
+                                            }}
+                                            onChange={(e) => {
+                                                const regex =
+                                                    /^(?!00)[0-9]{0,10}(?:\.[0-9]{1,2})?$/;
+                                                if (
+                                                    regex.test(e.target.value)
+                                                ) {
+                                                    setAmountInputOnEdit(
+                                                        e.target.value
+                                                    );
+                                                }
+                                            }}
                                             type="number"
                                             id="amountInput"
                                             name="amountInput"
@@ -372,7 +455,8 @@ function PajamuIspl() {
                                             placeholder="Suma"
                                         />
                                     </div>
-                                    {error && amountInputOnEdit.length <= 0 ? (
+                                    {errorOnEdit &&
+                                    amountInputOnEdit.length <= 0 ? (
                                         <div className="Error-msg">
                                             Šis laukelis yra privalomas
                                         </div>
@@ -384,13 +468,25 @@ function PajamuIspl() {
                                             onClick={handleSubmit}
                                             type="submit"
                                             className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-blue Edit-btn me-2"
-                                            data-bs-target="#exampleModalToggle2"
-                                            data-bs-toggle="modal"
-                                            data-bs-dismiss="modal"
+                                            data-bs-target={
+                                                titleInputOnEdit.length <= 0 ||
+                                                dateInputOnEdit.length <= 0 ||
+                                                amountInputOnEdit.length <= 0
+                                                    ? ""
+                                                    : "#exampleModalToggle2"
+                                            }
+                                            data-bs-toggle={
+                                                titleInputOnEdit.length <= 0 ||
+                                                dateInputOnEdit.length <= 0 ||
+                                                amountInputOnEdit.length <= 0
+                                                    ? ""
+                                                    : "modal"
+                                            }
                                         >
                                             Patvirtinti
                                         </button>
                                         <button
+                                            onClick={handleDismiss}
                                             type="button"
                                             className="btn F-size-20 Roboto-condensed Main-btn3 Bg-light-red Del-btn ms-2"
                                             data-bs-dismiss="modal"

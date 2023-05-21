@@ -16,7 +16,7 @@ import RegisterPage from "./components/Authentication/RegisterPage/RegisterPage"
 
 
 function App() {
-    const [month, setMonth] = useState("02");
+    const [month, setMonth] = useState("05");
 
     return (
         <>

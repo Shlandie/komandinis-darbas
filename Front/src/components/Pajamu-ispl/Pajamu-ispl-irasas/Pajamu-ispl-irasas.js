@@ -27,8 +27,7 @@ function PajamuIsplIrasas(props) {
                         onClick={() => editIncome(id)}
                         className="btn Crud-btn Edit-btn Bg-light-blue Icon"
                         data-bs-toggle="modal"
-                        role="button"
-                        href="#exampleModalToggle"
+                        data-bs-target="#staticBackdrop"
                     >
                         <FiEdit />
                     </button>
@@ -38,7 +37,6 @@ function PajamuIsplIrasas(props) {
                     >
                         <BsTrash />
                     </button>
-
                 </div>
             </div>
         </>

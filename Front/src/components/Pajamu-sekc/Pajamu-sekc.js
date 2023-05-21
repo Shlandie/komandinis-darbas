@@ -22,31 +22,41 @@ function PajamuSekc() {
 
     //console.log(incomes);
 
-    let visiIrasai = incomes.map((income) => {
-        return (
-            <PajamuSekcIrasas
-                key={uuidv4()}
-                id={income._id}
-                name={income.name}
-                date={income.date}
-                amount={income.amount}
-            />
-        );
-    });
+    let visiIrasai = incomes
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .map((income) => {
+            return (
+                <PajamuSekcIrasas
+                    key={uuidv4()}
+                    id={income._id}
+                    name={income.name}
+                    date={income.date}
+                    amount={income.amount}
+                />
+            );
+        });
 
-    let bendraSuma = incomes.reduce((accum, income) => accum + income.amount, 0);
+    let bendraSuma = incomes.reduce(
+        (accum, income) => accum + income.amount,
+        0
+    );
 
     return (
         <>
             <div className="Container BP38-child1">
                 <div className="d-flex justify-content-between P-48">
                     <div className="Roboto-condensed Font-25 mt-1">Pajamos</div>
-                    <div className="Roboto-condensed Font-30">{bendraSuma}eur</div>
+                    <div className="Roboto-condensed Font-30">
+                        {bendraSuma}eur
+                    </div>
                 </div>
                 <div className="Scroll">{visiIrasai}</div>
 
                 <Link className="nav-link" to="/pajamu-isplestine">
-                    <button type="button" className="Button Roboto-condensed Font-20">
+                    <button
+                        type="button"
+                        className="Button Roboto-condensed Font-20"
+                    >
                         Išskleisti
                     </button>
                 </Link>

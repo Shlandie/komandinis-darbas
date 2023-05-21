@@ -44,7 +44,7 @@ const expenseSchema = new mongoose.Schema({
     amount: {
         type: Number,
         min: 0,
-        max: 10000,
+        max: 1000000000,
         required: true
     },
     user: {
@@ -59,7 +59,7 @@ const expenseSchema = new mongoose.Schema({
 const earningsSchema = new mongoose.Schema({
     name: {
         type: String,
-        minlength: 4,
+        minlength: 1,
         maxlength: 20,
         required: true
     },
@@ -67,7 +67,7 @@ const earningsSchema = new mongoose.Schema({
     amount: {
         type: Number,
         min: 1,
-        max: 10000,
+        max: 1000000000,
         required: true
     },
 
