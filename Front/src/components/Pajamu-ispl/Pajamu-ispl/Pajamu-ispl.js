@@ -13,6 +13,10 @@ const url = "http://localhost:4000/api/v1/incomes/";
 
 function PajamuIspl() {
     const [incomes, setIncomes] = useState([]);
+      
+    const [searchResults, setSearchResults] = useState([]);
+    const [startDateInput, setStartDateInput] = useState('');
+    const [endDateInput, setEndDateInput] = useState('');
 
     const [titleInput, setTitleInput] = useState("");
     const [dateInput, setDateInput] = useState(moment().format("YYYY-MM-DD"));
@@ -170,7 +174,17 @@ function PajamuIspl() {
         }
     };
 
-    let list = incomes
+    const handleSearchSubmit = async (e) => {
+        e.preventDefault();
+        const response = await fetch(url);
+        const data = await response.json();
+        const filteredIncomes = data.data.earnings.filter((income) =>
+          moment(income.date).isBetween(startDateInput, endDateInput, 'day', '[]')
+        );
+        setSearchResults(filteredIncomes);
+      };
+
+    let list = (searchResults.length > 0 ? searchResults : incomes)
         .sort((a, b) => new Date(b.date) - new Date(a.date))
         .map((income) => {
             return (
@@ -222,13 +236,25 @@ function PajamuIspl() {
                         >
                             Paieška
                         </h4>
-                        <form>
+                        <form onSubmit={handleSearchSubmit} >
                             <div className="">
                                 <input
                                     type="date"
+                                    value={startDateInput}
+                                    onChange={(e) => setStartDateInput(e.target.value)}
                                     className="form-control IncomeNewEntry-input F-size-20"
                                 />
                             </div>
+                            <div className="">
+                                <input
+                                    type="date"
+                                    value={endDateInput}
+                                    onChange={(e) => setEndDateInput(e.target.value)}
+                                    className="form-control IncomeNewEntry-input F-size-20"
+                                />
+                            </div>
+
+
                             <button
                                 type="submit"
                                 className="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue"

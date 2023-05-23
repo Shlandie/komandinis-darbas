@@ -2,7 +2,7 @@ import React from "react";
 import IslaiduIsplIrasas from "../Islaidu-ispl-irasas/Islaidu-ispl-irasas";
 import "../Islaidu-ispl/Islaidu-ispl.css";
 import "../Islaidu-ispl/Islaidu-ispl-grid.css";
-import ExpenseSearchBar from "../Islaidu-ispl/islaidu-ispl-search";
+
 import { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Dialog from "../../Delete-popup/Dialog";
@@ -14,6 +14,8 @@ const url = "http://localhost:4000/api/v1/expenses/";
 
 function IslaiduIspl(props) {
     const {month} = props;
+    
+    
     const options = [
         {
             value: "",
@@ -52,6 +54,9 @@ function IslaiduIspl(props) {
     const [expenses, setExpenses] = useState([]);
 
     const [filteredExpenses, setFilteredExpenses] = useState([]);
+    const [endDateInput, setEndDateInput] = useState("");
+    const [startDateInput, setStartDateInput] = useState('');
+    const [searchCategoryInput, setSearchCategoryInput] = useState("");
 
     const [titleInput, setTitleInput] = useState("");
     const [categoryInput, setCategoryInput] = useState(options[0].value);
@@ -73,6 +78,7 @@ function IslaiduIspl(props) {
         message: "",
         isLoading: false,
     });
+    
 
     const getData = async () => {
         const response = await fetch(url);
@@ -124,14 +130,12 @@ function IslaiduIspl(props) {
             isLoading,
         });
     };
-
+    
     const handleDismiss = () => {
         setEditExpense(false);
     };
 
-    const handleFilterExpenses = (filtered) => {
-        setFilteredExpenses(filtered);
-    };
+    
 
     const handleDeleteExpense = (id) => {
         handleDialog("Ar tikrai norite ištrinti?", true);
@@ -252,27 +256,75 @@ function IslaiduIspl(props) {
             }
         }
     };
-
     const handleCategoryChange = (e) => {
         setCategoryInput(e.target.value);
     };
+    // search code
 
-    let list = (filteredExpenses.length > 0 ? filteredExpenses : expenses)
+    const handleStartDateChange = (e) => {
+        setStartDateInput(e.target.value);
+      };
+      
+      const handleEndDateChange = (e) => {
+        setEndDateInput(e.target.value);
+      };
+      
+      const handleSearchCategoryChange = (e) => {
+        setSearchCategoryInput(e.target.value);
+      };
+
+      const handleSearchSubmit = (e) => {
+        e.preventDefault();
+      
+        // Filter expenses based on date range and category
+        const filtered = expenses.filter((expense) => {
+          const expenseDate = new Date(expense.date);
+          const startDate = new Date(startDateInput);
+          const endDate = new Date(endDateInput);
+      
+          const isDateInRange = expenseDate >= startDate && expenseDate <= endDate;
+          const isCategoryMatched = searchCategoryInput === expense.category;
+      
+          return isDateInRange && isCategoryMatched;
+        });
+      
+        setFilteredExpenses(filtered);
+      };
+
+
+    let list = [];
+
+    if (filteredExpenses && filteredExpenses.length > 0) {
+      list = filteredExpenses
         .sort((a, b) => new Date(b.date) - new Date(a.date))
-        .map((expense) => {
-            return (
-                <IslaiduIsplIrasas
-                    key={uuidv4()}
-                    id={expense._id}
-                    name={expense.name}
-                    category={expense.category}
-                    date={expense.date}
-                    amount={expense.amount}
-                    deleteExpense={handleDeleteExpense}
-                    editExpense={handleEditExpense}
-                />
-            );
-        })
+        .map((expense) => (
+          <IslaiduIsplIrasas
+            key={uuidv4()}
+            id={expense._id}
+            name={expense.name}
+            category={expense.category}
+            date={expense.date}
+            amount={expense.amount}
+            deleteExpense={handleDeleteExpense}
+            editExpense={handleEditExpense}
+          />
+        ));
+    } else if (expenses && expenses.length > 0) {
+      list = expenses
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .map((expense) => (
+          <IslaiduIsplIrasas
+            key={uuidv4()}
+            id={expense._id}
+            name={expense.name}
+            category={expense.category}
+            date={expense.date}
+            amount={expense.amount}
+            deleteExpense={handleDeleteExpense}
+            editExpense={handleEditExpense}
+          />
+        ));
+    }
 
     return (
         <>
@@ -301,11 +353,64 @@ function IslaiduIspl(props) {
                     </Link>
                 </div>
 
+
+
                 {/* SEARCH */}
-                <ExpenseSearchBar
-                    expenses={expenses}
-                    onFilterExpenses={handleFilterExpenses}
-                />
+                <div className="row gap-2 g-0 gridChild-2">
+            <div className="IncomeSearch">
+                <h4 className="Roboto-condensed F-size-25 ExpenseSearch-title">
+                   Paieška
+                </h4>
+              <form onSubmit={handleSearchSubmit}>
+               <div className="mb-2">
+                         <input
+                          type="date"
+                          className="form-control IncomeNewEntry-input F-size-20"
+                          placeholder="Pradžios data"
+                          value={startDateInput}
+                          onChange={handleStartDateChange}
+                         />
+                     </div>
+                 <div className="mb-2">
+                         <input
+                         type="date"
+                         className="form-control IncomeNewEntry-input F-size-20"
+                         placeholder="Pabaigos data"
+                         value={endDateInput}
+                         onChange={handleEndDateChange}
+                        />
+                </div>
+      <select
+        className="form-select IncomeNewEntry-input F-size-19 Roboto-condensed"
+        aria-label="Default select example"
+        id="programSelect"
+        name="programSelect"
+        onChange={handleSearchCategoryChange}
+        value={searchCategoryInput}
+        required
+      >
+        <option defaultValue disabled>Pagal kategoriją</option>
+        <option value="Transportas">Transportas</option>
+        <option value="Maistas ir gėrimai">Maistas ir gėrimai</option>
+        <option value="Pramogos">Pramogos</option>
+        <option value="Mokesčiai">Mokesčiai</option>
+        <option value="Paslaugos">Paslaugos</option>
+        <option value="Pirkiniai ir daiktai">Pirkiniai ir daiktai</option>
+        <option value="Kitos išlaidos">Kitos išlaidos</option>
+      </select>
+      <button
+        type="submit"
+        className="btn F-size-20 Roboto-condensed Main-btn Bg-light-blue mt-2"
+      >
+        Ieškoti
+      </button>
+      </form>
+      
+     
+
+     </div>
+    </div>
+
 
                 {/* ADD ENTRY */}
                 <div className="row gap-2 g-0 gridChild-3">
